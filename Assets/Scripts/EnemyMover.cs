@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class EnemyMover : MonoBehaviour, IMovable
+public abstract class EnemyMover : MonoBehaviour, IMovable
 {
     [SerializeField] private uint _movePositionNumber;
     [SerializeField] private float _speed;
 
-    private Queue<Vector3> _movePositions;
+    protected Queue<Vector3> MovePositions;
     private Vector3 _nextPosition;
     private bool _isMoving;
 
@@ -28,9 +26,9 @@ public class EnemyMover : MonoBehaviour, IMovable
         {
             SnapToPosition(_nextPosition);
 
-            if (_movePositions.Count > 0)
+            if (MovePositions.Count > 0)
             {
-                _nextPosition = _movePositions.Dequeue();
+                _nextPosition = MovePositions.Dequeue();
             }
             else
             {
@@ -47,26 +45,21 @@ public class EnemyMover : MonoBehaviour, IMovable
     
     protected virtual void SetPositions()
     {
-        _movePositions = new Queue<Vector3>();
-        var halfWidth = Screen.width / 2 / 100f;
-        var halfHeight = Screen.height / 2 / 100f;
+        MovePositions = new Queue<Vector3>();
 
         for (int i = 0; i < _movePositionNumber; i++)
         {
             var nextPosition = new Vector3(
-                Random.Range(-halfWidth, halfWidth),
-                Random.Range(0, halfHeight));
+                Random.Range(-GameManager.Instance.HalfWidth, GameManager.Instance.HalfWidth),
+                Random.Range(0, GameManager.Instance.HalfHeight));
             
-            _movePositions.Enqueue(nextPosition);
+            MovePositions.Enqueue(nextPosition);
         }
         
         AddFinalPosition();
     }
 
-    protected virtual void AddFinalPosition()
-    {
-        // frog girl for eatable, spawn point for damageable
-    }
+    protected abstract void AddFinalPosition();
 
     private void SnapToPosition(Vector2 position)
     {
@@ -75,7 +68,7 @@ public class EnemyMover : MonoBehaviour, IMovable
 
     private void StartMoving()
     {
-        _nextPosition = _movePositions.Dequeue();
+        _nextPosition = MovePositions.Dequeue();
         _isMoving = true;
     }
     

@@ -419,11 +419,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5025227320037298668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72038bcdc62645a0a5896fa7485fd91a, type: 3}
+  m_Script: {fileID: 11500000, guid: 94d09834e966489d863f99f61eeec74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _movePositionNumber: 3
-  _speed: 1
+  _speed: 0.8
 --- !u!1 &5025227320051342597
 GameObject:
   m_ObjectHideFlags: 0
