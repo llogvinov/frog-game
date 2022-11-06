@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9180516671472036281}
   - component: {fileID: -6501372510928706302}
+  - component: {fileID: -2652669797681838143}
   m_Layer: 0
   m_Name: wasp
   m_TagString: Untagged
@@ -44,6 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6f5e72cdfa42a1b555a37982708757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: -2652669797681838143}
+--- !u!114 &-2652669797681838143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9180516671472036280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72038bcdc62645a0a5896fa7485fd91a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movePositionNumber: 3
+  _speed: 1.5
 --- !u!1 &9180516671598150140
 GameObject:
   m_ObjectHideFlags: 0

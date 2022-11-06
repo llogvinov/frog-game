@@ -14,7 +14,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        _enemyPool.GetPooledObject();
+        var enemy = _enemyPool.GetPooledObject();
+        enemy.Mover.Initialize();
     } 
 }
 

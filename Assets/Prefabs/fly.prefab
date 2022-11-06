@@ -291,6 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3652841202642904600}
   - component: {fileID: 5608629063545287373}
+  - component: {fileID: 2959708528921728428}
   m_Layer: 0
   m_Name: fly
   m_TagString: Untagged
@@ -325,6 +326,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc11543e1404ecfad3388ec6c9c0095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: 2959708528921728428}
+--- !u!114 &2959708528921728428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652841202642904607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72038bcdc62645a0a5896fa7485fd91a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movePositionNumber: 5
+  _speed: 1.5
 --- !u!1 &3652841202798767352
 GameObject:
   m_ObjectHideFlags: 0
