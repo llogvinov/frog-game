@@ -390,6 +390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 162515408}
+  _firstSpawnDelay: 1
+  _spawnDelay: 4
 --- !u!1 &279039979
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +437,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 279039980}
+  _firstSpawnDelay: 8
+  _spawnDelay: 10
 --- !u!4 &279039982
 Transform:
   m_ObjectHideFlags: 0
@@ -658,6 +662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 485897025}
+  _firstSpawnDelay: 3
+  _spawnDelay: 5
 --- !u!4 &485897027
 Transform:
   m_ObjectHideFlags: 0
@@ -864,6 +870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 959697479}
+  _firstSpawnDelay: 6
+  _spawnDelay: 15
 --- !u!4 &959697481
 Transform:
   m_ObjectHideFlags: 0

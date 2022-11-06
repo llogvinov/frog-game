@@ -6,14 +6,8 @@ public class DamageableEnemyMover : EnemyMover
     
     protected override void AddFinalPosition()
     {
-        var lastPosition = RandomPositionOffTheScreen();
+        var lastPosition = EnemySpawner.RandomPositionOffTheScreen();
         MovePositions.Enqueue(lastPosition);
     }
-
-    private Vector2 RandomPositionOffTheScreen()
-    {
-        return new Vector2(
-            Random.Range(-GameManager.Instance.HalfWidth - OffScreenOffset, GameManager.Instance.HalfWidth + OffScreenOffset),
-            Random.Range(0, GameManager.Instance.HalfHeight + OffScreenOffset));
-    }
+    
 }
