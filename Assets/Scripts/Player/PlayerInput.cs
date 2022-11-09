@@ -21,12 +21,16 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        _canHit = true;
     }
 
     private void Update()
     {
-        HandleTouchInput();
-        HandleMouseInput();
+        if (_canHit)
+        {
+            HandleTouchInput();
+            HandleMouseInput();
+        }
     }
 
     private void HandleTouchInput()
@@ -36,7 +40,6 @@ public class PlayerInput : MonoBehaviour
 
         if (touch.phase != TouchPhase.Began) return;
         HitSetEvent?.Invoke(touch.position);
-        _canHit = false;
         StartCoroutine(StartCoolDownTimer());
     }
 
@@ -46,11 +49,13 @@ public class PlayerInput : MonoBehaviour
         {
             var mousePosition = Input.mousePosition;
             HitSetEvent?.Invoke(_camera.ScreenToWorldPoint(mousePosition));
+            StartCoroutine(StartCoolDownTimer());
         }
     }
 
     private IEnumerator StartCoolDownTimer()
     {
+        _canHit = false;
         yield return new WaitForSeconds(_coolDownDelay);
         _canHit = true;
     }
