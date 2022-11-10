@@ -61,6 +61,13 @@ namespace Player
         {
             objectToSnap.position = position;
         }
+
+        public void ForceEndHit()
+        {
+            if (_nextPosition == _originalPosition) return;
+
+            _nextPosition = _movePositions.Dequeue();
+        }
         
     }
 }

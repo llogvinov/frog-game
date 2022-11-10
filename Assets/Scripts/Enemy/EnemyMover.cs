@@ -71,5 +71,15 @@ public abstract class EnemyMover : MonoBehaviour, IMovable
         _nextPosition = MovePositions.Dequeue();
         _isMoving = true;
     }
-    
+
+    public void StopMoving()
+    {
+        _isMoving = false;
+    }
+
+    public void ContinueMoving()
+    {
+        _isMoving = true;
+    }
+
 }

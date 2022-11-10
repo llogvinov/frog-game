@@ -18,5 +18,6 @@ public abstract class Enemy : MonoBehaviour
     public void Release()
     {
         _pool.ReturnToPool(this);
+        transform.parent = _pool.transform;
     }
 }

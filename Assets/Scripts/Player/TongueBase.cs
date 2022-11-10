@@ -6,6 +6,7 @@ namespace Player
     public class TongueBase : MonoBehaviour
     {
         private SpriteRenderer _baseVisual;
+        private float _meshScale;
 
         public SpriteRenderer Visual => _baseVisual;
 
@@ -13,6 +14,8 @@ namespace Player
         {
             _baseVisual = GetComponent<SpriteRenderer>();
             _baseVisual.enabled = false;
+
+            _meshScale = transform.parent.lossyScale.y;
         }
 
         public void Stretch(Vector3 startPosition, Vector3 endPosition)
@@ -25,7 +28,7 @@ namespace Player
 
             Vector3 scale = new Vector3(0.15f, 1f, 1f);
             scale.y = Vector3.Distance(startPosition, endPosition);
-            scale.y *= 0.6f;
+            scale.y /= _meshScale;
             transform.localScale = scale;
         }
     }

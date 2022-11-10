@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950f87872c10452f8ba2ee03bf3661fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 5
+  _poolSize: 10
   _objectToPool: {fileID: 5608629063545287373, guid: 9c9314a25df516244938c1a3e8cdb84e, type: 3}
 --- !u!114 &162515409
 MonoBehaviour:
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 162515408}
   _firstSpawnDelay: 1
-  _spawnDelay: 4
+  _spawnDelay: 3
 --- !u!1 &279039979
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 279039980}
   _firstSpawnDelay: 8
-  _spawnDelay: 10
+  _spawnDelay: 6.5
 --- !u!4 &279039982
 Transform:
   m_ObjectHideFlags: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950f87872c10452f8ba2ee03bf3661fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 3
+  _poolSize: 10
   _objectToPool: {fileID: 2127087753753080887, guid: f825fd2e6ab327b49901ddb1cbb30235, type: 3}
 --- !u!114 &485897026
 MonoBehaviour:
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 485897025}
   _firstSpawnDelay: 3
-  _spawnDelay: 5
+  _spawnDelay: 4.5
 --- !u!4 &485897027
 Transform:
   m_ObjectHideFlags: 0
@@ -771,7 +771,10 @@ GameObject:
   m_Component:
   - component: {fileID: 631110115}
   - component: {fileID: 631110116}
+  - component: {fileID: 631110120}
+  - component: {fileID: 631110119}
   - component: {fileID: 631110117}
+  - component: {fileID: 631110118}
   m_Layer: 0
   m_Name: tongue head
   m_TagString: Untagged
@@ -856,6 +859,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d566615cae964cac9e552b10e9b2d3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &631110118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631110114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca0a223e58642cfb34741002999abe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tongueHead: {fileID: 631110117}
+--- !u!58 &631110119
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631110114}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!50 &631110120
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631110114}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &643825295
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 959697479}
   _firstSpawnDelay: 6
-  _spawnDelay: 15
+  _spawnDelay: 9
 --- !u!4 &959697481
 Transform:
   m_ObjectHideFlags: 0
@@ -1300,7 +1353,7 @@ Transform:
   m_GameObject: {fileID: 1918404285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.15, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 1166332998}
   m_RootOrder: 3
