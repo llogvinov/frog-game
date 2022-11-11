@@ -40,6 +40,8 @@ namespace Player
 
         private void OnEatableEnemyHit(EatableEnemy enemy)
         {
+            if (!enemy.enabled) return;
+            
             enemy.transform.parent = _tongueHead.transform;
             enemy.transform.localPosition = Vector3.zero;
             

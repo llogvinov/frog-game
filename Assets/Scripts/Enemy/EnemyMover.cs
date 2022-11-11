@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public abstract class EnemyMover : MonoBehaviour, IMovable
+public abstract class EnemyMover : MonoBehaviour
 {
+    public Action FinalTargetReached;
+    
     [SerializeField] private uint _movePositionNumber;
     [SerializeField] private float _speed;
 
@@ -14,11 +18,11 @@ public abstract class EnemyMover : MonoBehaviour, IMovable
     {
         if (_isMoving)
         {
-            Move(Time.deltaTime);
+            Move(Time.deltaTime, FinalTargetReached);
         }
     }
 
-    public void Move(float t)
+    public void Move(float t, Action onFinalTargetReached)
     {
         transform.position = Vector3.MoveTowards(transform.position, _nextPosition, _speed * t);
         
@@ -33,6 +37,7 @@ public abstract class EnemyMover : MonoBehaviour, IMovable
             else
             {
                 _isMoving = false;
+                onFinalTargetReached?.Invoke();
             }
         }
     }

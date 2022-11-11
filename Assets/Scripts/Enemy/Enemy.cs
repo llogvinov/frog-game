@@ -15,6 +15,18 @@ public abstract class Enemy : MonoBehaviour
 
     public EnemyMover Mover => _mover;
 
+    private void OnEnable()
+    {
+        _mover.FinalTargetReached += OnFinalTargetReached;
+    }
+
+    private void OnDisable()
+    {
+        _mover.FinalTargetReached -= OnFinalTargetReached;
+    }
+
+    protected abstract void OnFinalTargetReached();
+
     public void Release()
     {
         _pool.ReturnToPool(this);
