@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mover: {fileID: -2652669797681838143}
+  _damageToGive: 50
 --- !u!114 &-2652669797681838143
 MonoBehaviour:
   m_ObjectHideFlags: 0

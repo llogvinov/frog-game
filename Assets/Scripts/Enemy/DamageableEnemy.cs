@@ -1,7 +1,11 @@
-﻿public class DamageableEnemy : Enemy
+﻿using UnityEngine;
+
+public class DamageableEnemy : Enemy
 {
-    private uint _damageToGive;
-    
+    [SerializeField] private int _damageToGive;
+
+    public int DamageToGive => _damageToGive;
+
     protected override void OnFinalTargetReached()
     {
         Release();

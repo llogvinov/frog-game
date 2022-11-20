@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Action GameOver;
+    
     [SerializeField] private GameObject _frogGirl;
     
     private Camera _camera;

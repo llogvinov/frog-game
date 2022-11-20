@@ -9,6 +9,7 @@ namespace Player
     {
         [SerializeField] private TongueHead _tongueHead;
 
+        private Health _playerHealth;
         private List<EatableEnemy> _caughtEnemies;
 
         private void OnEnable()
@@ -23,6 +24,7 @@ namespace Player
 
         private void Awake()
         {
+            _playerHealth = GetComponentInParent<Health>();
             _caughtEnemies = new List<EatableEnemy>();
         }
 
@@ -51,7 +53,7 @@ namespace Player
 
         private void OnDamageableEnemyHit(DamageableEnemy enemy)
         {
-            // take damage
+            _playerHealth.TakeDamage(enemy.DamageToGive);
             ReleaseCaughtEnemies();
             _tongueHead.ForceEndHit();
         }
