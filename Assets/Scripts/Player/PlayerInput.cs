@@ -24,6 +24,16 @@ public class PlayerInput : MonoBehaviour
         _canHit = true;
     }
 
+    private void Start()
+    {
+        GameManager.Instance.GameOver += OnGameOver ;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.GameOver -= OnGameOver;
+    }
+
     private void Update()
     {
         if (_canHit)
@@ -59,5 +69,7 @@ public class PlayerInput : MonoBehaviour
         yield return new WaitForSeconds(_coolDownDelay);
         _canHit = true;
     }
-    
+
+    private void OnGameOver() => enabled = false;
+
 }

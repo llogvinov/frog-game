@@ -14,7 +14,16 @@ public class EnemySpawner : MonoBehaviour
     private const float SpriteWidth = 1f;
     private const float OffScreenOffset = 2f;
 
-    private IEnumerator Start()
+    private Coroutine spawnCoroutine;
+
+    private void Start()
+    {
+        spawnCoroutine = StartCoroutine(SpawnEnemy());
+
+        GameManager.Instance.GameOver += StopSpawnEnemy;
+    }
+
+    private IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(_firstSpawnDelay);
         
@@ -22,28 +31,33 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_spawnDelay);
             
-            SpawnEnemy();
+            var enemy = _enemyPool.GetPooledObject();
+            enemy.transform.position = RandomPositionOffTheScreen();
+            enemy.Mover.Initialize();
         }
     }
 
-    private void SpawnEnemy()
+    private void StopSpawnEnemy()
     {
-        var enemy = _enemyPool.GetPooledObject();
-        enemy.transform.position = RandomPositionOffTheScreen();
-        enemy.Mover.Initialize();
+        if (spawnCoroutine == null) return;
+        StopCoroutine(spawnCoroutine);
     }
     
-    public static Vector2 RandomPositionOffTheScreen()
+    public static Vector3 RandomPositionOffTheScreen()
     {
         var width = GameManager.Instance.HalfWidth;
         var height = GameManager.Instance.HalfHeight;
         
-        return new Vector2(
+        return new Vector3(
             Random.Range(
                 Random.Range(-width - SpriteWidth - OffScreenOffset, width), 
                 Random.Range(width, width + OffScreenOffset + SpriteWidth)),
             Random.Range(height, height + OffScreenOffset + SpriteWidth));
     }
-    
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.GameOver -= StopSpawnEnemy;
+    }
 }
 
