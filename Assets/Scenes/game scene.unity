@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56196bedcc62436aaae4c9a5e0adf59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frogGirl: {fileID: 643825295}
+  _frogGirl: {fileID: 643825297}
 --- !u!4 &9620335
 Transform:
   m_ObjectHideFlags: 0

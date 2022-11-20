@@ -18,6 +18,7 @@ public class EatableEnemyMover : EnemyMover
     private void OnFinalTargetReached()
     {
         _target.OccupyTarget();
+        GameManager.Instance.FrogGirl.CheckAllTargetsOccupied();
     }
 
     protected override void AddFinalPosition()

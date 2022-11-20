@@ -1,11 +1,12 @@
 ﻿using System;
+using FrogGame;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public Action GameOver;
     
-    [SerializeField] private GameObject _frogGirl;
+    [SerializeField] private FrogGirl _frogGirl;
     
     private Camera _camera;
     
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public float HalfWidth => _halfWidth;
 
-    public GameObject FrogGirl => _frogGirl;
+    public FrogGirl FrogGirl => _frogGirl;
 
     #endregion
     

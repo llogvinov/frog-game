@@ -18,7 +18,6 @@ namespace FrogGame
 
         private void OnGameOver()
         {
-            Debug.Log("game over");
             _gameOverCanvas.gameObject.SetActive(true);
         }
     }

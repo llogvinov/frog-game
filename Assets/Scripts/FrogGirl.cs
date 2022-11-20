@@ -47,5 +47,12 @@ namespace FrogGame
             // if all targets are occupied return random one
             return randomTarget;
         }
+
+        public void CheckAllTargetsOccupied()
+        {
+            if (_targets.Any(target => !target.IsOccupied)) return;
+
+            GameManager.Instance.GameOver?.Invoke();
+        }
     }
 }
