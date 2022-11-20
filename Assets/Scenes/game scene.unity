@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 9620335}
   - component: {fileID: 9620334}
   - component: {fileID: 9620336}
+  - component: {fileID: 9620337}
   m_Layer: 0
   m_Name: game manager
   m_TagString: Untagged
@@ -181,6 +182,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverCanvas: {fileID: 1078546217}
+--- !u!114 &9620337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9620333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38428e7486c41d6b5a948cd8faf611d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &11032206
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 390861185}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9620337}
+        m_TargetAssemblyTypeName: FrogGame.SceneController, Assembly-CSharp
+        m_MethodName: ReloadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &390861185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,7 +1325,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 754523173}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9620337}
+        m_TargetAssemblyTypeName: FrogGame.SceneController, Assembly-CSharp
+        m_MethodName: LoadMenuScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &754523173
 MonoBehaviour:
   m_ObjectHideFlags: 0
