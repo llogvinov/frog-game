@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mover: {fileID: 2959708528921728428}
+  _pointsToAdd: 100
 --- !u!114 &2959708528921728428
 MonoBehaviour:
   m_ObjectHideFlags: 0

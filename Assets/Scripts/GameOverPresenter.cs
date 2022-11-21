@@ -2,7 +2,7 @@
 
 namespace FrogGame
 {
-    public class GameOverHandler : MonoBehaviour
+    public class GameOverPresenter : MonoBehaviour
     {
         [SerializeField] private Canvas _gameOverCanvas;
         

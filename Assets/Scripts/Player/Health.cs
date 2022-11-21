@@ -1,26 +1,29 @@
 ﻿using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health
 {
-    private const int MinHealth = 0;
-    private const int MaxHealth = 100;
+    private readonly int _minHealth;
+    private readonly int _maxHealth;
     
     private int _currentHealth;
 
     public int CurrentHealth => _currentHealth;
 
-    private void Start()
+    public Health(int minHealth, int maxHealth)
     {
-        ResetHealth();
+        _minHealth = minHealth;
+        _maxHealth = maxHealth;
+
+        _currentHealth = _maxHealth;
     }
 
     public void TakeDamage(int value)
     {
         _currentHealth -= value;
-        Mathf.Clamp(_currentHealth - value, MinHealth, MaxHealth);
+        Mathf.Clamp(_currentHealth - value, _minHealth, _maxHealth);
         
-        if (_currentHealth == MinHealth)
+        if (_currentHealth == _minHealth)
         {
             GameManager.Instance.GameOver?.Invoke();
         }
@@ -29,11 +32,11 @@ public class Health : MonoBehaviour
     public void Heal(int value)
     {
         _currentHealth += value;
-        Mathf.Clamp(_currentHealth, MinHealth, MaxHealth);
+        Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
     }
 
     public void ResetHealth()
     {
-        _currentHealth = MaxHealth;
+        _currentHealth = _maxHealth;
     }
 }

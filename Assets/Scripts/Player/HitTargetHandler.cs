@@ -7,9 +7,11 @@ namespace Player
     [RequireComponent(typeof(Collider2D))]
     public class HitTargetHandler : MonoBehaviour
     {
+        public Action<int> TakeDamage;
+        public Action<int> AddScore;
+        
         [SerializeField] private TongueHead _tongueHead;
 
-        private Health _playerHealth;
         private List<EatableEnemy> _caughtEnemies;
 
         private void OnEnable()
@@ -24,7 +26,6 @@ namespace Player
 
         private void Awake()
         {
-            _playerHealth = GetComponentInParent<Health>();
             _caughtEnemies = new List<EatableEnemy>();
         }
 
@@ -53,7 +54,8 @@ namespace Player
 
         private void OnDamageableEnemyHit(DamageableEnemy enemy)
         {
-            _playerHealth.TakeDamage(enemy.DamageToGive);
+            TakeDamage?.Invoke(enemy.DamageToGive);
+            
             ReleaseCaughtEnemies();
             _tongueHead.ForceEndHit();
         }
@@ -79,6 +81,7 @@ namespace Player
             foreach (var enemy in _caughtEnemies)
             {
                 enemy.Release();
+                AddScore?.Invoke(enemy.PointsToAdd);
             }
 
             _caughtEnemies.Clear();
