@@ -21,7 +21,7 @@ public class Health
     public void TakeDamage(int value)
     {
         _currentHealth -= value;
-        Mathf.Clamp(_currentHealth - value, _minHealth, _maxHealth);
+        Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
         
         if (_currentHealth == _minHealth)
         {

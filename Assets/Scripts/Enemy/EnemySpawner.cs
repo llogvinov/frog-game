@@ -6,41 +6,46 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private EnemyPool _enemyPool;
+    [SerializeField] protected EnemyPool _enemyPool;
     [Space] 
     [SerializeField] private float _firstSpawnDelay;
     [SerializeField] private float _spawnDelay;
 
-    private const float SpriteWidth = 1f;
-    private const float OffScreenOffset = 2f;
+    protected const float SpriteWidth = 1f;
+    protected const float OffScreenOffset = 2f;
 
-    private Coroutine spawnCoroutine;
+    private Coroutine _spawnCoroutine;
 
     private void Start()
     {
-        spawnCoroutine = StartCoroutine(SpawnEnemy());
+        _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
 
         GameManager.Instance.GameOver += StopSpawnEnemy;
     }
 
-    private IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemyCoroutine()
     {
         yield return new WaitForSeconds(_firstSpawnDelay);
         
         while (true)
         {
             yield return new WaitForSeconds(_spawnDelay);
-            
-            var enemy = _enemyPool.GetPooledObject();
-            enemy.transform.position = RandomPositionOffTheScreen();
-            enemy.Mover.Initialize();
+
+            SpawnEnemy();
         }
+    }
+
+    protected virtual void SpawnEnemy()
+    {
+        var enemy = _enemyPool.GetPooledObject();
+        enemy.transform.position = RandomPositionOffTheScreen();
+        enemy.Mover.Initialize();
     }
 
     private void StopSpawnEnemy()
     {
-        if (spawnCoroutine == null) return;
-        StopCoroutine(spawnCoroutine);
+        if (_spawnCoroutine == null) return;
+        StopCoroutine(_spawnCoroutine);
     }
     
     public static Vector3 RandomPositionOffTheScreen()

@@ -14,6 +14,8 @@ public abstract class EnemyMover : MonoBehaviour
     private Vector3 _nextPosition;
     private bool _isMoving;
 
+    protected uint MovePositionNumber => _movePositionNumber;
+
     private void Update()
     {
         if (_isMoving)
@@ -64,9 +66,9 @@ public abstract class EnemyMover : MonoBehaviour
         AddFinalPosition();
     }
 
-    protected abstract void AddFinalPosition();
+    protected virtual void AddFinalPosition() { }
 
-    private void SnapToPosition(Vector2 position)
+    private void SnapToPosition(Vector3 position)
     {
         transform.position = position;
     }
