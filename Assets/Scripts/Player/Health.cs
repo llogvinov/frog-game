@@ -20,8 +20,7 @@ public class Health
 
     public void TakeDamage(int value)
     {
-        _currentHealth -= value;
-        Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth - value, _minHealth, _maxHealth);
         
         if (_currentHealth == _minHealth)
         {
@@ -31,8 +30,7 @@ public class Health
 
     public void Heal(int value)
     {
-        _currentHealth += value;
-        Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth + value, _minHealth, _maxHealth);
     }
 
     public void ResetHealth()
