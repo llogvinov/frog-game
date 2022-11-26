@@ -13,6 +13,7 @@ public abstract class EnemyMover : MonoBehaviour
     protected Queue<Vector3> MovePositions;
     private Vector3 _nextPosition;
     private bool _isMoving;
+    private bool _isFacingRight;
 
     protected uint MovePositionNumber => _movePositionNumber;
 
@@ -35,6 +36,8 @@ public abstract class EnemyMover : MonoBehaviour
             if (MovePositions.Count > 0)
             {
                 _nextPosition = MovePositions.Dequeue();
+                if (_nextPosition.x < transform.position.x && _isFacingRight) Flip();
+                if (_nextPosition.x > transform.position.x && !_isFacingRight) Flip();
             }
             else
             {
@@ -73,9 +76,21 @@ public abstract class EnemyMover : MonoBehaviour
         transform.position = position;
     }
 
+    private void Flip()
+    {
+        var currentScale = transform.localScale;
+        currentScale.x *= -1f;
+        transform.localScale = currentScale;
+
+        _isFacingRight = !_isFacingRight;
+    }
+
     private void StartMoving()
     {
         _nextPosition = MovePositions.Dequeue();
+        if (_nextPosition.x < transform.position.x && _isFacingRight) Flip();
+        if (_nextPosition.x > transform.position.x && !_isFacingRight) Flip();
+        
         _isMoving = true;
     }
 
