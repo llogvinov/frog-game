@@ -1632,6 +1632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 30
+  _tongueBase: {fileID: 1918404288}
 --- !u!58 &631110119
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2944,6 +2945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1918404286}
   - component: {fileID: 1918404287}
+  - component: {fileID: 1918404288}
   m_Layer: 0
   m_Name: tongue base
   m_TagString: Untagged
@@ -3016,6 +3018,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1918404288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918404285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1b51c6cb234ff9b9d2a5c027894120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1958457788
 GameObject:
   m_ObjectHideFlags: 0

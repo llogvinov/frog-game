@@ -28,15 +28,11 @@ namespace FrogGame
             _moveCoroutine = StartCoroutine(MoveTransform());
         }
         
-        protected IEnumerator MoveTransform()
+        private IEnumerator MoveTransform()
         {
             while (!((_nextPosition - transform.position).sqrMagnitude < 0.001f))
             {
-                transform.position = Vector3.MoveTowards(
-                    transform.position, 
-                    _nextPosition, 
-                    _moveSpeed * Time.deltaTime);
-
+                Move();
                 yield return null;
             }
             
@@ -49,6 +45,14 @@ namespace FrogGame
             {
                 MoveEnded?.Invoke();
             }
+        }
+
+        protected virtual void Move()
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position, 
+                _nextPosition, 
+                _moveSpeed * Time.deltaTime);
         }
 
         private void SnapToPosition(Transform transformToSnap, Vector3 position)

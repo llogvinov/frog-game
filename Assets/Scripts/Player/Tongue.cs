@@ -45,7 +45,7 @@ namespace Player
             
             _tongueHead.SetPath(hitPosition);
             _tongueHead.Visual.enabled = true;
-            _tongueBase.Visual.enabled = true;
+            //_tongueBase.Visual.enabled = true;
             
             _isHitSet = true;
         }
@@ -53,7 +53,7 @@ namespace Player
         private void OnHitEnded()
         {
             _tongueHead.Visual.enabled = false;
-            _tongueBase.Visual.enabled = false;
+            //_tongueBase.Visual.enabled = false;
             
             _isHitSet = false;
         }

@@ -1,19 +1,19 @@
 ﻿using System;
+using FrogGame;
 using UnityEngine;
 
 namespace Player
 {
     public class TongueBase : MonoBehaviour
     {
-        private SpriteRenderer _baseVisual;
+        public SpriteVisualizer BaseSprite { get; private set; }
         private float _meshScale;
-
-        public SpriteRenderer Visual => _baseVisual;
 
         private void Awake()
         {
-            _baseVisual = GetComponent<SpriteRenderer>();
-            _baseVisual.enabled = false;
+            var spriteRenderer = GetComponent<SpriteRenderer>();
+            BaseSprite = new SpriteVisualizer(spriteRenderer);
+            BaseSprite.ToggleSpriteRenderer(false);
 
             _meshScale = transform.parent.lossyScale.y;
         }
