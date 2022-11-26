@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca0a223e58642cfb34741002999abe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tongueHead: {fileID: 246151162}
+  _tongueHead: {fileID: 0}
 --- !u!58 &246151159
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1547,6 +1547,7 @@ GameObject:
   - component: {fileID: 631110120}
   - component: {fileID: 631110119}
   - component: {fileID: 631110117}
+  - component: {fileID: 631110118}
   m_Layer: 0
   m_Name: tongue head
   m_TagString: Untagged
@@ -1633,6 +1634,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 30
   _tongueBase: {fileID: 1918404288}
+--- !u!114 &631110118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631110114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca0a223e58642cfb34741002999abe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tongueHead: {fileID: 631110117}
 --- !u!58 &631110119
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2323,6 +2337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057573296}
   - component: {fileID: 1057573298}
+  - component: {fileID: 1057573297}
   m_Layer: 0
   m_Name: 'frog test '
   m_TagString: Untagged
@@ -2345,6 +2360,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057573297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057573295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd9542c0d5642d39872cad6b9133df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minHealth: 0
+  _maxHealth: 100
+  _scorePresenter: {fileID: 9620338}
 --- !u!114 &1057573298
 MonoBehaviour:
   m_ObjectHideFlags: 0

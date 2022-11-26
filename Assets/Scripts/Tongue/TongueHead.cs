@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FrogGame
 {
-    public class TongueHeadV2 : BasePathMover
+    public class TongueHead : BasePathMover
     {
         [SerializeField] private TongueBase _tongueBase;
         

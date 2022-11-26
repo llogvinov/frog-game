@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FrogGame;
 using UnityEngine;
 
 namespace Player
@@ -14,19 +15,16 @@ namespace Player
 
         private List<EatableEnemy> _caughtEnemies;
 
-        private void OnEnable()
+        private void Start()
         {
-            _tongueHead.HitEnded += OnHitEnded;
-        }
-
-        private void OnDisable()
-        {
-            _tongueHead.HitEnded -= OnHitEnded;
-        }
-
-        private void Awake()
-        {
+            _tongueHead.MoveEnded += OnHitEnded;
+            
             _caughtEnemies = new List<EatableEnemy>();
+        }
+
+        private void OnDestroy()
+        {
+            _tongueHead.MoveEnded -= OnHitEnded;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -57,7 +55,7 @@ namespace Player
             TakeDamage?.Invoke(enemy.DamageToGive);
             
             ReleaseCaughtEnemies();
-            _tongueHead.ForceEndHit();
+            _tongueHead.ForceMoveToOriginalPosition();
         }
 
         private void ReleaseCaughtEnemies()
@@ -77,7 +75,6 @@ namespace Player
         {
             if (_caughtEnemies.Count == 0) return;
             
-            // add logic to add score or smth for caught
             foreach (var enemy in _caughtEnemies)
             {
                 enemy.Release();
