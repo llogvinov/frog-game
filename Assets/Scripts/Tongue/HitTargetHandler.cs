@@ -13,17 +13,23 @@ namespace Player
         
         [SerializeField] private TongueHead _tongueHead;
 
+        private Collider2D _collider;
         private List<EatableEnemy> _caughtEnemies;
 
         private void Start()
         {
+            _tongueHead.HitStarted += OnHitStarted;
             _tongueHead.MoveEnded += OnHitEnded;
+
+            _collider = GetComponent<Collider2D>();
+            _collider.enabled = false;
             
             _caughtEnemies = new List<EatableEnemy>();
         }
 
         private void OnDestroy()
         {
+            _tongueHead.HitStarted -= OnHitStarted;
             _tongueHead.MoveEnded -= OnHitEnded;
         }
 
@@ -52,6 +58,7 @@ namespace Player
 
         private void OnDamageableEnemyHit(DamageableEnemy enemy)
         {
+            _collider.enabled = false;
             TakeDamage?.Invoke(enemy.DamageToGive);
             
             ReleaseCaughtEnemies();
@@ -71,8 +78,14 @@ namespace Player
             _caughtEnemies.Clear();
         }
 
+        private void OnHitStarted()
+        {
+            _collider.enabled = true;
+        }
+
         private void OnHitEnded()
         {
+            _collider.enabled = false;
             if (_caughtEnemies.Count == 0) return;
             
             foreach (var enemy in _caughtEnemies)

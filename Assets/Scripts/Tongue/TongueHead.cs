@@ -7,6 +7,8 @@ namespace FrogGame
 {
     public class TongueHead : BasePathMover
     {
+        public Action HitStarted;
+        
         [SerializeField] private TongueBase _tongueBase;
         
         private Vector3 _hitPosition;
@@ -40,6 +42,7 @@ namespace FrogGame
             MovePositions.Enqueue(OriginalPosition);
 
             ShowTongue();
+            HitStarted?.Invoke();
             MoveToNextPosition();
         }
 
