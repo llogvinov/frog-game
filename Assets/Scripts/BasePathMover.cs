@@ -13,7 +13,7 @@ namespace FrogGame
         
         protected Queue<Vector3> MovePositions { get; set; }
         protected Vector3 OriginalPosition;
-        private Vector3 _nextPosition;
+        protected Vector3 NextPosition;
 
         private Coroutine _moveCoroutine;
 
@@ -22,21 +22,26 @@ namespace FrogGame
             OriginalPosition = transform.position;
         }
 
-        protected void MoveToNextPosition()
+        protected virtual void MoveToNextPosition()
         {
-            _nextPosition = MovePositions.Dequeue();
+            if (!(MovePositions.Count > 0) && NextPosition != null)
+            {
+                _moveCoroutine = StartCoroutine(MoveTransform());
+            }
+            
+            NextPosition = MovePositions.Dequeue();
             _moveCoroutine = StartCoroutine(MoveTransform());
         }
         
         private IEnumerator MoveTransform()
         {
-            while (!((_nextPosition - transform.position).sqrMagnitude < 0.001f))
+            while (!((NextPosition - transform.position).sqrMagnitude < 0.001f))
             {
                 Move();
                 yield return null;
             }
             
-            SnapToPosition(transform, _nextPosition);
+            SnapToPosition(transform, NextPosition);
             if (MovePositions.Count > 0)
             {
                 MoveToNextPosition();
@@ -51,7 +56,7 @@ namespace FrogGame
         {
             transform.position = Vector3.MoveTowards(
                 transform.position, 
-                _nextPosition, 
+                NextPosition, 
                 _moveSpeed * Time.deltaTime);
         }
 
@@ -60,16 +65,21 @@ namespace FrogGame
             transformToSnap.position = position;
         }
 
-        public void ForceEndMoving()
+        public void ForceStopMoving()
         {
             StopCoroutine(_moveCoroutine);
         }
         
         public void ForceMoveToOriginalPosition()
         {
-            if (_nextPosition == OriginalPosition) return;
+            if (NextPosition == OriginalPosition) return;
+            ForceMoveToPosition(OriginalPosition);
+        }
 
-            _nextPosition = MovePositions.Dequeue();
+        public void ForceMoveToPosition(Vector3 newPosition)
+        {
+            NextPosition = newPosition;
+            MovePositions.Clear();
         }
     }
 }

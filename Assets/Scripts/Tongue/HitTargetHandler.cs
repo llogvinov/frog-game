@@ -46,7 +46,7 @@ namespace Player
             enemy.transform.parent = _tongueHead.transform;
             enemy.transform.localPosition = Vector3.zero;
             
-            enemy.Mover.StopMoving();
+            enemy.Mover.ForceStopMoving();
             _caughtEnemies.Add(enemy);
         }
 

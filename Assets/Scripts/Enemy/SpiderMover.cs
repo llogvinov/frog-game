@@ -26,10 +26,5 @@ namespace FrogGame.Enemy
                 MovePositions.Enqueue(_spawnPosition);
             }
         }
-
-        protected override void AddFinalPosition()
-        {
-            
-        }
     }
 }

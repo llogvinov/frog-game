@@ -17,12 +17,12 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        _mover.FinalTargetReached += OnFinalTargetReached;
+        _mover.MoveEnded += OnFinalTargetReached;
     }
 
     private void OnDisable()
     {
-        _mover.FinalTargetReached -= OnFinalTargetReached;
+        _mover.MoveEnded -= OnFinalTargetReached;
     }
 
     protected abstract void OnFinalTargetReached();
