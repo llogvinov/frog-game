@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FrogGame
+namespace Player
 {
     public class Score
     {

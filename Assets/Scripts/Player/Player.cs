@@ -1,6 +1,4 @@
-﻿using System;
-using FrogGame;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {

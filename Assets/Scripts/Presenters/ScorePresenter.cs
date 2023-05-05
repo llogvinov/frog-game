@@ -1,4 +1,5 @@
 ﻿using FrogGame;
+using Player;
 using TMPro;
 using UnityEngine;
 
