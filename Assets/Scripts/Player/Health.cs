@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using System;
 
 namespace Player
 {
@@ -6,8 +6,10 @@ namespace Player
     {
         private readonly int _minHealth;
         private readonly int _maxHealth;
-    
-        private int _currentHealth;
+
+        public int CurrentHealth { get; private set; }
+
+        public static Action<Health> OnHealthChanged;
 
         public Health(int minHealth, int maxHealth)
         {
@@ -19,23 +21,26 @@ namespace Player
 
         public void TakeDamage(int value)
         {
-            _currentHealth = Mathf.Clamp(_currentHealth - value, _minHealth, _maxHealth);
+            CurrentHealth = Math.Clamp(CurrentHealth - value, _minHealth, _maxHealth);
+            OnHealthChanged?.Invoke(this);
             CheckHealth();
         }
 
         public void Heal(int value)
         {
-            _currentHealth = Mathf.Clamp(_currentHealth + value, _minHealth, _maxHealth);
+            CurrentHealth = Math.Clamp(CurrentHealth + value, _minHealth, _maxHealth);
+            OnHealthChanged?.Invoke(this);
         }
 
         public void ResetHealth()
         {
-            _currentHealth = _maxHealth;
+            CurrentHealth = _maxHealth;
+            OnHealthChanged?.Invoke(this);
         }
 
         private void CheckHealth()
         {
-            if (_currentHealth == _minHealth) 
+            if (CurrentHealth == _minHealth) 
                 GameManager.Instance.GameOver?.Invoke();
         }
     }
