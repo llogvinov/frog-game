@@ -11,11 +11,13 @@ namespace FrogGame
         private void Start()
         {
             GameManager.Instance.GameOver += OnGameOver;
+            Score.OnScoreChanged += UpdateScoreText;
         }
 
         private void OnDestroy()
         {
             GameManager.Instance.GameOver -= OnGameOver;
+            Score.OnScoreChanged -= UpdateScoreText;
         }
 
         private void OnGameOver()
@@ -23,7 +25,7 @@ namespace FrogGame
             _scoreCanvas.gameObject.SetActive(false);
         }
 
-        public void UpdateScoreText(Score score)
+        private void UpdateScoreText(Score score)
         {
             _scoreText.text = score.CurrentScore.ToString();
         }
