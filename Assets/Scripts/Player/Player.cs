@@ -1,20 +1,19 @@
-﻿using UnityEngine;
+﻿using Settings;
+using UnityEngine;
 
 namespace Player
 {
     public class Player : MonoBehaviour
     {
-        [Header("Health")]
-        [SerializeField] private int _minHealth;
-        [SerializeField] private int _maxHealth;
-        
+        [SerializeField] private HealthSettings _healthSettings;
+
         private Health _health;
         private Score _score;
         private HitTargetHandler _hitTargetHandler;
 
         private void Start()
         {
-            _health = new Health(_minHealth, _maxHealth);
+            _health = new Health(_healthSettings.MinHealth, _healthSettings.MaxHealth);
             _score = new Score();
 
             _hitTargetHandler = GetComponentInChildren<HitTargetHandler>();
