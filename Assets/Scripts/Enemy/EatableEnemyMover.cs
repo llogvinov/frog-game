@@ -7,12 +7,12 @@ public class EatableEnemyMover : EnemyMover
 
     private void OnEnable()
     {
-        FinalTargetReached += OnFinalTargetReached;
+        MoveEnded += OnFinalTargetReached;
     }
 
     private void OnDisable()
     {
-        FinalTargetReached -= OnFinalTargetReached;
+        MoveEnded -= OnFinalTargetReached;
     }
 
     private void OnFinalTargetReached()
@@ -23,7 +23,7 @@ public class EatableEnemyMover : EnemyMover
 
     protected override void AddFinalPosition()
     {
-        var frogGirl = FindObjectOfType<FrogGirl>();
+        var frogGirl = GameManager.Instance.FrogGirl;
         _target = frogGirl.Target;
         var lastPosition = _target.Position;
         MovePositions.Enqueue(lastPosition);

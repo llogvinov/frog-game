@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FrogGame;
 using UnityEngine;
 
 namespace Player
@@ -12,21 +13,24 @@ namespace Player
         
         [SerializeField] private TongueHead _tongueHead;
 
+        private Collider2D _collider;
         private List<EatableEnemy> _caughtEnemies;
 
-        private void OnEnable()
+        private void Start()
         {
-            _tongueHead.HitEnded += OnHitEnded;
-        }
+            _tongueHead.HitStarted += OnHitStarted;
+            _tongueHead.MoveEnded += OnHitEnded;
 
-        private void OnDisable()
-        {
-            _tongueHead.HitEnded -= OnHitEnded;
-        }
-
-        private void Awake()
-        {
+            _collider = GetComponent<Collider2D>();
+            _collider.enabled = false;
+            
             _caughtEnemies = new List<EatableEnemy>();
+        }
+
+        private void OnDestroy()
+        {
+            _tongueHead.HitStarted -= OnHitStarted;
+            _tongueHead.MoveEnded -= OnHitEnded;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -48,16 +52,17 @@ namespace Player
             enemy.transform.parent = _tongueHead.transform;
             enemy.transform.localPosition = Vector3.zero;
             
-            enemy.Mover.StopMoving();
+            enemy.Mover.ForceStopMoving();
             _caughtEnemies.Add(enemy);
         }
 
         private void OnDamageableEnemyHit(DamageableEnemy enemy)
         {
+            _collider.enabled = false;
             TakeDamage?.Invoke(enemy.DamageToGive);
             
             ReleaseCaughtEnemies();
-            _tongueHead.ForceEndHit();
+            _tongueHead.ForceMoveToOriginalPosition();
         }
 
         private void ReleaseCaughtEnemies()
@@ -73,11 +78,16 @@ namespace Player
             _caughtEnemies.Clear();
         }
 
+        private void OnHitStarted()
+        {
+            _collider.enabled = true;
+        }
+
         private void OnHitEnded()
         {
+            _collider.enabled = false;
             if (_caughtEnemies.Count == 0) return;
             
-            // add logic to add score or smth for caught
             foreach (var enemy in _caughtEnemies)
             {
                 enemy.Release();
