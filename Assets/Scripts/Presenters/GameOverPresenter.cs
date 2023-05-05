@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FrogGame
+namespace Presenters
 {
     public class GameOverPresenter : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FrogGame
+namespace Presenters
 {
     public class HealthPresenter : MonoBehaviour
     {

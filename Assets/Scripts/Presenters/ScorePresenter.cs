@@ -1,7 +1,8 @@
-﻿using TMPro;
+﻿using FrogGame;
+using TMPro;
 using UnityEngine;
 
-namespace FrogGame
+namespace Presenters
 {
     public class ScorePresenter : MonoBehaviour
     {
