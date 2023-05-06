@@ -1,40 +1,47 @@
 ﻿using System;
-using UnityEngine;
 
-public class Health
+namespace Player
 {
-    private readonly int _minHealth;
-    private readonly int _maxHealth;
-    
-    private int _currentHealth;
-
-    public int CurrentHealth => _currentHealth;
-
-    public Health(int minHealth, int maxHealth)
+    public class Health
     {
-        _minHealth = minHealth;
-        _maxHealth = maxHealth;
+        private readonly int _minHealth;
+        private readonly int _maxHealth;
 
-        _currentHealth = _maxHealth;
-    }
+        public int CurrentHealth { get; private set; }
 
-    public void TakeDamage(int value)
-    {
-        _currentHealth = Mathf.Clamp(_currentHealth - value, _minHealth, _maxHealth);
-        
-        if (_currentHealth == _minHealth)
+        public static Action<Health> OnHealthChanged;
+
+        public Health(int minHealth, int maxHealth)
         {
-            GameManager.Instance.GameOver?.Invoke();
+            _minHealth = minHealth;
+            _maxHealth = maxHealth;
+
+            ResetHealth();
         }
-    }
 
-    public void Heal(int value)
-    {
-        _currentHealth = Mathf.Clamp(_currentHealth + value, _minHealth, _maxHealth);
-    }
+        public void TakeDamage(int value)
+        {
+            CurrentHealth = Math.Clamp(CurrentHealth - value, _minHealth, _maxHealth);
+            OnHealthChanged?.Invoke(this);
+            CheckHealth();
+        }
 
-    public void ResetHealth()
-    {
-        _currentHealth = _maxHealth;
+        public void Heal(int value)
+        {
+            CurrentHealth = Math.Clamp(CurrentHealth + value, _minHealth, _maxHealth);
+            OnHealthChanged?.Invoke(this);
+        }
+
+        public void ResetHealth()
+        {
+            CurrentHealth = _maxHealth;
+            OnHealthChanged?.Invoke(this);
+        }
+
+        private void CheckHealth()
+        {
+            if (CurrentHealth == _minHealth) 
+                GameManager.Instance.GameOver?.Invoke();
+        }
     }
 }
