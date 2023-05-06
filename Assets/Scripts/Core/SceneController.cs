@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace FrogGame
+namespace Core
 {
     public class SceneController : MonoBehaviour
     {

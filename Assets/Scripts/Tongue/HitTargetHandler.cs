@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using FrogGame;
+using FrogGame.Enemy;
 using UnityEngine;
 
-namespace Player
+namespace Tongue
 {
     [RequireComponent(typeof(Collider2D))]
     public class HitTargetHandler : MonoBehaviour

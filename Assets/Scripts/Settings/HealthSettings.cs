@@ -9,7 +9,6 @@ namespace Settings
         [SerializeField] private int _maxHealth;
 
         public int MinHealth => _minHealth;
-
         public int MaxHealth => _maxHealth;
     }
 }

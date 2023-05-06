@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FrogGame
+namespace Tongue
 {
     public class SpriteVisualizer
     {

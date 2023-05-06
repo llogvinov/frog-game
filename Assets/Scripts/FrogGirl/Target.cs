@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace FrogGame
+namespace FrogGirl
 {
     public class Target : MonoBehaviour
     {

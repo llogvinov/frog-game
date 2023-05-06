@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class DamageableEnemy : Enemy
+namespace FrogGame.Enemy
 {
-    [SerializeField] private int _damageToGive;
-
-    public int DamageToGive => _damageToGive;
-
-    protected override void OnFinalTargetReached()
+    public class DamageableEnemy : Enemy
     {
-        Release();
+        [SerializeField] private int _damageToGive;
+
+        public int DamageToGive => _damageToGive;
+
+        protected override void OnFinalTargetReached()
+        {
+            Release();
+        }
     }
 }

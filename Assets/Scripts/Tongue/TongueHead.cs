@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core;
+using FrogGame;
 using Player;
 using UnityEngine;
 
-namespace FrogGame
+namespace Tongue
 {
     public class TongueHead : BasePathMover
     {

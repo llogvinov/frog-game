@@ -2,7 +2,7 @@
 using FrogGame;
 using UnityEngine;
 
-namespace Player
+namespace Tongue
 {
     public class TongueBase : MonoBehaviour
     {

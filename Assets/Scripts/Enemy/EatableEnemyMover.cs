@@ -1,31 +1,34 @@
-﻿using System;
-using FrogGame;
+﻿using Core;
+using FrogGirl;
 
-public class EatableEnemyMover : EnemyMover
+namespace FrogGame.Enemy
 {
-    private Target _target;
-
-    private void OnEnable()
+    public class EatableEnemyMover : EnemyMover
     {
-        MoveEnded += OnFinalTargetReached;
-    }
+        private Target _target;
 
-    private void OnDisable()
-    {
-        MoveEnded -= OnFinalTargetReached;
-    }
+        private void OnEnable()
+        {
+            MoveEnded += OnFinalTargetReached;
+        }
 
-    private void OnFinalTargetReached()
-    {
-        _target.OccupyTarget();
-        GameManager.Instance.FrogGirl.CheckAllTargetsOccupied();
-    }
+        private void OnDisable()
+        {
+            MoveEnded -= OnFinalTargetReached;
+        }
 
-    protected override void AddFinalPosition()
-    {
-        var frogGirl = GameManager.Instance.FrogGirl;
-        _target = frogGirl.Target;
-        var lastPosition = _target.Position;
-        MovePositions.Enqueue(lastPosition);
+        private void OnFinalTargetReached()
+        {
+            _target.OccupyTarget();
+            GameManager.Instance.FrogGirl.CheckAllTargetsOccupied();
+        }
+
+        protected override void AddFinalPosition()
+        {
+            var frogGirl = GameManager.Instance.FrogGirl;
+            _target = frogGirl.Target;
+            var lastPosition = _target.Position;
+            MovePositions.Enqueue(lastPosition);
+        }
     }
 }

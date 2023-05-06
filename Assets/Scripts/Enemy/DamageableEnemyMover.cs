@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using Core;
 
-public class DamageableEnemyMover : EnemyMover
+namespace FrogGame.Enemy
 {
-    protected override void AddFinalPosition()
+    public class DamageableEnemyMover : EnemyMover
     {
-        var lastPosition = EnemySpawner.RandomPositionOffTheScreen();
-        MovePositions.Enqueue(lastPosition);
-    }
+        protected override void AddFinalPosition()
+        {
+            var lastPosition = Utils.RandomPositionOffTheScreen();
+            MovePositions.Enqueue(lastPosition);
+        }
     
+    }
 }
