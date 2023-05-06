@@ -10,16 +10,12 @@ namespace FrogGame.Enemy
         [Space]
         [SerializeField] private EnemySpawnerSettings _spawnerSettings;
 
-        protected const float SpriteWidth = 1f;
-        protected const float OffScreenOffset = 2f;
-
         private Coroutine _spawnCoroutine;
 
         private void Start()
         {
-            _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
-
             GameManager.Instance.GameOver += StopSpawnEnemy;
+            _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
         }
 
         private IEnumerator SpawnEnemyCoroutine()
@@ -29,16 +25,20 @@ namespace FrogGame.Enemy
             while (true)
             {
                 yield return new WaitForSeconds(_spawnerSettings.SpawnDelay);
-
                 SpawnEnemy();
             }
         }
 
-        protected virtual void SpawnEnemy()
+        private void SpawnEnemy()
         {
             var enemy = _enemyPool.GetPooledObject();
-            enemy.transform.position = RandomPositionOffTheScreen();
+            enemy.transform.position = SetSpawnPosition();
             enemy.Mover.Initialize();
+        }
+        
+        protected virtual Vector3 SetSpawnPosition()
+        {
+            return Utils.RandomPositionOffTheScreen();
         }
 
         private void StopSpawnEnemy()
@@ -46,19 +46,7 @@ namespace FrogGame.Enemy
             if (_spawnCoroutine == null) return;
             StopCoroutine(_spawnCoroutine);
         }
-    
-        public static Vector3 RandomPositionOffTheScreen()
-        {
-            var width = GameManager.Instance.HalfWidth;
-            var height = GameManager.Instance.HalfHeight;
         
-            return new Vector3(
-                Random.Range(
-                    Random.Range(-width - SpriteWidth - OffScreenOffset, width), 
-                    Random.Range(width, width + OffScreenOffset + SpriteWidth)),
-                Random.Range(height, height + OffScreenOffset + SpriteWidth));
-        }
-
         private void OnDestroy()
         {
             GameManager.Instance.GameOver -= StopSpawnEnemy;

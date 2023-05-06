@@ -4,7 +4,7 @@
     {
         protected override void AddFinalPosition()
         {
-            var lastPosition = EnemySpawner.RandomPositionOffTheScreen();
+            var lastPosition = Utils.RandomPositionOffTheScreen();
             MovePositions.Enqueue(lastPosition);
         }
     
