@@ -1,4 +1,4 @@
-﻿using FrogGame;
+﻿using Core;
 using Player;
 using TMPro;
 using UnityEngine;

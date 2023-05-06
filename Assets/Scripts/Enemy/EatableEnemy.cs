@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class EatableEnemy : Enemy
+namespace FrogGame.Enemy
 {
-    [SerializeField] private int _pointsToAdd;
-
-    public int PointsToAdd => _pointsToAdd;
-    
-    protected override void OnFinalTargetReached()
+    public class EatableEnemy : Enemy
     {
-        enabled = false;
+        [SerializeField] private int _pointsToAdd;
+
+        public int PointsToAdd => _pointsToAdd;
+    
+        protected override void OnFinalTargetReached()
+        {
+            enabled = false;
+        }
     }
 }

@@ -1,35 +1,37 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+namespace FrogGame.Enemy
 {
-    [SerializeField] private EnemyMover _mover;
+    public abstract class Enemy : MonoBehaviour
+    {
+        [SerializeField] private EnemyMover _mover;
     
-    private EnemyPool _pool;
+        private EnemyPool _pool;
 
-    public EnemyPool Pool
-    {
-        get => _pool;
-        set => _pool = value;
-    }
+        public EnemyPool Pool
+        {
+            get => _pool;
+            set => _pool = value;
+        }
 
-    public EnemyMover Mover => _mover;
+        public EnemyMover Mover => _mover;
 
-    private void OnEnable()
-    {
-        _mover.MoveEnded += OnFinalTargetReached;
-    }
+        private void OnEnable()
+        {
+            _mover.MoveEnded += OnFinalTargetReached;
+        }
 
-    private void OnDisable()
-    {
-        _mover.MoveEnded -= OnFinalTargetReached;
-    }
+        private void OnDisable()
+        {
+            _mover.MoveEnded -= OnFinalTargetReached;
+        }
 
-    protected abstract void OnFinalTargetReached();
+        protected abstract void OnFinalTargetReached();
 
-    public void Release()
-    {
-        _pool.ReturnToPool(this);
-        transform.parent = _pool.transform;
+        public void Release()
+        {
+            _pool.ReturnToPool(this);
+            transform.parent = _pool.transform;
+        }
     }
 }
