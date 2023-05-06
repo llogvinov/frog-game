@@ -1,68 +1,68 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Settings;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour
+namespace FrogGame.Enemy
 {
-    [SerializeField] protected EnemyPool _enemyPool;
-    [Space] 
-    [SerializeField] private float _firstSpawnDelay;
-    [SerializeField] private float _spawnDelay;
-
-    protected const float SpriteWidth = 1f;
-    protected const float OffScreenOffset = 2f;
-
-    private Coroutine _spawnCoroutine;
-
-    private void Start()
+    public class EnemySpawner : MonoBehaviour
     {
-        _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
+        [SerializeField] protected EnemyPool _enemyPool;
+        [Space]
+        [SerializeField] private EnemySpawnerSettings _spawnerSettings;
 
-        GameManager.Instance.GameOver += StopSpawnEnemy;
-    }
+        protected const float SpriteWidth = 1f;
+        protected const float OffScreenOffset = 2f;
 
-    private IEnumerator SpawnEnemyCoroutine()
-    {
-        yield return new WaitForSeconds(_firstSpawnDelay);
-        
-        while (true)
+        private Coroutine _spawnCoroutine;
+
+        private void Start()
         {
-            yield return new WaitForSeconds(_spawnDelay);
+            _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
 
-            SpawnEnemy();
+            GameManager.Instance.GameOver += StopSpawnEnemy;
         }
-    }
 
-    protected virtual void SpawnEnemy()
-    {
-        var enemy = _enemyPool.GetPooledObject();
-        enemy.transform.position = RandomPositionOffTheScreen();
-        enemy.Mover.Initialize();
-    }
-
-    private void StopSpawnEnemy()
-    {
-        if (_spawnCoroutine == null) return;
-        StopCoroutine(_spawnCoroutine);
-    }
-    
-    public static Vector3 RandomPositionOffTheScreen()
-    {
-        var width = GameManager.Instance.HalfWidth;
-        var height = GameManager.Instance.HalfHeight;
+        private IEnumerator SpawnEnemyCoroutine()
+        {
+            yield return new WaitForSeconds(_spawnerSettings.FirstSpawnDelay);
         
-        return new Vector3(
-            Random.Range(
-                Random.Range(-width - SpriteWidth - OffScreenOffset, width), 
-                Random.Range(width, width + OffScreenOffset + SpriteWidth)),
-            Random.Range(height, height + OffScreenOffset + SpriteWidth));
-    }
+            while (true)
+            {
+                yield return new WaitForSeconds(_spawnerSettings.SpawnDelay);
 
-    private void OnDestroy()
-    {
-        GameManager.Instance.GameOver -= StopSpawnEnemy;
+                SpawnEnemy();
+            }
+        }
+
+        protected virtual void SpawnEnemy()
+        {
+            var enemy = _enemyPool.GetPooledObject();
+            enemy.transform.position = RandomPositionOffTheScreen();
+            enemy.Mover.Initialize();
+        }
+
+        private void StopSpawnEnemy()
+        {
+            if (_spawnCoroutine == null) return;
+            StopCoroutine(_spawnCoroutine);
+        }
+    
+        public static Vector3 RandomPositionOffTheScreen()
+        {
+            var width = GameManager.Instance.HalfWidth;
+            var height = GameManager.Instance.HalfHeight;
+        
+            return new Vector3(
+                Random.Range(
+                    Random.Range(-width - SpriteWidth - OffScreenOffset, width), 
+                    Random.Range(width, width + OffScreenOffset + SpriteWidth)),
+                Random.Range(height, height + OffScreenOffset + SpriteWidth));
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.GameOver -= StopSpawnEnemy;
+        }
     }
 }
 
