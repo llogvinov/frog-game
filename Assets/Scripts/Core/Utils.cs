@@ -28,6 +28,9 @@ namespace Core
                 Random.Range(-width, width),
                 Random.Range(height, height + OffScreenOffset + SpriteWidth));
         }
+        
+        public static void SnapToPosition(Transform transformToSnap, Vector3 position) 
+            => transformToSnap.position = position;
     
     }
 }

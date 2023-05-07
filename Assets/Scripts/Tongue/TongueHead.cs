@@ -16,16 +16,16 @@ namespace Tongue
         private Vector3 _hitPosition;
         private PlayerInput _playerInput;
         private SpriteVisualizer _headSprite;
-
+        
         private void Start()
         {
             _playerInput = GetComponentInParent<PlayerInput>();
             _playerInput.HitSetEvent += OnHitSet;
+            MoveEnded += HideTongue;
 
             var spriteRenderer = GetComponent<SpriteRenderer>();
             _headSprite = new SpriteVisualizer(spriteRenderer);
             _headSprite.ToggleSpriteRenderer(false);
-            MoveEnded += HideTongue;
         }
         
         private void OnDestroy()
@@ -44,8 +44,8 @@ namespace Tongue
             MovePositions.Enqueue(OriginalPosition);
 
             ShowTongue();
-            HitStarted?.Invoke();
             MoveToNextPosition();
+            HitStarted?.Invoke();
         }
 
         protected override void Move()

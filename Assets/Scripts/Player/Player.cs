@@ -17,18 +17,14 @@ namespace Player
             _health = new Health(_healthSettings.MinHealth, _healthSettings.MaxHealth);
             _score = new Score();
 
-            _hitTargetHandler = GetComponentInChildren<HitTargetHandler>();
-            if (_hitTargetHandler != null)
-            {
-                _hitTargetHandler.TakeDamage += _health.TakeDamage;
-                _hitTargetHandler.AddScore += _score.AddScore;
-            }
+            HitTargetHandler.DamageableEnemyHit += _health.TakeDamage;
+            HitTargetHandler.EatableEnemyHit += _score.AddScore;
         }
 
         private void OnDestroy()
         {
-            _hitTargetHandler.TakeDamage -= _health.TakeDamage;
-            _hitTargetHandler.AddScore -= _score.AddScore;
+            HitTargetHandler.DamageableEnemyHit -= _health.TakeDamage;
+            HitTargetHandler.EatableEnemyHit -= _score.AddScore;
         }
     }
 }

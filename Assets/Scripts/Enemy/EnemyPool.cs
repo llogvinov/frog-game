@@ -22,6 +22,7 @@ namespace FrogGame.Enemy
             for (int i = 0; i < _poolSize; i++)
             {
                 Enemy instance = Instantiate(_objectToPool, transform);
+                instance.gameObject.name += $" {i}";
                 instance.gameObject.SetActive(false);
                 instance.Pool = this;
                 _stack.Push(instance);

@@ -8,8 +8,8 @@ namespace Tongue
     [RequireComponent(typeof(Collider2D))]
     public class HitTargetHandler : MonoBehaviour
     {
-        public Action<int> TakeDamage;
-        public Action<int> AddScore;
+        public static Action<int> DamageableEnemyHit;
+        public static Action<int> EatableEnemyHit;
         public static Action<int> ComboDone;
         
         [SerializeField] private TongueHead _tongueHead;
@@ -52,15 +52,16 @@ namespace Tongue
             
             enemy.transform.parent = _tongueHead.transform;
             enemy.transform.localPosition = Vector3.zero;
-            
             enemy.Mover.ForceStopMoving();
-            _caughtEnemies.Add(enemy);
+            
+            if (!_caughtEnemies.Contains(enemy)) 
+                _caughtEnemies.Add(enemy);
         }
 
         private void OnDamageableEnemyHit(DamageableEnemy enemy)
         {
             _collider.enabled = false;
-            TakeDamage?.Invoke(enemy.DamageToGive);
+            DamageableEnemyHit?.Invoke(enemy.DamageToGive);
             
             ReleaseCaughtEnemies();
             _tongueHead.ForceMoveToOriginalPosition();
@@ -95,7 +96,7 @@ namespace Tongue
             foreach (var enemy in _caughtEnemies)
             {
                 enemy.Release();
-                AddScore?.Invoke(enemy.PointsToAdd);
+                EatableEnemyHit?.Invoke(enemy.PointsToAdd);
             }
 
             _caughtEnemies.Clear();
