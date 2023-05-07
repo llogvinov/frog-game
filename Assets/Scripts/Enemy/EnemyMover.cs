@@ -54,6 +54,10 @@ namespace FrogGame.Enemy
 
         public void ContinueMoving()
         {
+            if (MovePositions.Count < 1)
+            {
+                AddFinalPosition();
+            }
             MoveToNextPosition();
         }
 
