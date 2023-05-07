@@ -52,9 +52,10 @@ namespace Tongue
             
             enemy.transform.parent = _tongueHead.transform;
             enemy.transform.localPosition = Vector3.zero;
-            
             enemy.Mover.ForceStopMoving();
-            _caughtEnemies.Add(enemy);
+            
+            if (!_caughtEnemies.Contains(enemy)) 
+                _caughtEnemies.Add(enemy);
         }
 
         private void OnDamageableEnemyHit(DamageableEnemy enemy)
