@@ -10,6 +10,7 @@ namespace Tongue
     {
         public Action<int> TakeDamage;
         public Action<int> AddScore;
+        public static Action<int> ComboDone;
         
         [SerializeField] private TongueHead _tongueHead;
 
@@ -87,6 +88,9 @@ namespace Tongue
         {
             _collider.enabled = false;
             if (_caughtEnemies.Count == 0) return;
+            
+            if (_caughtEnemies.Count > 1) 
+                ComboDone?.Invoke(_caughtEnemies.Count);
             
             foreach (var enemy in _caughtEnemies)
             {
