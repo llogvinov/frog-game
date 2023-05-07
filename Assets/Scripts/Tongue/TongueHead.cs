@@ -16,19 +16,15 @@ namespace Tongue
         private Vector3 _hitPosition;
         private PlayerInput _playerInput;
         private SpriteVisualizer _headSprite;
-
-        private void Awake()
-        {
-            _playerInput = GetComponentInParent<PlayerInput>();
-            var spriteRenderer = GetComponent<SpriteRenderer>();
-            _headSprite = new SpriteVisualizer(spriteRenderer);
-        }
         
         private void Start()
         {
+            _playerInput = GetComponentInParent<PlayerInput>();
             _playerInput.HitSetEvent += OnHitSet;
             MoveEnded += HideTongue;
 
+            var spriteRenderer = GetComponent<SpriteRenderer>();
+            _headSprite = new SpriteVisualizer(spriteRenderer);
             _headSprite.ToggleSpriteRenderer(false);
         }
         
