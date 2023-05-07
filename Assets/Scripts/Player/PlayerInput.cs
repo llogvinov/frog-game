@@ -40,7 +40,7 @@ namespace Player
             if (_canHit)
             {
                 HandleTouchInput();
-                HandleMouseInput();
+                //HandleMouseInput();
             }
         }
 
@@ -50,7 +50,9 @@ namespace Player
             var touch = Input.GetTouch(0);
 
             if (touch.phase != TouchPhase.Began) return;
-            HitSetEvent?.Invoke(touch.position);
+            Vector3 hitPosition = touch.position;
+            hitPosition.z = 0f;
+            HitSetEvent?.Invoke(_camera.ScreenToWorldPoint(hitPosition));
             StartCoroutine(StartCoolDownTimer());
         }
 

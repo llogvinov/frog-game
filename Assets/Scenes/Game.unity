@@ -466,8 +466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 162515408}
-  _firstSpawnDelay: 1
-  _spawnDelay: 3
   _spawnerSettings: {fileID: 11400000, guid: 6948ed29f4b1a7048bc432a4020f0fd9, type: 2}
 --- !u!1 &236568709
 GameObject:
@@ -514,8 +512,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 236568710}
-  _firstSpawnDelay: 10
-  _spawnDelay: 8
   _spawnerSettings: {fileID: 11400000, guid: f36ed3081a0e6cc46968f657199f28f4, type: 2}
 --- !u!4 &236568712
 Transform:
@@ -577,8 +573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 279039980}
-  _firstSpawnDelay: 8
-  _spawnDelay: 6.5
   _spawnerSettings: {fileID: 11400000, guid: b2ffd52f6a9126441b655c8fbf3c250e, type: 2}
 --- !u!4 &279039982
 Transform:
@@ -843,8 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 485897025}
-  _firstSpawnDelay: 3
-  _spawnDelay: 4.5
   _spawnerSettings: {fileID: 11400000, guid: 18e5a42d5d004774eb746f78e24683f2, type: 2}
 --- !u!4 &485897027
 Transform:
@@ -975,7 +967,7 @@ Transform:
   m_GameObject: {fileID: 631110114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1166332998}
@@ -1330,8 +1322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 959697479}
-  _firstSpawnDelay: 3
-  _spawnDelay: 7
   _spawnerSettings: {fileID: 11400000, guid: 2d507ab3ee009ef41aa2441a899ba00a, type: 2}
 --- !u!4 &959697481
 Transform:
