@@ -40,7 +40,9 @@ namespace Player
             if (_canHit)
             {
                 HandleTouchInput();
-                //HandleMouseInput();
+                #if UNITY_EDITOR
+                HandleMouseInput();
+                #endif
             }
         }
 
