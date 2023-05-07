@@ -24,9 +24,10 @@ namespace Core
 
         protected virtual void MoveToNextPosition()
         {
-            if (!(MovePositions.Count > 0) && NextPosition != null)
+            if (MovePositions.Count < 1)
             {
-                _moveCoroutine = StartCoroutine(MoveTransform());
+                MoveEnded?.Invoke();
+                return;
             }
             
             NextPosition = MovePositions.Dequeue();
@@ -35,21 +36,14 @@ namespace Core
         
         private IEnumerator MoveTransform()
         {
-            while (!((NextPosition - transform.position).sqrMagnitude < 0.001f))
+            while ((NextPosition - transform.position).sqrMagnitude > 0.001f)
             {
                 Move();
                 yield return null;
             }
             
-            SnapToPosition(transform, NextPosition);
-            if (MovePositions.Count > 0)
-            {
-                MoveToNextPosition();
-            }
-            else
-            {
-                MoveEnded?.Invoke();
-            }
+            Utils.SnapToPosition(transform, NextPosition);
+            MoveToNextPosition();
         }
 
         protected virtual void Move()
@@ -58,11 +52,6 @@ namespace Core
                 transform.position, 
                 NextPosition, 
                 _moveSpeed * Time.deltaTime);
-        }
-
-        private void SnapToPosition(Transform transformToSnap, Vector3 position)
-        {
-            transformToSnap.position = position;
         }
 
         public void ForceStopMoving()

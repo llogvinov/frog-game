@@ -17,15 +17,19 @@ namespace Tongue
         private PlayerInput _playerInput;
         private SpriteVisualizer _headSprite;
 
-        private void Start()
+        private void Awake()
         {
             _playerInput = GetComponentInParent<PlayerInput>();
-            _playerInput.HitSetEvent += OnHitSet;
-
             var spriteRenderer = GetComponent<SpriteRenderer>();
             _headSprite = new SpriteVisualizer(spriteRenderer);
-            _headSprite.ToggleSpriteRenderer(false);
+        }
+        
+        private void Start()
+        {
+            _playerInput.HitSetEvent += OnHitSet;
             MoveEnded += HideTongue;
+
+            _headSprite.ToggleSpriteRenderer(false);
         }
         
         private void OnDestroy()
@@ -44,8 +48,8 @@ namespace Tongue
             MovePositions.Enqueue(OriginalPosition);
 
             ShowTongue();
-            HitStarted?.Invoke();
             MoveToNextPosition();
+            HitStarted?.Invoke();
         }
 
         protected override void Move()
