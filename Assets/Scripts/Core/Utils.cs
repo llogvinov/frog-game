@@ -4,6 +4,8 @@ namespace Core
 {
     public class Utils
     {
+        public const string MenuScene = "Menu";
+        
         public const float SpriteWidth = 1f;
         public const float OffScreenOffset = 2f;
     

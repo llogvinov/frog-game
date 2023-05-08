@@ -17,6 +17,12 @@ namespace Core
         
         private IEnumerator LoadScene(string name, Action onLoaded = null)
         {
+            if (SceneManager.GetActiveScene().name == name)
+            {
+                onLoaded?.Invoke();
+                yield break;
+            }
+            
             AsyncOperation waitLoadScene = SceneManager.LoadSceneAsync(name);
 
             while (!waitLoadScene.isDone)
