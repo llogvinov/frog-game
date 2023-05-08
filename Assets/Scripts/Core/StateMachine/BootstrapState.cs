@@ -19,7 +19,7 @@
 
         private void EnterLoadLevel()
         {
-            _stateMachine.Enter<LoadLevelState>();
+            _stateMachine.Enter<MenuState>();
         }
 
         public void Exit()
