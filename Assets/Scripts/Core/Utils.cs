@@ -6,7 +6,18 @@ namespace Core
     {
         public const float SpriteWidth = 1f;
         public const float OffScreenOffset = 2f;
-    
+
+        /// <summary>
+        /// Instantiate prefab from Resources folder
+        /// </summary>
+        /// <param name="path">Path to prefab</param>
+        /// <returns></returns>
+        public static GameObject Instantiate(string path)
+        {
+            var obj = Resources.Load<GameObject>(path);
+            return Object.Instantiate(obj);
+        }
+        
         public static Vector3 RandomPositionOffTheScreen()
         {
             var width = GameManager.Instance.HalfWidth;

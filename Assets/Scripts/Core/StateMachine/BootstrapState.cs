@@ -3,18 +3,16 @@
     public class BootstrapState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
-        private readonly SceneLoader _sceneLoader;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader)
+        public BootstrapState(GameStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
-            _sceneLoader = sceneLoader;
         }
         
         public void Enter()
         {
             RegisterServices();
-            _sceneLoader.LoadScene(Keys.MenuScene, onLoaded: EnterLoadLevel);
+            _stateMachine.Enter<MenuState>();
         }
 
         public void Exit()
@@ -25,11 +23,6 @@
         private void RegisterServices()
         {
             // TODO: implement
-        }
-
-        private void EnterLoadLevel()
-        {
-            
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Core.StateMachine
 {
@@ -15,7 +13,11 @@ namespace Core.StateMachine
         {
             _states = new List<IState>()
             {
-                new BootstrapState(this, sceneLoader)
+                new BootstrapState(this),
+                new MenuState(this),
+                new LoadSceneState(this, sceneLoader),
+                new PrepareGameState(this),
+                new GameLoopState(this),
             };
         }
 
