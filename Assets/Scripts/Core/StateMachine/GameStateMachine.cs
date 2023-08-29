@@ -13,9 +13,9 @@ namespace Core.StateMachine
             _states = new Dictionary<Type, IState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader),
                 [typeof(MenuState)] = new MenuState(this, sceneLoader),
-                [typeof(GameState)] = new GameState(this, sceneLoader),
+                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader),
+                [typeof(GameLoopState)] = new GameLoopState(this, sceneLoader),
                 [typeof(GameOverState)] = new GameOverState(this, sceneLoader),
             };
         }

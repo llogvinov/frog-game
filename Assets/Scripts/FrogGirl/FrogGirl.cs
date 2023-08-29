@@ -29,20 +29,20 @@ namespace FrogGirl
 
         private Target GetRandomTarget()
         {
-            // peek random target
             var randomTarget = _targets[Random.Range(0, _targets.Length)];
             if (!randomTarget.IsOccupied)
             {
                 return randomTarget;
             }
-
-            // if peeked target is occupied, loop through all targets and find non occupied
+            
             foreach (var target in _targets)
             {
-                if (!target.IsOccupied) return target;
+                if (!target.IsOccupied)
+                {
+                    return target;
+                }
             }
-
-            // if all targets are occupied return random one
+            
             return randomTarget;
         }
 

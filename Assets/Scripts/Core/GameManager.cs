@@ -19,8 +19,6 @@ namespace Core
         #region Properties
 
         public static GameManager Instance => _instance;
-        public float HalfHeight => _halfHeight;
-        public float HalfWidth => _halfWidth;
         public FrogGirl.FrogGirl FrogGirl => _frogGirl;
 
         #endregion

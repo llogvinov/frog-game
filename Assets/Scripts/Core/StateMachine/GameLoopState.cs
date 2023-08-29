@@ -1,11 +1,11 @@
 ﻿namespace Core.StateMachine
 {
-    public class GameState : IState
+    public class GameLoopState : IState
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         
-        public GameState(GameStateMachine stateMachine, SceneLoader sceneLoader)
+        public GameLoopState(GameStateMachine stateMachine, SceneLoader sceneLoader)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;

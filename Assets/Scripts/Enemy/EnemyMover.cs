@@ -24,8 +24,8 @@ namespace FrogGame.Enemy
             for (int i = 0; i < _movePositionNumber; i++)
             {
                 var nextPosition = new Vector3(
-                    Random.Range(-GameManager.Instance.HalfWidth, GameManager.Instance.HalfWidth),
-                    Random.Range(0, GameManager.Instance.HalfHeight));
+                    Random.Range(GameBootstrapper.HalfWidth, GameBootstrapper.HalfWidth),
+                    Random.Range(0, GameBootstrapper.HalfHeight));
             
                 MovePositions.Enqueue(nextPosition);
             }

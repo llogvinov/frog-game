@@ -12,8 +12,8 @@ namespace Core
     
         public static Vector3 RandomPositionOffTheScreen()
         {
-            var width = GameManager.Instance.HalfWidth;
-            var height = GameManager.Instance.HalfHeight;
+            var height = GameBootstrapper.HalfHeight;
+            var width = GameBootstrapper.HalfWidth;
         
             return new Vector3(
                 Random.Range(
@@ -24,8 +24,8 @@ namespace Core
 
         public static Vector3 RandomPositionOverTopOfScreen()
         {
-            var width = GameManager.Instance.HalfWidth;
-            var height = GameManager.Instance.HalfHeight;
+            var height = GameBootstrapper.HalfHeight;
+            var width = GameBootstrapper.HalfWidth;
         
             return new Vector3(
                 Random.Range(-width, width),
