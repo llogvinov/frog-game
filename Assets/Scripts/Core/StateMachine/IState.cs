@@ -2,7 +2,16 @@
 {
     public interface IState
     {
-        void Enter();
         void Exit();
+    }
+
+    public interface ISimpleState : IState
+    {
+        void Enter();
+    }
+
+    public interface IPayloadState<TPayload> : IState
+    {
+        void Enter(TPayload payload);
     }
 }

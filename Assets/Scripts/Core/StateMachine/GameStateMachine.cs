@@ -19,17 +19,27 @@ namespace Core.StateMachine
             };
         }
 
-        public void Enter<TState>() where TState : IState
+        public void Enter<TState>() where TState : class, ISimpleState
         {
-            _activeState?.Exit();
-            IState state = _states.FirstOrDefault(s => s is TState);
-            if (state == null)
-            {
-                Debug.LogError($"{typeof(TState)} is not added to states!");
-                return;
-            }
-            _activeState = state;
+            var state = ChangeState<TState>();
             state.Enter();
         }
+        
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
+        {
+            var state = ChangeState<TState>();
+            state.Enter(payload);
+        }
+        
+        private TState ChangeState<TState>() where TState : class, IState
+        {
+            _activeState?.Exit();
+            TState state = GetState<TState>();
+            _activeState = state;
+            return state;
+        }
+
+        private TState GetState<TState>() where TState : class, IState 
+            => _states.FirstOrDefault(s => s is TState) as TState;
     }
 }

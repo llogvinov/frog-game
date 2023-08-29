@@ -1,6 +1,6 @@
 ﻿namespace Core.StateMachine
 {
-    public class BootstrapState : IState
+    public class BootstrapState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
