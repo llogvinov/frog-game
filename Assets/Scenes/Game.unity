@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 162515408}
-  _spawnerSettings: {fileID: 11400000, guid: 6948ed29f4b1a7048bc432a4020f0fd9, type: 2}
+  _spawnerSettings: {fileID: 11400000, guid: 34c36fc35c7648e4dae2a0ac6043ff9c, type: 2}
 --- !u!1 &236568709
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 236568710}
-  _spawnerSettings: {fileID: 11400000, guid: f36ed3081a0e6cc46968f657199f28f4, type: 2}
+  _spawnerSettings: {fileID: 11400000, guid: 7add49660026e5a4cb60ea85265a8cab, type: 2}
 --- !u!4 &236568712
 Transform:
   m_ObjectHideFlags: 0
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 279039980}
-  _spawnerSettings: {fileID: 11400000, guid: b2ffd52f6a9126441b655c8fbf3c250e, type: 2}
+  _spawnerSettings: {fileID: 11400000, guid: c838b13ec30da1e4da7c089b63bd6c05, type: 2}
 --- !u!4 &279039982
 Transform:
   m_ObjectHideFlags: 0
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 485897025}
-  _spawnerSettings: {fileID: 11400000, guid: 18e5a42d5d004774eb746f78e24683f2, type: 2}
+  _spawnerSettings: {fileID: 11400000, guid: 6c9f75df62705ef40891310561e42ad5, type: 2}
 --- !u!4 &485897027
 Transform:
   m_ObjectHideFlags: 0
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 959697479}
-  _spawnerSettings: {fileID: 11400000, guid: 2d507ab3ee009ef41aa2441a899ba00a, type: 2}
+  _spawnerSettings: {fileID: 11400000, guid: 4df612f58e7db904c9b171b683a16688, type: 2}
 --- !u!4 &959697481
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd9542c0d5642d39872cad6b9133df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthSettings: {fileID: 11400000, guid: 663435ee99e998a479eb72ffbac1451d, type: 2}
+  _healthSettings: {fileID: 11400000, guid: 49557b7285372dd449e5e95c6fac3e4f, type: 2}
 --- !u!114 &1057573298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthCanvas: {fileID: 1043147728}
   _layoutGroup: {fileID: 866406235}
-  _healthSettings: {fileID: 11400000, guid: 663435ee99e998a479eb72ffbac1451d, type: 2}
+  _healthSettings: {fileID: 11400000, guid: 49557b7285372dd449e5e95c6fac3e4f, type: 2}
   _iconPrefab: {fileID: 2730295375531655439, guid: 1f45aa19abe25c0498aa1ace9b8172b5, type: 3}
   _fullHeart: {fileID: 21300000, guid: 99b675b1d630d48489be1d1ce720d9cd, type: 3}
   _emptyHeart: {fileID: 21300000, guid: c77e3d6c980e5e14ba27ea476e32255e, type: 3}
