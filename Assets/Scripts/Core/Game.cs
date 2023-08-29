@@ -8,9 +8,9 @@ namespace Core
         
         public GameStateMachine StateMachine => _stateMachine;
 
-        public Game()
+        public Game(ICoroutineRunner coroutineRunner)
         {
-            _stateMachine = new GameStateMachine();
+            _stateMachine = new GameStateMachine(new SceneLoader(coroutineRunner));
         }
 
     }

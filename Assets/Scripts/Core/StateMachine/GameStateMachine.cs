@@ -8,13 +8,14 @@ namespace Core.StateMachine
     public class GameStateMachine
     {
         private readonly List<IState> _states;
+        
         private IState _activeState;
 
-        public GameStateMachine()
+        public GameStateMachine(SceneLoader sceneLoader)
         {
             _states = new List<IState>()
             {
-                new BootstrapState(this)
+                new BootstrapState(this, sceneLoader)
             };
         }
 
