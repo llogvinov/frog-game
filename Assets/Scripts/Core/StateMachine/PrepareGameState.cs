@@ -21,7 +21,7 @@ namespace Core.StateMachine
             Game.FrogGirl = InstantiateFrogGirl();
             Game.EnemySpawners = InstantiateSpawners();
 
-            Game.GameOver += ManipulatePresenters;
+            Game.GameOver += ManipulatePresentersOnGameOver;
             
             _stateMachine.Enter<GameLoopState>();
         }
@@ -73,7 +73,7 @@ namespace Core.StateMachine
             GamePresenters.Instance.HealthPresenter.Init();
         }
 
-        private void ManipulatePresenters()
+        private void ManipulatePresentersOnGameOver()
         {
             GamePresenters.Instance.ScorePresenter.Switch(false);
             GamePresenters.Instance.HealthPresenter.Switch(false);
