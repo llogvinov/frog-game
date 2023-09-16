@@ -36,14 +36,19 @@ namespace Presenters.GamePresenters
         {
             Health.OnHealthChanged -= UpdateHealthUI;
         }
-        
-        private void UpdateHealthUI(Health health)
+
+        public void Init()
         {
-            var healthValue = health.CurrentHealth;
-            for (int i = 0; i < _icons.Length; i++)
-            {
+            UpdateHealthIcons(_healthSettings.MaxHealth);
+        }
+
+        private void UpdateHealthUI(Health health) 
+            => UpdateHealthIcons(health.CurrentHealth);
+
+        private void UpdateHealthIcons(int healthValue)
+        {
+            for (var i = 0; i < _icons.Length; i++) 
                 _icons[i].sprite = healthValue > i ? _fullHeart : _emptyHeart;
-            }
         }
     }
 }

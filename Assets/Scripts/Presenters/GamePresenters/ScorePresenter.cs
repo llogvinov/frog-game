@@ -11,17 +11,23 @@ namespace Presenters.GamePresenters
 
         private void Start()
         {
-            Score.OnScoreChanged += UpdateScoreText;
+            Score.OnScoreChanged += UpdateScoreUI;
         }
 
         private void OnDestroy()
         {
-            Score.OnScoreChanged -= UpdateScoreText;
+            Score.OnScoreChanged -= UpdateScoreUI;
         }
 
-        private void UpdateScoreText(Score score)
+        public void Init()
         {
-            _scoreText.text = score.CurrentScore.ToString();
+            UpdateScoreText(0);
         }
+
+        private void UpdateScoreUI(Score score) 
+            => UpdateScoreText(score.CurrentScore);
+
+        private void UpdateScoreText(int scoreValue) 
+            => _scoreText.text = scoreValue.ToString();
     }
 }

@@ -68,6 +68,9 @@ namespace Core.StateMachine
             
             GamePresenters.Instance.ScorePresenter.Switch(true);
             GamePresenters.Instance.HealthPresenter.Switch(true);
+            
+            GamePresenters.Instance.ScorePresenter.Init();
+            GamePresenters.Instance.HealthPresenter.Init();
         }
 
         private void ManipulatePresenters()
