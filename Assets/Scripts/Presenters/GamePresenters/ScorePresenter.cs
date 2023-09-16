@@ -1,30 +1,22 @@
-﻿using Core;
+﻿using System.Collections;
 using Player;
 using TMPro;
 using UnityEngine;
 
-namespace Presenters
+namespace Presenters.GamePresenters
 {
-    public class ScorePresenter : MonoBehaviour
+    public class ScorePresenter : BasePresenter
     {
-        [SerializeField] private Canvas _scoreCanvas;
         [SerializeField] private TMP_Text _scoreText;
 
         private void Start()
         {
-            GameManager.Instance.GameOver += OnGameOver;
             Score.OnScoreChanged += UpdateScoreText;
         }
 
         private void OnDestroy()
         {
-            GameManager.Instance.GameOver -= OnGameOver;
             Score.OnScoreChanged -= UpdateScoreText;
-        }
-
-        private void OnGameOver()
-        {
-            _scoreCanvas.gameObject.SetActive(false);
         }
 
         private void UpdateScoreText(Score score)

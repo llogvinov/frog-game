@@ -27,12 +27,12 @@ namespace Player
 
         private void Start()
         {
-            GameManager.Instance.GameOver += OnGameOver ;
+            Game.GameOver += OnGameOver ;
         }
 
         private void OnDestroy()
         {
-            GameManager.Instance.GameOver -= OnGameOver;
+            Game.GameOver -= OnGameOver;
         }
 
         private void Update()

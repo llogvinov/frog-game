@@ -5,6 +5,8 @@
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
 
+        private string _loadingScene;
+
         public LoadSceneState(GameStateMachine stateMachine, SceneLoader sceneLoader)
         {
             _stateMachine = stateMachine;
@@ -13,6 +15,7 @@
         
         public void Enter(string sceneName)
         {
+            _loadingScene = sceneName;
             _sceneLoader.LoadScene(sceneName, OnSceneLoaded);
         }
 
@@ -23,7 +26,15 @@
 
         private void OnSceneLoaded()
         {
-            _stateMachine.Enter<PrepareGameState>();
+            switch (_loadingScene)
+            {
+                case Keys.GameScene:
+                    _stateMachine.Enter<PrepareGameState>();
+                    break;
+                case Keys.MenuScene:
+                    _stateMachine.Enter<MenuState>();
+                    break;
+            }
         }
     }
 }

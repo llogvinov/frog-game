@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Core.StateMachine
 {
     public class GameStateMachine
     {
         private readonly List<IState> _states;
+        private readonly Game _game;
         
         private IState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader)
+        public Game Game => _game;
+        
+        public GameStateMachine(Game game, SceneLoader sceneLoader)
         {
+            _game = game;
             _states = new List<IState>()
             {
                 new BootstrapState(this),
@@ -23,12 +28,14 @@ namespace Core.StateMachine
 
         public void Enter<TState>() where TState : class, ISimpleState
         {
+            Debug.Log($"enter {typeof(TState)} state");
             var state = ChangeState<TState>();
             state.Enter();
         }
         
         public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
         {
+            Debug.Log($"enter {typeof(TState)} state");
             var state = ChangeState<TState>();
             state.Enter(payload);
         }

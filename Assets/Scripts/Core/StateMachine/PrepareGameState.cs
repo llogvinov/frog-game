@@ -1,4 +1,8 @@
-﻿namespace Core.StateMachine
+﻿using System.Collections.Generic;
+using FrogGame.Enemy;
+using Presenters.GamePresenters;
+
+namespace Core.StateMachine
 {
     public class PrepareGameState : ISimpleState
     {
@@ -11,9 +15,13 @@
 
         public void Enter()
         {
-            InstantiatePlayer();
-            InstantiateFrogGirl();
-            InstantiateSpawners();
+            ManipulatePresentersOnEnter();
+            
+            Game.Player = InstantiatePlayer();
+            Game.FrogGirl = InstantiateFrogGirl();
+            Game.EnemySpawners = InstantiateSpawners();
+
+            Game.GameOver += ManipulatePresenters;
             
             _stateMachine.Enter<GameLoopState>();
         }
@@ -23,31 +31,52 @@
             
         }
 
-        private void InstantiatePlayer() 
-            => Utils.Instantiate(Keys.PlayerPrefabPath);
+        private Player.Player InstantiatePlayer() 
+            => Utils.Instantiate(Keys.PlayerPrefabPath).GetComponent<Player.Player>();
 
-        private void InstantiateFrogGirl()
+        private FrogGirl.FrogGirl InstantiateFrogGirl() 
+            => Utils.Instantiate(Keys.FrogGirlPrefabPath).GetComponent<FrogGirl.FrogGirl>();
+
+        private List<EnemySpawner> InstantiateSpawners()
         {
-            Utils.Instantiate(Keys.FrogGirlPrefabPath);
-
-            void SetTargets()
+            List<EnemySpawner> enemySpawners = new ()
             {
-                
+                InstantiateSpawner(Keys.FlySpawnerPrefabPath),
+                InstantiateSpawner(Keys.MosquitoSpawnerPrefabPath),
+                InstantiateSpawner(Keys.DragonflySpawnerPrefabPath),
+                InstantiateSpawner(Keys.WaspSpawnerPrefabPath),
+                InstantiateSpawner(Keys.SpiderSpawnerPrefabPath),
+            };
+            
+            ActivateSpawners();
+            
+            return enemySpawners;
+            
+            EnemySpawner InstantiateSpawner(string path) 
+                => Utils.Instantiate(path).GetComponent<EnemySpawner>();
+
+            void ActivateSpawners()
+            {
+                foreach (var spawner in enemySpawners) 
+                    spawner.Activate();
             }
         }
 
-        private void InstantiateSpawners()
+        private void ManipulatePresentersOnEnter()
         {
-            Utils.Instantiate(Keys.FlySpawnerPrefabPath);
-            Utils.Instantiate(Keys.MosquitoSpawnerPrefabPath);
-            Utils.Instantiate(Keys.DragonflySpawnerPrefabPath);
-            Utils.Instantiate(Keys.WaspSpawnerPrefabPath);
-            Utils.Instantiate(Keys.SpiderSpawnerPrefabPath);
+            GamePresenters.Instance.GameOverPresenter.Switch(false);
             
-            void ActivateSpawners()
-            {
+            GamePresenters.Instance.ScorePresenter.Switch(true);
+            GamePresenters.Instance.HealthPresenter.Switch(true);
+        }
+
+        private void ManipulatePresenters()
+        {
+            GamePresenters.Instance.ScorePresenter.Switch(false);
+            GamePresenters.Instance.HealthPresenter.Switch(false);
+            GamePresenters.Instance.ComboPresenter.Switch(false);
             
-            }
+            GamePresenters.Instance.GameOverPresenter.Switch(true);
         }
     }
 }

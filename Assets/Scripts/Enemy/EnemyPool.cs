@@ -48,5 +48,11 @@ namespace FrogGame.Enemy
             _stack.Push(enemy);
             enemy.gameObject.SetActive(false);
         }
+
+        public void Clear()
+        {
+            foreach (var enemy in _stack) Destroy(enemy);
+            _stack.Clear();
+        }
     }
 }
