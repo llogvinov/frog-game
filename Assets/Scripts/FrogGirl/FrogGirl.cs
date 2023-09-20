@@ -11,35 +11,45 @@ namespace FrogGirl
         [SerializeField] private Target[] _targets;
 
         private Target _defaultTarget;
-        
-        public Target Target 
+
+        public Target[] Targets => _targets;
+
+        private void Start()
         {
-            get
-            {
-                if (_targets.Length != 0) 
-                    return GetRandomTarget();
-                
-                if (_defaultTarget == null) 
-                    _defaultTarget = new GameObject("default target").AddComponent<Target>();
-                return _defaultTarget;
-            }
+            Target.Occupied += CheckAllTargetsOccupied;
+        }
+
+        private void OnDestroy()
+        {
+            Target.Occupied -= CheckAllTargetsOccupied;
+        }
+
+        public Target GetTarget()
+        {
+            if (Targets.Length != 0)
+                return GetRandomTarget();
+
+            if (_defaultTarget == null)
+                _defaultTarget = new GameObject("default target").AddComponent<Target>();
+            return _defaultTarget;
         }
 
         private Target GetRandomTarget()
         {
-            var randomTarget = _targets[Random.Range(0, _targets.Length)];
+            var randomTarget = Targets[Random.Range(0, Targets.Length)];
             if (!randomTarget.IsOccupied)
                 return randomTarget;
-            
-            foreach (var target in _targets)
-                if (!target.IsOccupied) return target;
+
+            foreach (var target in Targets)
+                if (!target.IsOccupied)
+                    return target;
 
             return randomTarget;
         }
 
-        public void CheckAllTargetsOccupied()
+        private void CheckAllTargetsOccupied()
         {
-            if (_targets.Any(target => !target.IsOccupied)) return;
+            if (Targets.Any(target => !target.IsOccupied)) return;
 
             Game.GameOver?.Invoke();
         }

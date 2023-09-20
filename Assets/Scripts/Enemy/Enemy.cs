@@ -16,12 +16,12 @@ namespace FrogGame.Enemy
 
         public EnemyMover Mover => _mover;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _mover.MoveEnded += OnFinalTargetReached;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             _mover.MoveEnded -= OnFinalTargetReached;
         }
