@@ -48,7 +48,7 @@ namespace Tongue
 
         private void OnEatableEnemyHit(EatableEnemy enemy)
         {
-            if (!enemy.enabled) return;
+            if (!enemy.IsEatable) return;
             
             enemy.transform.parent = _tongueHead.transform;
             enemy.transform.localPosition = Vector3.zero;
@@ -96,7 +96,7 @@ namespace Tongue
             foreach (var enemy in _caughtEnemies)
             {
                 enemy.Release();
-                EatableEnemyHit?.Invoke(enemy.PointsToAdd);
+                EatableEnemyHit?.Invoke(enemy.Eatable.EatablePoints);
             }
 
             _caughtEnemies.Clear();

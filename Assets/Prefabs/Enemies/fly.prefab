@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 3652841202642904600}
   - component: {fileID: -1742981514705969776}
   - component: {fileID: 5608629063545287373}
+  - component: {fileID: 8558183311731730701}
   - component: {fileID: 2959708528921728428}
   m_Layer: 0
   m_Name: fly
@@ -352,7 +353,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mover: {fileID: 2959708528921728428}
-  _pointsToAdd: 100
+  _eatable: {fileID: 8558183311731730701}
+--- !u!114 &8558183311731730701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652841202642904607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa62889621994613a883762535c05379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eatablePoints: 100
 --- !u!114 &2959708528921728428
 MonoBehaviour:
   m_ObjectHideFlags: 0

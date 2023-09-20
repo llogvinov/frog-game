@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 724050863482765337}
   - component: {fileID: 6404229692777211904}
   - component: {fileID: 2127087753753080887}
+  - component: {fileID: 2304025169249590662}
   - component: {fileID: 8188428182492357230}
   m_Layer: 0
   m_Name: mosquito
@@ -401,7 +402,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mover: {fileID: 8188428182492357230}
-  _pointsToAdd: 200
+  _eatable: {fileID: 2304025169249590662}
+--- !u!114 &2304025169249590662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724050863482765342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa62889621994613a883762535c05379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eatablePoints: 200
 --- !u!114 &8188428182492357230
 MonoBehaviour:
   m_ObjectHideFlags: 0

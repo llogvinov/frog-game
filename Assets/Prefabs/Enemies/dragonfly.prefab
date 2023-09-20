@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 5025227320037298669}
   - component: {fileID: 7609946459529106390}
   - component: {fileID: 8384378827673804242}
+  - component: {fileID: 2662920624226173478}
   - component: {fileID: 3757198291599860427}
   m_Layer: 0
   m_Name: dragonfly
@@ -437,7 +438,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mover: {fileID: 3757198291599860427}
-  _pointsToAdd: 500
+  _eatable: {fileID: 2662920624226173478}
+--- !u!114 &2662920624226173478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025227320037298668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa62889621994613a883762535c05379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eatablePoints: 500
 --- !u!114 &3757198291599860427
 MonoBehaviour:
   m_ObjectHideFlags: 0

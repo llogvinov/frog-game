@@ -4,9 +4,15 @@ namespace FrogGame.Enemy
 {
     public class EatableEnemy : Enemy
     {
-        [SerializeField] private int _pointsToAdd;
+        [SerializeField] private Eatable _eatable;
 
-        public int PointsToAdd => _pointsToAdd;
+        public Eatable Eatable => _eatable;
+        
+        public bool IsEatable
+        {
+            get => Eatable.enabled;
+            set => Eatable.enabled = value;
+        }
 
         private EatableEnemyMover _eatableEnemyMover;
         
@@ -26,10 +32,10 @@ namespace FrogGame.Enemy
             _eatableEnemyMover.Released -= OnReleasedFromTarget;
             base.OnDisable();
         }
-    
+
         protected override void OnFinalTargetReached()
         {
-            enabled = false;
+            IsEatable = false;
         }
 
         private void OnReleaseFromTargetStarted()
