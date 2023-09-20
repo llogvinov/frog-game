@@ -42,7 +42,7 @@ namespace Player
         private void CheckHealth()
         {
             if (CurrentHealth == _minHealth) 
-                GameManager.Instance.GameOver?.Invoke();
+                Game.GameOver?.Invoke();
         }
     }
 }

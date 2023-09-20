@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Core;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FrogGirl
 {
@@ -8,41 +10,30 @@ namespace FrogGirl
     {
         [SerializeField] private Target[] _targets;
 
-        private Target defaultTarget;
+        private Target _defaultTarget;
         
         public Target Target 
         {
             get
             {
-                if (_targets.Length == 0)
-                {
-                    if (defaultTarget == null)
-                    {
-                        defaultTarget = new GameObject("default target").AddComponent<Target>();
-                    }
-                    return defaultTarget;
-                }
-
-                return GetRandomTarget();
+                if (_targets.Length != 0) 
+                    return GetRandomTarget();
+                
+                if (_defaultTarget == null) 
+                    _defaultTarget = new GameObject("default target").AddComponent<Target>();
+                return _defaultTarget;
             }
         }
 
         private Target GetRandomTarget()
         {
-            // peek random target
             var randomTarget = _targets[Random.Range(0, _targets.Length)];
             if (!randomTarget.IsOccupied)
-            {
                 return randomTarget;
-            }
-
-            // if peeked target is occupied, loop through all targets and find non occupied
+            
             foreach (var target in _targets)
-            {
                 if (!target.IsOccupied) return target;
-            }
 
-            // if all targets are occupied return random one
             return randomTarget;
         }
 
@@ -50,7 +41,7 @@ namespace FrogGirl
         {
             if (_targets.Any(target => !target.IsOccupied)) return;
 
-            GameManager.Instance.GameOver?.Invoke();
+            Game.GameOver?.Invoke();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace FrogGame.Enemy
 
             for (int i = 0; i < MovePositionNumber; i++)
             {
-                float yPosition = Random.Range(_lowestYPosition, GameManager.Instance.HalfHeight);
+                float yPosition = Random.Range(_lowestYPosition, GameBootstrapper.HalfHeight);
                 
                 var nextPosition = new Vector3(_xPosition, yPosition);
             

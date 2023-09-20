@@ -1,15 +1,12 @@
-﻿using System;
-using Core;
-using Player;
+﻿using Player;
 using Settings;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Presenters
+namespace Presenters.GamePresenters
 {
-    public class HealthPresenter : MonoBehaviour
+    public class HealthPresenter : BasePresenter
     {
-        [SerializeField] private Canvas _healthCanvas;
         [SerializeField] private LayoutGroup _layoutGroup;
         [SerializeField] private HealthSettings _healthSettings;
         [Space]
@@ -32,28 +29,26 @@ namespace Presenters
 
         private void Start()
         {
-            GameManager.Instance.GameOver += OnGameOver;
             Health.OnHealthChanged += UpdateHealthUI;
         }
 
         private void OnDestroy()
         {
-            GameManager.Instance.GameOver -= OnGameOver;
             Health.OnHealthChanged -= UpdateHealthUI;
         }
 
-        private void OnGameOver()
+        public void Init()
         {
-            _healthCanvas.gameObject.SetActive(false);
+            UpdateHealthIcons(_healthSettings.MaxHealth);
         }
 
-        private void UpdateHealthUI(Health health)
+        private void UpdateHealthUI(Health health) 
+            => UpdateHealthIcons(health.CurrentHealth);
+
+        private void UpdateHealthIcons(int healthValue)
         {
-            var healthValue = health.CurrentHealth;
-            for (int i = 0; i < _icons.Length; i++)
-            {
+            for (var i = 0; i < _icons.Length; i++) 
                 _icons[i].sprite = healthValue > i ? _fullHeart : _emptyHeart;
-            }
         }
     }
 }

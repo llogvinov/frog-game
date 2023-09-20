@@ -49,7 +49,7 @@ Canvas:
   m_GameObject: {fileID: 1157267170374342704}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1157267171237216437}
   - component: {fileID: 1157267171237216436}
   m_Layer: 5
-  m_Name: score text
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

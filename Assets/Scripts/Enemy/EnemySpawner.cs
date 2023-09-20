@@ -12,18 +12,31 @@ namespace FrogGame.Enemy
         [SerializeField] private EnemySpawnerSettings _spawnerSettings;
 
         private Coroutine _spawnCoroutine;
+        private bool _active;
 
         private void Start()
         {
-            GameManager.Instance.GameOver += StopSpawnEnemy;
-            _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
+            Game.GameOver += StopSpawnEnemy;
         }
+        
+        private void OnDestroy()
+        {
+            Game.GameOver -= StopSpawnEnemy;
+        }
+
+        public void Activate()
+        {
+            _spawnCoroutine = StartCoroutine(SpawnEnemyCoroutine());
+            _active = true;
+        }
+
+        public void ClearPool() => _enemyPool.Clear();
 
         private IEnumerator SpawnEnemyCoroutine()
         {
             yield return new WaitForSeconds(_spawnerSettings.FirstSpawnDelay);
         
-            while (true)
+            while (_active)
             {
                 yield return new WaitForSeconds(_spawnerSettings.SpawnDelay);
                 SpawnEnemy();
@@ -45,12 +58,9 @@ namespace FrogGame.Enemy
         private void StopSpawnEnemy()
         {
             if (_spawnCoroutine == null) return;
+            
             StopCoroutine(_spawnCoroutine);
-        }
-        
-        private void OnDestroy()
-        {
-            GameManager.Instance.GameOver -= StopSpawnEnemy;
+            _active = false;
         }
     }
 }

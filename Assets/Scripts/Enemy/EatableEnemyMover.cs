@@ -20,13 +20,12 @@ namespace FrogGame.Enemy
         private void OnFinalTargetReached()
         {
             _target.OccupyTarget();
-            GameManager.Instance.FrogGirl.CheckAllTargetsOccupied();
+            Game.FrogGirl.CheckAllTargetsOccupied();
         }
 
         protected override void AddFinalPosition()
         {
-            var frogGirl = GameManager.Instance.FrogGirl;
-            _target = frogGirl.Target;
+            _target = Game.FrogGirl.Target;
             var lastPosition = _target.Position;
             MovePositions.Enqueue(lastPosition);
         }
