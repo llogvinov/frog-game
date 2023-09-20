@@ -12,6 +12,12 @@ namespace Player
         private Score _score;
         private HitTargetHandler _hitTargetHandler;
 
+        public Health Health => _health;
+
+        public Score Score => _score;
+
+        public HealthSettings HealthSettings => _healthSettings;
+
         private void Start()
         {
             _health = new Health(_healthSettings.MinHealth, _healthSettings.MaxHealth);

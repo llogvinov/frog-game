@@ -60,6 +60,12 @@ namespace FrogGame.Enemy
             }
             MoveToNextPosition();
         }
+        
+        protected void AddFinalPositionOffScreen()
+        {
+            var lastPosition = Utils.RandomPositionOffTheScreen();
+            MovePositions.Enqueue(lastPosition);
+        }
 
     }
 }
