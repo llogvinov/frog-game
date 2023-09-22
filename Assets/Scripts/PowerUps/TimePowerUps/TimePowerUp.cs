@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace PowerUps
+namespace PowerUps.TimePowerUps
 {
     public abstract class TimePowerUp
     {

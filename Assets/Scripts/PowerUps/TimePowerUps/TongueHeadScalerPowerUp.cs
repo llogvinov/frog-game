@@ -1,6 +1,6 @@
 ﻿using Tongue;
 
-namespace PowerUps
+namespace PowerUps.TimePowerUps
 {
     public class TongueHeadScalerPowerUp : TimePowerUp
     {

@@ -1,6 +1,6 @@
 ﻿using Player;
 
-namespace PowerUps
+namespace PowerUps.ActivatedPowerUps
 {
     public class HealthPowerUp : ActivatedPowerUp
     {

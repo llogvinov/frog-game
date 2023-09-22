@@ -1,6 +1,6 @@
 ﻿using FrogGirl;
 
-namespace PowerUps
+namespace PowerUps.ActivatedPowerUps
 {
     public class ReleaseEnemiesPowerUp : ActivatedPowerUp
     {

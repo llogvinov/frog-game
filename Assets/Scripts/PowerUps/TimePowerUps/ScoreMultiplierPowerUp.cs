@@ -1,6 +1,6 @@
 ﻿using Player;
 
-namespace PowerUps
+namespace PowerUps.TimePowerUps
 {
     public class ScoreMultiplierPowerUp : TimePowerUp
     {

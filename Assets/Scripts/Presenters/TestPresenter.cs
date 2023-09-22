@@ -1,5 +1,7 @@
 ﻿using PowerUps;
 using Core;
+using PowerUps.ActivatedPowerUps;
+using PowerUps.TimePowerUps;
 using UnityEngine;
 using UnityEngine.UI;
 

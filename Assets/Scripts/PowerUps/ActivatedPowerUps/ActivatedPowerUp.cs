@@ -1,6 +1,6 @@
 using System;
 
-namespace PowerUps
+namespace PowerUps.ActivatedPowerUps
 {
     public abstract class ActivatedPowerUp
     {
