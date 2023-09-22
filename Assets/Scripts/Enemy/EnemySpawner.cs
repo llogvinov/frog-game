@@ -3,7 +3,7 @@ using Core;
 using Settings;
 using UnityEngine;
 
-namespace FrogGame.Enemy
+namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {

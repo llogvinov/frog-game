@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using FrogGame.Enemy;
+using Enemy;
 using UnityEngine;
 
 namespace FrogGirl

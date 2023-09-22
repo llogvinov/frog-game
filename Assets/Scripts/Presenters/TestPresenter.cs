@@ -32,27 +32,25 @@ namespace Presenters
 
         private void AddHealth()
         {
-            HealthPowerUp healthPowerUp = new HealthPowerUp(Game.Player.Health, 1);
+            var healthPowerUp = new HealthPowerUp(Game.Player.Health, 1);
             healthPowerUp.Apply();
         }
 
         private void ReleaseEnemies()
         {
-            ReleaseEnemiesPowerUp releaseEnemiesPowerUp = new ReleaseEnemiesPowerUp(Game.FrogGirl.Targets);
+            var releaseEnemiesPowerUp = new ReleaseEnemiesPowerUp(Game.FrogGirl.Targets);
             releaseEnemiesPowerUp.Apply();
         }
 
         private async void MultiplyScore()
         {
-            ScoreMultiplierPowerUp scoreMultiplierPowerUp = 
-                new ScoreMultiplierPowerUp(Game.Player.Score, 2f, 5f);
+            var scoreMultiplierPowerUp = new ScoreMultiplierPowerUp(Game.Player.Score, 2f, 5f);
             await scoreMultiplierPowerUp.Activate();
         }
 
         private async void ScaleTongue()
         {
-            TongueHeadScalerPowerUp tongueHeadScalerPowerUp =
-                new TongueHeadScalerPowerUp(Game.Player.TongueHead, 0.4f, 5f);
+            var tongueHeadScalerPowerUp = new TongueHeadScalerPowerUp(Game.Player.TongueHead, 0.4f, 5f);
             await tongueHeadScalerPowerUp.Activate();
         }
     }

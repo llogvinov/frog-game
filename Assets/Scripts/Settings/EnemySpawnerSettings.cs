@@ -2,7 +2,7 @@
 
 namespace Settings
 {
-    [CreateAssetMenu(fileName = "SpawnerSettings", menuName = "ObjectSettings/EnemySpawnerSettings")]
+    [CreateAssetMenu(fileName = "EnemySpawnerSettings", menuName = "ObjectSettings/EnemySpawnerSettings")]
     public class EnemySpawnerSettings : ScriptableObject
     {
         [SerializeField] private float _firstSpawnDelay;

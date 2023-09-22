@@ -1,7 +1,7 @@
 ﻿using Core;
 using UnityEngine;
 
-namespace FrogGame.Enemy
+namespace Enemy
 {
     public class SpiderSpawner : EnemySpawner
     {

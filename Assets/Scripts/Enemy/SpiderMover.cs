@@ -2,7 +2,7 @@
 using Core;
 using UnityEngine;
 
-namespace FrogGame.Enemy
+namespace Enemy
 {
     public class SpiderMover : EnemyMover
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FrogGame.Enemy
+namespace Enemy
 {
     public class EatableEnemy : Enemy
     {
@@ -11,7 +11,7 @@ namespace FrogGame.Enemy
         public bool IsEatable
         {
             get => Eatable.enabled;
-            set => Eatable.enabled = value;
+            private set => Eatable.enabled = value;
         }
 
         private EatableEnemyMover _eatableEnemyMover;
@@ -40,13 +40,11 @@ namespace FrogGame.Enemy
 
         private void OnReleaseFromTargetStarted()
         {
-            Debug.Log("release started");
             Mover.MoveEnded -= OnFinalTargetReached;
         }
 
         private void OnReleasedFromTarget()
         {
-            Debug.Log("released");
             Release();
         }
     }

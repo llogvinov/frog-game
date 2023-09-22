@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.StateMachine;
-using FrogGame.Enemy;
+using Enemy;
 
 namespace Core
 {

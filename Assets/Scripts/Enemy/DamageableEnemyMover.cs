@@ -1,6 +1,4 @@
-﻿using Core;
-
-namespace FrogGame.Enemy
+﻿namespace Enemy
 {
     public class DamageableEnemyMover : EnemyMover
     {

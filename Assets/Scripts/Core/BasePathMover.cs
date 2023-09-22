@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class BasePathMover: MonoBehaviour
+    public class BasePathMover : MonoBehaviour
     {
         public Action MoveEnded; 
         

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FrogGame.Enemy
+namespace Enemy
 {
     public abstract class Enemy : MonoBehaviour
     {
