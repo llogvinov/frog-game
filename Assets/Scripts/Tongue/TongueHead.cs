@@ -10,6 +10,8 @@ namespace Tongue
     public class TongueHead : BasePathMover
     {
         public Action HitStarted;
+
+        private const float BaseScaler = 0.2f;
         
         [SerializeField] private TongueBase _tongueBase;
         
@@ -26,6 +28,7 @@ namespace Tongue
             var spriteRenderer = GetComponent<SpriteRenderer>();
             _headSprite = new SpriteVisualizer(spriteRenderer);
             _headSprite.ToggleSpriteRenderer(false);
+            Scale(BaseScaler);
         }
         
         private void OnDestroy()
@@ -33,6 +36,12 @@ namespace Tongue
             _playerInput.HitSetEvent -= OnHitSet;
             MoveEnded -= HideTongue;
         }
+
+        public void Scale(float scaler) =>
+            transform.localScale = Vector3.one * scaler;
+
+        public void ResetScale() =>
+            Scale(BaseScaler);
 
         private void OnHitSet(Vector3 hitPosition)
         {

@@ -8,14 +8,17 @@ namespace Tongue
     [RequireComponent(typeof(Collider2D))]
     public class HitTargetHandler : MonoBehaviour
     {
-        public static Action<int> DamageableEnemyHit;
-        public static Action<int> EatableEnemyHit;
+        public Action<int> DamageableEnemyHit;
+        public Action<int> EatableEnemyHit;
+        
         public static Action<int> ComboDone;
         
         [SerializeField] private TongueHead _tongueHead;
 
         private Collider2D _collider;
         private List<EatableEnemy> _caughtEnemies;
+
+        public TongueHead TongueHead => _tongueHead;
 
         private void Start()
         {

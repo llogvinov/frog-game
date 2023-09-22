@@ -7,7 +7,8 @@ namespace PowerUps
         private readonly Score _score;
         private readonly float _multiplier;
 
-        public ScoreMultiplierPowerUp(Score score, float multiplier, float duration) : base(duration)
+        public ScoreMultiplierPowerUp(Score score, float multiplier, float duration) 
+            : base(duration)
         {
             _score = score;
             _multiplier = multiplier;

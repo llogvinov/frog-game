@@ -16,21 +16,22 @@ namespace Player
 
         public Score Score => _score;
 
-        public HealthSettings HealthSettings => _healthSettings;
+        public TongueHead TongueHead => _hitTargetHandler.TongueHead;
 
         private void Start()
         {
+            _hitTargetHandler = GetComponentInChildren<HitTargetHandler>();
             _health = new Health(_healthSettings.MinHealth, _healthSettings.MaxHealth);
             _score = new Score();
 
-            HitTargetHandler.DamageableEnemyHit += _health.TakeDamage;
-            HitTargetHandler.EatableEnemyHit += _score.AddScore;
+            _hitTargetHandler.DamageableEnemyHit += _health.TakeDamage;
+            _hitTargetHandler.EatableEnemyHit += _score.AddScore;
         }
 
         private void OnDestroy()
         {
-            HitTargetHandler.DamageableEnemyHit -= _health.TakeDamage;
-            HitTargetHandler.EatableEnemyHit -= _score.AddScore;
+            _hitTargetHandler.DamageableEnemyHit -= _health.TakeDamage;
+            _hitTargetHandler.EatableEnemyHit -= _score.AddScore;
         }
     }
 }
