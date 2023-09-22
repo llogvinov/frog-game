@@ -1,8 +1,8 @@
 using System;
 
-namespace Bonus
+namespace PowerUps
 {
-    public abstract class ActivatedBonus
+    public abstract class ActivatedPowerUp
     {
         public Action Applied;
         

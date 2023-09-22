@@ -1,8 +1,8 @@
 ﻿using FrogGirl;
 
-namespace Bonus
+namespace PowerUps
 {
-    public class ReleaseEnemiesPowerUp : ActivatedBonus
+    public class ReleaseEnemiesPowerUp : ActivatedPowerUp
     {
         private readonly Target[] _targets;
 

@@ -1,8 +1,8 @@
 ﻿using Player;
 
-namespace Bonus
+namespace PowerUps
 {
-    public class HealthPowerUp : ActivatedBonus
+    public class HealthPowerUp : ActivatedPowerUp
     {
         private readonly Health _health;
         private readonly int _addAmount;
