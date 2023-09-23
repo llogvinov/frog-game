@@ -62,6 +62,11 @@ namespace Enemy
             StopCoroutine(_spawnCoroutine);
             _active = false;
         }
+
+        public void SetSpawnerSettings(EnemySpawnerSettings spawnerSettings)
+        {
+            _spawnerSettings = spawnerSettings;
+        }
     }
 }
 

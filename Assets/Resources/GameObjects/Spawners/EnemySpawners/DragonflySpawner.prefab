@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 4916285053118428252}
-  _spawnerSettings: {fileID: 11400000, guid: c838b13ec30da1e4da7c089b63bd6c05, type: 2}
+  _spawnerSettings: {fileID: 3277664928990381129, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
 --- !u!114 &4916285053118428252
 MonoBehaviour:
   m_ObjectHideFlags: 0

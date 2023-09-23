@@ -5,8 +5,8 @@ namespace PowerUps.TimePowerUps
 {
     public abstract class TimePowerUp
     {
-        public Action Start;
-        public Action Finish;
+        public event Action Start;
+        public event Action Finish;
         
         protected readonly float Duration;
 
