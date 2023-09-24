@@ -7,7 +7,7 @@ namespace Core
 {
     public class BasePathMover : MonoBehaviour
     {
-        public Action MoveEnded; 
+        public event Action MoveEnded; 
         
         [SerializeField] private float _moveSpeed;
         

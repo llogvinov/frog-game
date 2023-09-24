@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6501372510928706302}
   - component: {fileID: -2652669797681838143}
   m_Layer: 0
-  m_Name: wasp
+  m_Name: Wasp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

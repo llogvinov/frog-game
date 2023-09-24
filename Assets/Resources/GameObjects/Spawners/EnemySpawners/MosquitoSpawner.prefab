@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681971521252431188}
   - component: {fileID: 681971521252431189}
-  - component: {fileID: 681971521252431190}
+  - component: {fileID: -676924642394833931}
   m_Layer: 0
   m_Name: MosquitoSpawner
   m_TagString: Untagged
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffef882ab54186f4f9110b396fd2ca4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPool: {fileID: 681971521252431190}
-  _spawnerSettings: {fileID: -527913000817073633, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
---- !u!114 &681971521252431190
+  _enemyPool: {fileID: -676924642394833931}
+  _spawnerSettings: {fileID: 3847258280973425492, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
+--- !u!114 &-676924642394833931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,8 +56,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 681971521252431191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950f87872c10452f8ba2ee03bf3661fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3279871107014e53834ae64a410396c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 20
+  _initPoolSize: 20
   _objectToPool: {fileID: 2127087753753080887, guid: f825fd2e6ab327b49901ddb1cbb30235, type: 3}

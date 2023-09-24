@@ -45,7 +45,7 @@ namespace Enemy
 
         private void SpawnEnemy()
         {
-            var enemy = _enemyPool.GetPooledObject();
+            var enemy = (Enemy) _enemyPool.GetPooledObject();
             enemy.transform.position = SetSpawnPosition();
             enemy.Mover.Initialize();
         }

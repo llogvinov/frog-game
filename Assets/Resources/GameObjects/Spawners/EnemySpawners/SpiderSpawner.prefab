@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1956968271071098938}
   - component: {fileID: 1956968271071098933}
-  - component: {fileID: 1956968271071098932}
+  - component: {fileID: 1528242479094883937}
   m_Layer: 0
   m_Name: SpiderSpawner
   m_TagString: Untagged
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9db390b599d4a9cb3aed131dbfe7729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPool: {fileID: 1956968271071098932}
-  _spawnerSettings: {fileID: -1474651686071438116, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
---- !u!114 &1956968271071098932
+  _enemyPool: {fileID: 1528242479094883937}
+  _spawnerSettings: {fileID: -1145944216713552986, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
+--- !u!114 &1528242479094883937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,8 +56,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1956968271071098935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950f87872c10452f8ba2ee03bf3661fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3279871107014e53834ae64a410396c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 10
+  _initPoolSize: 10
   _objectToPool: {fileID: -5752602044457049017, guid: a53f25a025854d74eba5c6dfa238a3fa, type: 3}

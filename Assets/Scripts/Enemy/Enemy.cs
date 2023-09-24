@@ -1,37 +1,24 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 
 namespace Enemy
 {
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : PooledObject
     {
         [SerializeField] private EnemyMover _mover;
     
-        private EnemyPool _pool;
-
-        public EnemyPool Pool
-        {
-            get => _pool;
-            set => _pool = value;
-        }
-
         public EnemyMover Mover => _mover;
 
         protected virtual void OnEnable()
         {
-            _mover.MoveEnded += OnFinalTargetReached;
+            Mover.MoveEnded += OnFinalTargetReached;
         }
 
         protected virtual void OnDisable()
         {
-            _mover.MoveEnded -= OnFinalTargetReached;
+            Mover.MoveEnded -= OnFinalTargetReached;
         }
 
         protected abstract void OnFinalTargetReached();
-
-        public void Release()
-        {
-            _pool.ReturnToPool(this);
-            transform.parent = _pool.transform;
-        }
     }
 }

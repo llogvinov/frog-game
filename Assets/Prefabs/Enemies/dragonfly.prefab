@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 2662920624226173478}
   - component: {fileID: 3757198291599860427}
   m_Layer: 0
-  m_Name: dragonfly
+  m_Name: Dragonfly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

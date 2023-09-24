@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 8558183311731730701}
   - component: {fileID: 2959708528921728428}
   m_Layer: 0
-  m_Name: fly
+  m_Name: Fly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

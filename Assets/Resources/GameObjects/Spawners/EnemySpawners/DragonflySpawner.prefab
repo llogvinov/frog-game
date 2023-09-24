@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916285053118428254}
   - component: {fileID: 4916285053118428253}
-  - component: {fileID: 4916285053118428252}
+  - component: {fileID: -5229669158906179987}
   m_Layer: 0
   m_Name: DragonflySpawner
   m_TagString: Untagged
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffef882ab54186f4f9110b396fd2ca4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPool: {fileID: 4916285053118428252}
-  _spawnerSettings: {fileID: 3277664928990381129, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
---- !u!114 &4916285053118428252
+  _enemyPool: {fileID: -5229669158906179987}
+  _spawnerSettings: {fileID: -2942397897531129857, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
+--- !u!114 &-5229669158906179987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,8 +56,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4916285053118428251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950f87872c10452f8ba2ee03bf3661fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3279871107014e53834ae64a410396c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 10
+  _initPoolSize: 10
   _objectToPool: {fileID: 8384378827673804242, guid: fe266b7d291012b4f9fd470776f6b998, type: 3}

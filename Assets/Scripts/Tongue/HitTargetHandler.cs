@@ -76,7 +76,7 @@ namespace Tongue
             
             foreach (var enemy in _caughtEnemies)
             {
-                enemy.transform.parent = enemy.Pool.transform;
+                enemy.ResetParent();
                 enemy.Mover.ContinueMoving();
             }
             
@@ -91,7 +91,8 @@ namespace Tongue
         private void OnHitEnded()
         {
             _collider.enabled = false;
-            if (_caughtEnemies.Count == 0) return;
+            if (_caughtEnemies.Count == 0) 
+                return;
             
             if (_caughtEnemies.Count > 1) 
                 ComboDone?.Invoke(_caughtEnemies.Count);
