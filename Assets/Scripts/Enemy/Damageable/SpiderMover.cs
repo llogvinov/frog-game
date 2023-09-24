@@ -2,7 +2,7 @@
 using Core;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Damageable
 {
     public class SpiderMover : EnemyMover
     {

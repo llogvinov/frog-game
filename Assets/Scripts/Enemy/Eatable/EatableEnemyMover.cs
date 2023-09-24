@@ -4,7 +4,7 @@ using Core;
 using FrogGirl;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Eatable
 {
     public class EatableEnemyMover : EnemyMover
     {

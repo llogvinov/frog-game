@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enemy;
+using Enemy.Damageable;
+using Enemy.Eatable;
 using UnityEngine;
 
 namespace Tongue

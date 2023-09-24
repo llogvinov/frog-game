@@ -12,7 +12,7 @@ namespace Settings
         [SerializeField] private TextAsset _textAsset;
     
         [ContextMenuItem("Parse", nameof(Parse))]
-        [ContextMenuItem("Link to prefabs", nameof(LinkToPrefabs))]
+        [ContextMenuItem("Clear", nameof(Clear))]
         [SerializeField] private List<EnemySpawnerSettings> _enemySpawnerSettingsList;
 
         public List<EnemySpawnerSettings> EnemySpawnerSettingsList
@@ -29,7 +29,7 @@ namespace Settings
         
             string[] rows = _textAsset.text.Split("\n");
 
-            for (int i = 1; i < rows.Length; i++)
+            for (int i = 1; i < rows.Length - 1; i++)
             {
                 string[] columns = rows[i].Split(",");
                 var firstSpawnDelay = float.Parse(columns[1], CultureInfo.InvariantCulture);
@@ -41,18 +41,6 @@ namespace Settings
             }
 
             Debug.Log($"{typeof(EnemySpawnerSettingsGroup)} parsed successfully!");
-            Debug.LogWarning($"Invoke {nameof(LinkToPrefabs)} to link created settings to corresponding prefabs");
-        }
-
-        public void LinkToPrefabs()
-        {
-            foreach (var spawnerSetting in EnemySpawnerSettingsList)
-            {
-                const string RemovingSuffix = "Settings";
-                var spawnerName = spawnerSetting.name.Remove(spawnerSetting.name.Length - RemovingSuffix.Length);
-                var spawner = Resources.Load<GameObject>($"GameObjects/Spawners/EnemySpawners/{spawnerName}").GetComponent<EnemySpawner>();
-                spawner.SetSpawnerSettings(spawnerSetting);
-            }
         }
 
         private void AddObject(string spawnerName, float firstSpawnDelay, float spawnDelay)

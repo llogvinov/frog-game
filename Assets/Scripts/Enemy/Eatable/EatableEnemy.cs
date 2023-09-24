@@ -1,13 +1,12 @@
-﻿using Core;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Eatable
 {
     public class EatableEnemy : Enemy
     {
-        [SerializeField] private Eatable _eatable;
+        [SerializeField] private global::Enemy.Eatable.Eatable _eatable;
 
-        public Eatable Eatable => _eatable;
+        public global::Enemy.Eatable.Eatable Eatable => _eatable;
         
         public bool IsEatable
         {
@@ -21,8 +20,6 @@ namespace Enemy
         {
             base.OnEnable();
             
-            Pool.ObjectReturned += ResetParent;
-            
             if (_eatableEnemyMover == null) 
                 _eatableEnemyMover = (EatableEnemyMover) Mover;
             _eatableEnemyMover.ReleaseStarted += OnReleaseFromTargetStarted;
@@ -31,7 +28,6 @@ namespace Enemy
 
         protected override void OnDisable()
         {
-            Pool.ObjectReturned -= ResetParent;
             _eatableEnemyMover.ReleaseStarted -= OnReleaseFromTargetStarted;
             _eatableEnemyMover.Released -= OnReleasedFromTarget;
             base.OnDisable();
@@ -48,8 +44,5 @@ namespace Enemy
 
         private void OnReleasedFromTarget() => 
             Release();
-
-        private void ResetParent(PooledObject pooledObject) => 
-            pooledObject.transform.parent = Pool.transform;
     }
 }

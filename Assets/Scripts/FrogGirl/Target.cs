@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enemy;
+using Enemy.Eatable;
 using UnityEngine;
 
 namespace FrogGirl

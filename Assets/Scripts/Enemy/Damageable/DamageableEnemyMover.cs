@@ -1,4 +1,4 @@
-﻿namespace Enemy
+﻿namespace Enemy.Damageable
 {
     public class DamageableEnemyMover : EnemyMover
     {
