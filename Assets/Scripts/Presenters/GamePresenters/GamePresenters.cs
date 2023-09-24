@@ -9,11 +9,13 @@ namespace Presenters.GamePresenters
         [SerializeField] private ScorePresenter _scorePresenter;
         [SerializeField] private ComboPresenter _comboPresenter;
         [SerializeField] private GameOverPresenter _gameOverPresenter;
+        [SerializeField] private TimerPresenter _timerPresenter;
 
         public HealthPresenter HealthPresenter => _healthPresenter;
         public ScorePresenter ScorePresenter => _scorePresenter;
         public ComboPresenter ComboPresenter => _comboPresenter;
         public GameOverPresenter GameOverPresenter => _gameOverPresenter;
+        public TimerPresenter TimerPresenter => _timerPresenter;
         
     }
 }

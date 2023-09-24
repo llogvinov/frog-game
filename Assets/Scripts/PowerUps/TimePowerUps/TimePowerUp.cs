@@ -5,8 +5,10 @@ namespace PowerUps.TimePowerUps
 {
     public abstract class TimePowerUp
     {
-        public event Action Start;
-        public event Action Finish;
+        public static event Action<TimePowerUp, float> AnyTimePowerUpStarted;
+        
+        public event Action Started;
+        public event Action<TimePowerUp> Finished;
         
         protected readonly float Duration;
 
@@ -17,9 +19,10 @@ namespace PowerUps.TimePowerUps
 
         public async Task Activate()
         {
-            Start?.Invoke();
+            AnyTimePowerUpStarted?.Invoke(this, Duration);
+            Started?.Invoke();
             await Task.Delay((int) (Duration * 1000));
-            Finish?.Invoke();
+            Finished?.Invoke(this);
         }
     }
 }

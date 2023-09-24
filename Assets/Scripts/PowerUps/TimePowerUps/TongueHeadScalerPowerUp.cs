@@ -13,20 +13,20 @@ namespace PowerUps.TimePowerUps
             _tongueHead = tongueHead;
             _scaler = scaler;
             
-            Start += OnStart;
-            Finish += OnFinish;
+            Started += OnStarted;
+            Finished += OnFinished;
         }
 
-        private void OnStart() =>
+        private void OnStarted() =>
             _tongueHead.Scale(_scaler);
 
-        private void OnFinish() =>
+        private void OnFinished(TimePowerUp timePowerUp) =>
             _tongueHead.ResetScale();
 
         ~TongueHeadScalerPowerUp()
         {
-            Start -= OnStart;
-            Finish -= OnFinish;
+            Started -= OnStarted;
+            Finished -= OnFinished;
         }
     }
 }

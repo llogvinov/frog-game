@@ -13,20 +13,20 @@ namespace PowerUps.TimePowerUps
             _score = score;
             _multiplier = multiplier;
             
-            Start += OnStart;
-            Finish += OnFinish;
+            Started += OnStarted;
+            Finished += OnFinished;
         }
 
-        private void OnStart() => 
+        private void OnStarted() => 
             _score.ScoreMultiplier = _multiplier;
 
-        private void OnFinish() =>
+        private void OnFinished(TimePowerUp timePowerUp) =>
             _score.ScoreMultiplier = Score.BaseScoreMultiplier;
 
         ~ScoreMultiplierPowerUp()
         {
-            Start -= OnStart;
-            Finish -= OnFinish;
+            Started -= OnStarted;
+            Finished -= OnFinished;
         }
     }
 }

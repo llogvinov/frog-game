@@ -44,13 +44,13 @@ namespace Presenters
 
         private async void MultiplyScore()
         {
-            var scoreMultiplierPowerUp = new ScoreMultiplierPowerUp(Game.Player.Score, 2f, 5f);
+            var scoreMultiplierPowerUp = new ScoreMultiplierPowerUp(Game.Player.Score, 2f, 10f);
             await scoreMultiplierPowerUp.Activate();
         }
 
         private async void ScaleTongue()
         {
-            var tongueHeadScalerPowerUp = new TongueHeadScalerPowerUp(Game.Player.TongueHead, 0.4f, 5f);
+            var tongueHeadScalerPowerUp = new TongueHeadScalerPowerUp(Game.Player.TongueHead, 0.4f, 7f);
             await tongueHeadScalerPowerUp.Activate();
         }
     }
