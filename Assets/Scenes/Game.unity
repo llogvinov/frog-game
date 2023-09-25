@@ -1361,7 +1361,7 @@ MonoBehaviour:
   _scorePresenter: {fileID: 1534240085}
   _comboPresenter: {fileID: 1354858916}
   _gameOverPresenter: {fileID: 1491321355}
-  _timerPresenter: {fileID: 0}
+  _timerPresenter: {fileID: 1677439214}
 --- !u!1 &1469734242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiCanvas: {fileID: 4608451204112849397}
-  _pool: {fileID: 4608451204112849400}
+  _timerPool: {fileID: 4608451204112849400}
 --- !u!224 &1958457792 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1157267170374342732, guid: 93d737149af62ff4e9c07cdeea7c626b, type: 3}

@@ -178,4 +178,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initPoolSize: 3
+  _maxPoolSize: 3
   _objectToPool: {fileID: 9040956636045245322, guid: 4d6c7bc518d3acb44b42ea154c1138dd, type: 3}

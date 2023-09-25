@@ -64,9 +64,13 @@ namespace Enemy
 
         private void SpawnEnemy()
         {
-            var enemy = (Enemy) _enemyPool.GetPooledObject();
-            enemy.transform.position = SetSpawnPosition();
-            enemy.Mover.Initialize();
+            var pooledObject = _enemyPool.TryGetPooledObject();
+            if (pooledObject != null)
+            {
+                var enemy = (Enemy) pooledObject;
+                enemy.transform.position = SetSpawnPosition();
+                enemy.Mover.Initialize();
+            }
         }
         
         protected virtual Vector3 SetSpawnPosition()
