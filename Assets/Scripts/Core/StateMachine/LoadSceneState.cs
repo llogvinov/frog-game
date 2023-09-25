@@ -1,4 +1,6 @@
-﻿namespace Core.StateMachine
+﻿using Core.AssetManagement;
+
+namespace Core.StateMachine
 {
     public class LoadSceneState : IPayloadState<string>
     {
@@ -28,10 +30,10 @@
         {
             switch (_loadingScene)
             {
-                case Keys.GameScene:
+                case AssetPath.GameScene:
                     _stateMachine.Enter<PrepareGameState>();
                     break;
-                case Keys.MenuScene:
+                case AssetPath.MenuScene:
                     _stateMachine.Enter<MenuState>();
                     break;
             }

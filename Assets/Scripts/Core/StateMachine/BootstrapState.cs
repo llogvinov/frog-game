@@ -1,17 +1,23 @@
-﻿namespace Core.StateMachine
+﻿using Core.AssetManagement;
+using Core.Factory;
+
+namespace Core.StateMachine
 {
     public class BootstrapState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
+        private readonly AllServices _services;
 
-        public BootstrapState(GameStateMachine stateMachine)
+        public BootstrapState(GameStateMachine stateMachine, AllServices services)
         {
             _stateMachine = stateMachine;
+            _services = services;
+            
+            RegisterServices();
         }
         
         public void Enter()
         {
-            RegisterServices();
             _stateMachine.Enter<MenuState>();
         }
 
@@ -22,7 +28,8 @@
 
         private void RegisterServices()
         {
-            // TODO: implement
+            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
         }
     }
 }

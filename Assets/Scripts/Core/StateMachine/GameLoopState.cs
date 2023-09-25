@@ -1,4 +1,5 @@
-﻿using Presenters.GamePresenters;
+﻿using Core.AssetManagement;
+using Presenters.GamePresenters;
 using UnityEngine;
 
 namespace Core.StateMachine
@@ -34,9 +35,9 @@ namespace Core.StateMachine
         }
 
         private void LoadMenu() 
-            => _stateMachine.Enter<LoadSceneState, string>(Keys.MenuScene);
+            => _stateMachine.Enter<LoadSceneState, string>(AssetPath.MenuScene);
 
         private void RestartGame() 
-            => _stateMachine.Enter<LoadSceneState, string>(Keys.GameScene);
+            => _stateMachine.Enter<LoadSceneState, string>(AssetPath.GameScene);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Presenters.MenuPresenters;
+﻿using Core.AssetManagement;
+using Presenters.MenuPresenters;
 
 namespace Core.StateMachine
 {
@@ -24,7 +25,7 @@ namespace Core.StateMachine
         private void LoadGame()
         {
             MenuPresenters.Instance.PlayButton.onClick.RemoveListener(LoadGame);
-            _stateMachine.Enter<LoadSceneState, string>(Keys.GameScene);
+            _stateMachine.Enter<LoadSceneState, string>(AssetPath.GameScene);
         }
     }
 }

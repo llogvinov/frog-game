@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Enemy;
+﻿using Core.Factory;
 using Presenters.GamePresenters;
 
 namespace Core.StateMachine
@@ -7,19 +6,21 @@ namespace Core.StateMachine
     public class PrepareGameState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
+        private readonly IGameFactory _gameFactory;
 
-        public PrepareGameState(GameStateMachine stateMachine)
+        public PrepareGameState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
             _stateMachine = stateMachine;
+            _gameFactory = gameFactory;
         }
 
         public void Enter()
         {
             ManipulatePresentersOnEnter();
             
-            Game.Player = InstantiatePlayer();
-            Game.FrogGirl = InstantiateFrogGirl();
-            Game.EnemySpawners = InstantiateSpawners();
+            Game.Player = _gameFactory.InstantiatePlayer();
+            Game.FrogGirl = _gameFactory.InstantiateFrogGirl();
+            Game.EnemySpawners = _gameFactory.InstantiateSpawners();
 
             Game.GameOver += ManipulatePresentersOnGameOver;
             
@@ -29,37 +30,6 @@ namespace Core.StateMachine
         public void Exit()
         {
             
-        }
-
-        private Player.Player InstantiatePlayer() 
-            => Utils.Instantiate(Keys.PlayerPrefabPath).GetComponent<Player.Player>();
-
-        private FrogGirl.FrogGirl InstantiateFrogGirl() 
-            => Utils.Instantiate(Keys.FrogGirlPrefabPath).GetComponent<FrogGirl.FrogGirl>();
-
-        private List<EnemySpawner> InstantiateSpawners()
-        {
-            List<EnemySpawner> enemySpawners = new ()
-            {
-                InstantiateSpawner(Keys.FlySpawnerPrefabPath),
-                InstantiateSpawner(Keys.MosquitoSpawnerPrefabPath),
-                InstantiateSpawner(Keys.DragonflySpawnerPrefabPath),
-                InstantiateSpawner(Keys.WaspSpawnerPrefabPath),
-                InstantiateSpawner(Keys.SpiderSpawnerPrefabPath),
-            };
-            
-            ActivateSpawners();
-            
-            return enemySpawners;
-            
-            EnemySpawner InstantiateSpawner(string path) 
-                => Utils.Instantiate(path).GetComponent<EnemySpawner>();
-
-            void ActivateSpawners()
-            {
-                foreach (var spawner in enemySpawners) 
-                    spawner.Activate();
-            }
         }
 
         private void ManipulatePresentersOnEnter()

@@ -1,6 +1,6 @@
-﻿namespace Core
+﻿namespace Core.AssetManagement
 {
-    public static class Keys
+    public static class AssetPath
     {
         // Scenes
         public const string MenuScene = "Menu";

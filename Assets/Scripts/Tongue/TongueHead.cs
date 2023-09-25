@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
-using Player;
+using Core.InputService;
 using UnityEngine;
 
 namespace Tongue
@@ -15,13 +15,15 @@ namespace Tongue
         [SerializeField] private TongueBase _tongueBase;
         
         private Vector3 _hitPosition;
-        private PlayerInput _playerInput;
+        private InputService _playerInput;
         private SpriteVisualizer _headSprite;
         
         private void Start()
         {
-            _playerInput = GetComponentInParent<PlayerInput>();
-            _playerInput.HitSetEvent += OnHitSet;
+            _playerInput = Application.isEditor ? 
+                GetComponentInParent<ComputerInputService>() : 
+                GetComponentInParent<MobileInputService>();
+            _playerInput.HitSet += OnHitSet;
             MoveEnded += HideTongue;
 
             var spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,7 +34,7 @@ namespace Tongue
         
         private void OnDestroy()
         {
-            _playerInput.HitSetEvent -= OnHitSet;
+            _playerInput.HitSet -= OnHitSet;
             MoveEnded -= HideTongue;
         }
 
