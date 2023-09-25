@@ -29,9 +29,10 @@ namespace Settings
 
             for (int i = 1; i < rows.Length; i++)
             {
+                if (rows[i].Length < 1) break;
                 string[] columns = rows[i].Split(",");
                 var moveSpeed = float.Parse(columns[1], CultureInfo.InvariantCulture);
-                int.TryParse(columns[2], out int movePointsNumber);
+                uint.TryParse(columns[2], out uint movePointsNumber);
             
                 AddObject(enemyName:columns[0],
                     moveSpeed:moveSpeed,
@@ -59,7 +60,7 @@ namespace Settings
             }
         }
 
-        private void AddObject(string enemyName, float moveSpeed, int movePointsNumber)
+        private void AddObject(string enemyName, float moveSpeed, uint movePointsNumber)
         {
             EnemySettings enemySettings = CreateInstance<EnemySettings>();
             enemySettings.name = enemyName + "Settings";

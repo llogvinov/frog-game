@@ -29,8 +29,9 @@ namespace Settings
         
             string[] rows = _textAsset.text.Split("\n");
 
-            for (int i = 1; i < rows.Length - 1; i++)
+            for (int i = 1; i < rows.Length; i++)
             {
+                if (rows[i].Length < 1) break;
                 string[] columns = rows[i].Split(",");
                 var firstSpawnDelay = float.Parse(columns[1], CultureInfo.InvariantCulture);
                 var spawnDelay = float.Parse(columns[2], CultureInfo.InvariantCulture);

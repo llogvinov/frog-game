@@ -4,13 +4,17 @@ namespace Settings
 {
     public class EnemySettings : ScriptableObject
     {
-        [SerializeField] private string _name;
+        [SerializeField] private string _enemyName;
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private int _movePointsNumber;
+        [SerializeField] private uint _movePointsNumber;
 
-        public void Init(string enemyName, float moveSpeed, int movePointsNumber)
+        public string EnemyName => _enemyName;
+        public float MoveSpeed => _moveSpeed;
+        public uint MovePointsNumber => _movePointsNumber;
+
+        public void Init(string enemyName, float moveSpeed, uint movePointsNumber)
         {
-            _name = enemyName;
+            _enemyName = enemyName;
             _moveSpeed = moveSpeed;
             _movePointsNumber = movePointsNumber;
         }
