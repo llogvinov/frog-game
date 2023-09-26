@@ -9,12 +9,11 @@ namespace Core
     {
         public event Action MoveEnded; 
         
-        [SerializeField] private float _moveSpeed;
+        [SerializeField] protected float _moveSpeed;
         
         protected Queue<Vector3> MovePositions { get; set; }
         protected Vector3 OriginalPosition;
         protected Vector3 NextPosition;
-
         private Coroutine _moveCoroutine;
 
         private void Awake()

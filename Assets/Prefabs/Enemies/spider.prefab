@@ -161,8 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3982a09ded478db812d8a1a0929dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1.6
+  _moveSpeed: 1.7
   _movePositionNumber: 3
+  _enemySettingsGroup: {fileID: 11400000, guid: 9f4ecd09179c28041aff5973ca9bacab, type: 2}
 --- !u!1 &26350230982180970
 GameObject:
   m_ObjectHideFlags: 0

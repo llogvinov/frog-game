@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core;
+using Settings;
 using UnityEngine;
 
 namespace Enemy
@@ -7,15 +9,39 @@ namespace Enemy
     public abstract class EnemyMover : BasePathMover
     {
         [SerializeField] private uint _movePositionNumber;
-    
-        private bool _isFacingRight;
-
+        [Space]
+        [SerializeField] private EnemySettingsGroup _enemySettingsGroup;
+        
         protected uint MovePositionNumber => _movePositionNumber;
+
+        private EnemySettings MoveSettings
+        {
+            get
+            {
+                if (_moveSettings == null)
+                {
+                    _moveSettings = GetMoveSettings();
+                    if (_moveSettings == null)
+                        Debug.LogError("Move settings not found");
+                }
+                
+                return _moveSettings;
+            }
+        }
+        
+        private bool _isFacingRight;
+        private EnemySettings _moveSettings;
 
         public void Initialize()
         {
             SetPositions();
             MoveToNextPosition();
+        }
+
+        public void SetMoveSettings()
+        {
+            _moveSpeed = MoveSettings.MoveSpeed;
+            _movePositionNumber = MoveSettings.MovePointsNumber;
         }
     
         protected virtual void SetPositions()
@@ -67,5 +93,8 @@ namespace Enemy
             MovePositions.Enqueue(lastPosition);
         }
 
+        private EnemySettings GetMoveSettings() =>
+            _enemySettingsGroup.EnemySettingsList
+                .FirstOrDefault(spawnerSettings => gameObject.name.Contains(spawnerSettings.EnemyName));
     }
 }

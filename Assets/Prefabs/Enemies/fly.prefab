@@ -379,8 +379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d09834e966489d863f99f61eeec74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2.2
+  _moveSpeed: 3.2
   _movePositionNumber: 4
+  _enemySettingsGroup: {fileID: 11400000, guid: 9f4ecd09179c28041aff5973ca9bacab, type: 2}
 --- !u!1 &3652841202798767352
 GameObject:
   m_ObjectHideFlags: 0

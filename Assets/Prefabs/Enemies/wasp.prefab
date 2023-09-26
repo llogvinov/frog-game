@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 2.3
   _movePositionNumber: 3
+  _enemySettingsGroup: {fileID: 11400000, guid: 9f4ecd09179c28041aff5973ca9bacab, type: 2}
 --- !u!1 &9180516671598150140
 GameObject:
   m_ObjectHideFlags: 0
