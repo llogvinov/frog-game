@@ -1,8 +1,4 @@
-﻿using Core.AssetManagement;
-using Presenters.GamePresenters;
-using UnityEngine;
-
-namespace Core.StateMachine
+﻿namespace Core.StateMachine
 {
     public class GameLoopState : ISimpleState
     {
@@ -15,29 +11,15 @@ namespace Core.StateMachine
 
         public void Enter()
         {
-            GamePresenters.Instance.GameOverPresenter.MenuButton.onClick.AddListener(LoadMenu);
-            GamePresenters.Instance.GameOverPresenter.RestartButton.onClick.AddListener(RestartGame);
+            Game.GameOver += EnterGameOverState;
         }
 
         public void Exit()
         {
-            GamePresenters.Instance.GameOverPresenter.MenuButton.onClick.RemoveListener(LoadMenu);
-            GamePresenters.Instance.GameOverPresenter.RestartButton.onClick.RemoveListener(RestartGame);
-            
-            Object.Destroy(Game.Player.gameObject);
-            Object.Destroy(Game.FrogGirl.gameObject);
-
-            foreach (var spawner in Game.EnemySpawners)
-            {
-                spawner.ClearPool();
-                Object.Destroy(spawner.gameObject);
-            }
+            Game.GameOver -= EnterGameOverState;
         }
-
-        private void LoadMenu() 
-            => _stateMachine.Enter<LoadSceneState, string>(AssetPath.MenuScene);
-
-        private void RestartGame() 
-            => _stateMachine.Enter<LoadSceneState, string>(AssetPath.GameScene);
+        
+        private void EnterGameOverState()
+            => _stateMachine.Enter<GameOverState>();
     }
 }

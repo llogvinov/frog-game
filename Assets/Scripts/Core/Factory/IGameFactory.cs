@@ -5,8 +5,12 @@ namespace Core.Factory
 {
     public interface IGameFactory : IService
     {
-        Player.Player InstantiatePlayer();
-        FrogGirl.FrogGirl InstantiateFrogGirl();
-        List<EnemySpawner> InstantiateSpawners();
+        Player.Player Player { get; }
+        FrogGirl.FrogGirl FrogGirl { get; }
+        List<EnemySpawner> EnemySpawners { get; }
+        
+        void InstantiatePlayer();
+        void InstantiateFrogGirl();
+        void InstantiateSpawners();
     }
 }

@@ -15,13 +15,14 @@ namespace Core.StateMachine
         public GameStateMachine(Game game, SceneLoader sceneLoader, AllServices services)
         {
             _game = game;
-            _states = new List<IState>()
+            _states = new List<IState>
             {
                 new BootstrapState(this, services),
                 new MenuState(this),
                 new LoadSceneState(this, sceneLoader),
                 new PrepareGameState(this, services.Single<IGameFactory>()),
                 new GameLoopState(this),
+                new GameOverState(this, services.Single<IGameFactory>()),
             };
         }
 

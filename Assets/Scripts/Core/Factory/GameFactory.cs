@@ -8,18 +8,22 @@ namespace Core.Factory
     {
         private readonly IAssetProvider _assetProvider;
 
+        public Player.Player Player { get; private set; }
+        public FrogGirl.FrogGirl FrogGirl { get; private set; }
+        public List<EnemySpawner> EnemySpawners { get; private set; } = new();
+
         public GameFactory(IAssetProvider assetProvider)
         {
             _assetProvider = assetProvider;
         }
         
-        public Player.Player InstantiatePlayer() 
-            => _assetProvider.Instantiate(AssetPath.PlayerPrefabPath).GetComponent<Player.Player>();
+        public void InstantiatePlayer() 
+            => Player = _assetProvider.Instantiate(AssetPath.PlayerPrefabPath).GetComponent<Player.Player>();
 
-        public FrogGirl.FrogGirl InstantiateFrogGirl() 
-            => _assetProvider.Instantiate(AssetPath.FrogGirlPrefabPath).GetComponent<FrogGirl.FrogGirl>();
+        public void InstantiateFrogGirl() 
+            => FrogGirl = _assetProvider.Instantiate(AssetPath.FrogGirlPrefabPath).GetComponent<FrogGirl.FrogGirl>();
 
-        public List<EnemySpawner> InstantiateSpawners()
+        public void InstantiateSpawners()
         {
             List<EnemySpawner> enemySpawners = new ()
             {
@@ -32,7 +36,7 @@ namespace Core.Factory
             
             ActivateSpawners();
             
-            return enemySpawners;
+            EnemySpawners = enemySpawners;
             
             EnemySpawner InstantiateSpawner(string path) 
                 => _assetProvider.Instantiate(path).GetComponent<EnemySpawner>();

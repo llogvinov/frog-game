@@ -18,9 +18,9 @@ namespace Core.StateMachine
         {
             ManipulatePresentersOnEnter();
             
-            Game.Player = _gameFactory.InstantiatePlayer();
-            Game.FrogGirl = _gameFactory.InstantiateFrogGirl();
-            Game.EnemySpawners = _gameFactory.InstantiateSpawners();
+            _gameFactory.InstantiatePlayer();
+            _gameFactory.InstantiateFrogGirl();
+            _gameFactory.InstantiateSpawners();
 
             Game.GameOver += ManipulatePresentersOnGameOver;
             
