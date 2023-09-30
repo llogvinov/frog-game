@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Presenters
+namespace UI.Presenters
 {
     public class BasePresenter : MonoBehaviour
     {

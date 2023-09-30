@@ -1,46 +1,57 @@
 ﻿using Player;
 using Settings;
+using UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Presenters.GamePresenters
+namespace UI.Presenters.GamePresenters
 {
+    [RequireComponent(typeof(HealthView))]
     public class HealthPresenter : BasePresenter
     {
-        [SerializeField] private LayoutGroup _layoutGroup;
         [SerializeField] private HealthSettings _healthSettings;
         [Space]
         [SerializeField] private Image _iconPrefab;
         [SerializeField] private Sprite _fullHeart;
         [SerializeField] private Sprite _emptyHeart;
-
+        
+        private HealthView _healthView;
         private Image[] _icons;
 
         private void Awake()
         {
+            _healthView = GetComponent<HealthView>();
             _icons = new Image[_healthSettings.MaxHealth];
-            
-            for (int i = 0; i < _layoutGroup.transform.childCount; i++) 
-                Destroy(_layoutGroup.transform.GetChild(i).gameObject);
 
-            for (int i = 0; i < _icons.Length; i++) 
-                _icons[i] = Instantiate(_iconPrefab, _layoutGroup.transform);
+            PrepareLayoutGroup();
+
+            void PrepareLayoutGroup()
+            {
+                ClearLayoutGroup();
+                FillLayoutGroup();
+
+                void ClearLayoutGroup()
+                {
+                    for (int i = 0; i < _healthView.Group.transform.childCount; i++)
+                        Destroy(_healthView.Group.transform.GetChild(i).gameObject);
+                }
+
+                void FillLayoutGroup()
+                {
+                    for (int i = 0; i < _icons.Length; i++)
+                        _icons[i] = Instantiate(_iconPrefab, _healthView.Group.transform);
+                }
+            }
         }
 
-        private void Start()
-        {
+        private void Start() => 
             Health.OnHealthChanged += UpdateHealthUI;
-        }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() => 
             Health.OnHealthChanged -= UpdateHealthUI;
-        }
 
-        public void Init()
-        {
+        public void Init() => 
             UpdateHealthIcons(_healthSettings.MaxHealth);
-        }
 
         private void UpdateHealthUI(Health health) 
             => UpdateHealthIcons(health.CurrentHealth);

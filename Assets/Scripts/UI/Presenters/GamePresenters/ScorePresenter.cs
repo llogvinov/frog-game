@@ -1,33 +1,30 @@
-﻿using System.Collections;
-using Player;
-using TMPro;
+﻿using Player;
+using UI.Views;
 using UnityEngine;
 
-namespace Presenters.GamePresenters
+namespace UI.Presenters.GamePresenters
 {
+    [RequireComponent(typeof(ScoreView))]
     public class ScorePresenter : BasePresenter
     {
-        [SerializeField] private TMP_Text _scoreText;
+        private ScoreView _scoreView;
 
-        private void Start()
-        {
+        private void Awake() => 
+            _scoreView = GetComponent<ScoreView>();
+
+        private void Start() => 
             Score.OnScoreChanged += UpdateScoreUI;
-        }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() => 
             Score.OnScoreChanged -= UpdateScoreUI;
-        }
 
-        public void Init()
-        {
+        public void Init() => 
             UpdateScoreText(0);
-        }
 
         private void UpdateScoreUI(Score score) 
             => UpdateScoreText(score.CurrentScore);
 
         private void UpdateScoreText(int scoreValue) 
-            => _scoreText.text = scoreValue.ToString();
+            => _scoreView.ScoreText.text = scoreValue.ToString();
     }
 }

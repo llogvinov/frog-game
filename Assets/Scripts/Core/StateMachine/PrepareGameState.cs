@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Core.Factory;
 using Core.Loading.LocalProviders;
-using Presenters.GamePresenters;
+using UI.Presenters.GamePresenters;
 
 namespace Core.StateMachine
 {
