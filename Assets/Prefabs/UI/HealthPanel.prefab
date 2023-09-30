@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4361006837558749396}
   - component: {fileID: 4361006837558749387}
   - component: {fileID: 4361006837558749386}
+  - component: {fileID: 2873544137211482559}
   m_Layer: 5
-  m_Name: HealthCanvas
+  m_Name: HealthPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +102,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2873544137211482559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361006837558749385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aae5e590660407bb85f90dbf0c71b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiCanvas: {fileID: 4361006837558749396}
+  _layoutGroup: {fileID: 4361006837600111711}
+  _healthSettings: {fileID: 11400000, guid: 49557b7285372dd449e5e95c6fac3e4f, type: 2}
+  _iconPrefab: {fileID: 2730295375531655439, guid: 1f45aa19abe25c0498aa1ace9b8172b5, type: 3}
+  _fullHeart: {fileID: 21300000, guid: 99b675b1d630d48489be1d1ce720d9cd, type: 3}
+  _emptyHeart: {fileID: 21300000, guid: c77e3d6c980e5e14ba27ea476e32255e, type: 3}
 --- !u!1 &4361006837600111709
 GameObject:
   m_ObjectHideFlags: 0

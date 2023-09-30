@@ -1,4 +1,6 @@
-﻿using Core.Factory;
+﻿using System.Threading.Tasks;
+using Core.Factory;
+using Core.Loading.LocalProviders;
 using Presenters.GamePresenters;
 
 namespace Core.StateMachine
@@ -8,16 +10,23 @@ namespace Core.StateMachine
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
 
+        private HealthPanelProvider _healthPanelProvider;
+        private HealthPresenter _healthPresenter;
+
+        private ScorePanelProvider _scorePanelProvider;
+        private ScorePresenter _scorePresenter;
+
         public PrepareGameState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
         }
 
-        public void Enter()
+        public async void Enter()
         {
-            ManipulatePresentersOnEnter();
-            
+            await PrepareHealthPanel();
+            await PrepareScorePanel();
+
             _gameFactory.InstantiatePlayer();
             _gameFactory.InstantiateFrogGirl();
             _gameFactory.InstantiateSpawners();
@@ -32,24 +41,37 @@ namespace Core.StateMachine
             
         }
 
-        private void ManipulatePresentersOnEnter()
+        private async Task PrepareHealthPanel()
         {
-            GamePresenters.Instance.GameOverPresenter.Switch(false);
+            await LoadHealthPanel();
+            if (_healthPresenter != null)
+                _healthPresenter.Init();
             
-            GamePresenters.Instance.ScorePresenter.Switch(true);
-            GamePresenters.Instance.HealthPresenter.Switch(true);
-            
-            GamePresenters.Instance.ScorePresenter.Init();
-            GamePresenters.Instance.HealthPresenter.Init();
+            async Task LoadHealthPanel()
+            {
+                _healthPanelProvider = new HealthPanelProvider();
+                _healthPresenter = await _healthPanelProvider.Load();
+            }
         }
 
+        private async Task PrepareScorePanel()
+        {
+            await LoadScorePanel();
+            if (_scorePresenter != null)
+                _scorePresenter.Init();
+            
+            async Task LoadScorePanel()
+            {
+                _scorePanelProvider = new ScorePanelProvider();
+                _scorePresenter = await _scorePanelProvider.Load();
+            }
+        }
+        
         private void ManipulatePresentersOnGameOver()
         {
-            GamePresenters.Instance.ScorePresenter.Switch(false);
-            GamePresenters.Instance.HealthPresenter.Switch(false);
+            _healthPanelProvider.Unload();
+            _scorePanelProvider.Unload();
             GamePresenters.Instance.ComboPresenter.Switch(false);
-            
-            GamePresenters.Instance.GameOverPresenter.Switch(true);
         }
     }
 }

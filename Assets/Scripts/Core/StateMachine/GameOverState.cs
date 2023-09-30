@@ -1,5 +1,7 @@
-﻿using Core.AssetManagement;
+﻿using System.Threading.Tasks;
+using Core.AssetManagement;
 using Core.Factory;
+using Core.Loading.LocalProviders;
 using Presenters.GamePresenters;
 using UnityEngine;
 
@@ -10,16 +12,21 @@ namespace Core.StateMachine
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
 
+        private GameOverPanelProvider _gameOverPanelProvider;
+        private GameOverPresenter _gameOverPresenter;
+
         public GameOverState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
         }
 
-        public void Enter()
+        public async void Enter()
         {
-            GamePresenters.Instance.GameOverPresenter.MenuButton.onClick.AddListener(LoadMenu);
-            GamePresenters.Instance.GameOverPresenter.RestartButton.onClick.AddListener(RestartGame);
+            await LoadGameOverPanel();
+
+            _gameOverPresenter.MenuButton.onClick.AddListener(LoadMenu);
+            _gameOverPresenter.RestartButton.onClick.AddListener(RestartGame);
             
             Object.Destroy(_gameFactory.Player.gameObject);
             Object.Destroy(_gameFactory.FrogGirl.gameObject);
@@ -33,8 +40,15 @@ namespace Core.StateMachine
 
         public void Exit()
         {
-            GamePresenters.Instance.GameOverPresenter.MenuButton.onClick.RemoveListener(LoadMenu);
-            GamePresenters.Instance.GameOverPresenter.RestartButton.onClick.RemoveListener(RestartGame);
+            _gameOverPresenter.MenuButton.onClick.RemoveListener(LoadMenu);
+            _gameOverPresenter.RestartButton.onClick.RemoveListener(RestartGame);
+            _gameOverPanelProvider.Unload();
+        }
+
+        private async Task LoadGameOverPanel()
+        {
+            _gameOverPanelProvider = new GameOverPanelProvider();
+            _gameOverPresenter = await _gameOverPanelProvider.Load();
         }
 
         private void LoadMenu() 
