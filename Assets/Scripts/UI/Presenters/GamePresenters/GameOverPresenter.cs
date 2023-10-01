@@ -1,8 +1,7 @@
-﻿using UI.Presenters;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Presenters.GamePresenters
+namespace UI.Presenters.GamePresenters
 {
     public class GameOverPresenter : BasePresenter
     {
