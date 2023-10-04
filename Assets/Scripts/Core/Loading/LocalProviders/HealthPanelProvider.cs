@@ -1,5 +1,4 @@
-﻿using Presenters.GamePresenters;
-using UI.Presenters.GamePresenters;
+﻿using UI.Presenters.GamePresenters;
 
 namespace Core.Loading.LocalProviders
 {

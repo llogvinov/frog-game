@@ -1,6 +1,8 @@
-﻿namespace Views
+﻿using UI.Presenters;
+
+namespace Views
 {
-    public class LoadingScreenView
+    public class LoadingScreenView : BasePresenter
     {
         
     }

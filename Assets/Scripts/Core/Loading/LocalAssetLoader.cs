@@ -6,13 +6,14 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Core.Loading
 {
-    public abstract class LocalAssetLoader<T>
+    public abstract class LocalAssetLoader<T> where T : Component
     {
         private const byte LoadAttempts = 3;
         private const byte LoadTimeout = 3;
         
-        private GameObject _loadedObject;
+        private T _loadedObject;
 
+        public T LoadedObject => _loadedObject;
         protected abstract string AssetId { get; }
 
         public async Task<T> Load()
@@ -25,14 +26,14 @@ namespace Core.Loading
                 await handle.Task;
                 if (handle.Status == AsyncOperationStatus.Succeeded)
                 {
-                    _loadedObject = handle.Result;
-                    if (_loadedObject.TryGetComponent(out T loadedObject) == false)
+                    var loadedObject = handle.Result;
+                    if (loadedObject.TryGetComponent(out _loadedObject) == false)
                     {
                         throw new NullReferenceException(
                             $"Object of type {typeof(T)} is null on attempt to load it from addressables with key {AssetId}");
                     }
                     
-                    return loadedObject;
+                    return _loadedObject;
                 }
 
                 await Task.Delay(LoadTimeout * 1000);
@@ -46,8 +47,9 @@ namespace Core.Loading
         {
             if (_loadedObject == null) return;
 
-            _loadedObject.SetActive(false);
-            Addressables.ReleaseInstance(_loadedObject);
+            var loadedObject = _loadedObject.gameObject;
+            loadedObject.SetActive(false);
+            Addressables.ReleaseInstance(loadedObject);
             _loadedObject = null;
         }
     }
