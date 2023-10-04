@@ -43,10 +43,14 @@ namespace Core.Loading
             return default;
         }
 
-        public void Unload()
+        public void TryUnload()
         {
-            if (_loadedObject == null) return;
+            if (_loadedObject != null) 
+                Unload();
+        }
 
+        protected virtual void Unload()
+        {
             var loadedObject = _loadedObject.gameObject;
             loadedObject.SetActive(false);
             Addressables.ReleaseInstance(loadedObject);

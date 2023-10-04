@@ -40,7 +40,6 @@ namespace Core
             _game.StateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this);
-            DontDestroyOnLoad(_camera);
         }
     }
 }

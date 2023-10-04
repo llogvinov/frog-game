@@ -1,4 +1,5 @@
 ﻿using Core.AssetManagement;
+using Core.Loading.LocalProviders;
 using Presenters.MenuPresenters;
 
 namespace Core.StateMachine
@@ -6,14 +7,17 @@ namespace Core.StateMachine
     public class MenuState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
+        private readonly LoadingScreenProvider _loadingScreenProvider;
 
-        public MenuState(GameStateMachine stateMachine)
+        public MenuState(GameStateMachine stateMachine, LoadingScreenProvider loadingScreenProvider)
         {
             _stateMachine = stateMachine;
+            _loadingScreenProvider = loadingScreenProvider;
         }
 
         public void Enter()
         {
+            _loadingScreenProvider.TryUnload();
             MenuPresenters.Instance.PlayButton.onClick.AddListener(LoadGame);
         }
 

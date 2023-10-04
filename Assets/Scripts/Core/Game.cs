@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Loading.LocalProviders;
 using Core.StateMachine;
 
 namespace Core
@@ -13,7 +14,10 @@ namespace Core
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            _stateMachine = new GameStateMachine(this, new SceneLoader(coroutineRunner), AllServices.Container);
+            _stateMachine = new GameStateMachine(this, 
+                new LoadingScreenProvider(), 
+                new SceneLoader(coroutineRunner), 
+                AllServices.Container);
         }
 
     }

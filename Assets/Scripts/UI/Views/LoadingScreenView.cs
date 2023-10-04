@@ -1,8 +1,8 @@
 ﻿using UI.Presenters;
 
-namespace Views
+namespace UI.Views
 {
-    public class LoadingScreenView : BasePresenter
+    public class LoadingScreenView : BaseView
     {
         
     }

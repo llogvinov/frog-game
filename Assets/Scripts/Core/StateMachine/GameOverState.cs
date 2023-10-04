@@ -40,7 +40,7 @@ namespace Core.StateMachine
             
             _gameOverPanelProvider.LoadedObject.MenuButton.onClick.RemoveListener(LoadMenu);
             _gameOverPanelProvider.LoadedObject.RestartButton.onClick.RemoveListener(RestartGame);
-            _gameOverPanelProvider.Unload();
+            _gameOverPanelProvider.TryUnload();
         }
 
         private async Task LoadGameOverPanel()

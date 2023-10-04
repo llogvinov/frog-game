@@ -9,14 +9,17 @@ namespace Core.StateMachine
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
+        private readonly LoadingScreenProvider _loadingScreenProvider;
 
         private HealthPanelProvider _healthPanelProvider;
         private ScorePanelProvider _scorePanelProvider;
 
-        public PrepareGameState(GameStateMachine stateMachine, IGameFactory gameFactory)
+        public PrepareGameState(GameStateMachine stateMachine, IGameFactory gameFactory,
+            LoadingScreenProvider loadingScreenProvider)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
+            _loadingScreenProvider = loadingScreenProvider;
         }
 
         public async void Enter()
@@ -27,7 +30,7 @@ namespace Core.StateMachine
             _gameFactory.InstantiatePlayer();
             _gameFactory.InstantiateFrogGirl();
             _gameFactory.InstantiateSpawners();
-
+            
             Game.GameOver += ManipulatePresentersOnGameOver;
             
             _stateMachine.Enter<GameLoopState>();
@@ -35,7 +38,7 @@ namespace Core.StateMachine
 
         public void Exit()
         {
-            
+            _loadingScreenProvider.TryUnload();
         }
 
         private async Task PrepareHealthPanel()
@@ -66,8 +69,8 @@ namespace Core.StateMachine
 
         private void ManipulatePresentersOnGameOver()
         {
-            _healthPanelProvider.Unload();
-            _scorePanelProvider.Unload();
+            _healthPanelProvider.TryUnload();
+            _scorePanelProvider.TryUnload();
             GamePresenters.Instance.ComboPresenter.Switch(false);
         }
     }

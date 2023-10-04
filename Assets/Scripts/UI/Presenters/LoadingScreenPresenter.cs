@@ -1,7 +1,14 @@
-﻿namespace UI.Presenters
+﻿using UI.Views;
+using UnityEngine;
+
+namespace UI.Presenters
 {
-    public class LoadingScreenPresenter
+    [RequireComponent(typeof(LoadingScreenView))]
+    public class LoadingScreenPresenter : BasePresenter
     {
-        
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
     }
 }
