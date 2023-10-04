@@ -6,7 +6,7 @@ namespace UI.Views
     {
         [SerializeField] private Canvas _uiCanvas;
 
-        protected Canvas UICanvas => _uiCanvas;
+        public Canvas UICanvas => _uiCanvas;
 
     }
 }

@@ -18,7 +18,7 @@ namespace UI.Presenters.GamePresenters
         private HealthView _healthView;
         private Image[] _icons;
 
-        private void Awake()
+        protected override void Awake()
         {
             _healthView = GetComponent<HealthView>();
             _icons = new Image[_healthSettings.MaxHealth];

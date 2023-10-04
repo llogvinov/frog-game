@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Core;
 using PowerUps.TimePowerUps;
-using UI.Presenters;
+using Presenters.GamePresenters;
 using UnityEngine;
 
-namespace Presenters.GamePresenters
+namespace UI.Presenters.GamePresenters
 {
     public class TimerPresenter : BasePresenter
     {

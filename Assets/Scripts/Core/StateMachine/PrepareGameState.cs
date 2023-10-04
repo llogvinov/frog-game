@@ -2,6 +2,7 @@
 using Core.Factory;
 using Core.Loading.LocalProviders;
 using UI.Presenters.GamePresenters;
+using UnityEngine;
 
 namespace Core.StateMachine
 {
@@ -13,6 +14,7 @@ namespace Core.StateMachine
 
         private HealthPanelProvider _healthPanelProvider;
         private ScorePanelProvider _scorePanelProvider;
+        private ComboPanelProvider _comboPanelProvider;
 
         public PrepareGameState(GameStateMachine stateMachine, IGameFactory gameFactory,
             LoadingScreenProvider loadingScreenProvider)
@@ -26,12 +28,13 @@ namespace Core.StateMachine
         {
             await PrepareHealthPanel();
             await PrepareScorePanel();
+            await PrepareComboPanel();
 
             _gameFactory.InstantiatePlayer();
             _gameFactory.InstantiateFrogGirl();
             _gameFactory.InstantiateSpawners();
             
-            Game.GameOver += ManipulatePresentersOnGameOver;
+            Game.GameOver += OnGameOver;
             
             _stateMachine.Enter<GameLoopState>();
         }
@@ -67,11 +70,24 @@ namespace Core.StateMachine
             }
         }
 
-        private void ManipulatePresentersOnGameOver()
+        private async Task PrepareComboPanel()
+        {
+            await LoadComboPanel();
+            _comboPanelProvider?.LoadedObject.Init();
+            
+            async Task LoadComboPanel()
+            {
+                _comboPanelProvider = new ComboPanelProvider();
+                var loadTask = _comboPanelProvider.Load();
+                await loadTask;
+            }
+        }
+
+        private void OnGameOver()
         {
             _healthPanelProvider.TryUnload();
             _scorePanelProvider.TryUnload();
-            GamePresenters.Instance.ComboPresenter.Switch(false);
+            _comboPanelProvider.TryUnload();
         }
     }
 }

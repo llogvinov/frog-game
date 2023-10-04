@@ -1,15 +1,19 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using UI.Views;
+using UnityEngine;
 
 namespace UI.Presenters.GamePresenters
 {
+    [RequireComponent(typeof(GameOverView))]
     public class GameOverPresenter : BasePresenter
     {
-        [SerializeField] private Button _menuButton;
-        [SerializeField] private Button _restartButton;
+        private GameOverView _gameOverView;
 
-        public Button MenuButton => _menuButton;
+        public GameOverView View => _gameOverView;
 
-        public Button RestartButton => _restartButton;
+        protected override void Awake()
+        {
+            base.Awake();
+            _gameOverView = GetComponent<GameOverView>();
+        }
     }
 }

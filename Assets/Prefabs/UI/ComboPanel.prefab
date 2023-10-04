@@ -147,8 +147,10 @@ GameObject:
   - component: {fileID: 7925167127875120426}
   - component: {fileID: 7925167127875120427}
   - component: {fileID: 7925167127875120424}
+  - component: {fileID: 3235643263574462217}
+  - component: {fileID: 7925167127207963152}
   m_Layer: 0
-  m_Name: ComboCanvas
+  m_Name: ComboPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.23, y: -0.91}
+  m_AnchoredPosition: {x: -1.2299957, y: -0.91000366}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7925167127875120426
@@ -236,3 +238,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3235643263574462217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925167127875120430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8169980690c4442b907f74e75e951946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiCanvas: {fileID: 7925167127875120426}
+  _comboText: {fileID: 7925167126087295966}
+--- !u!114 &7925167127207963152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925167127875120430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e84b66465e4aa6a076afe148c50f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

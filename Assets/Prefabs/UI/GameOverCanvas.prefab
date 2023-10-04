@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 7451736769829529027}
   - component: {fileID: 7451736769829529026}
   - component: {fileID: 7451736769829529037}
+  - component: {fileID: 6089592335670136384}
   - component: {fileID: 593516113231383392}
   m_Layer: 5
   m_Name: GameOverCanvas
@@ -429,7 +430,7 @@ Canvas:
   m_GameObject: {fileID: 7451736769829529036}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -481,6 +482,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6089592335670136384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451736769829529036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7713928d87024c95a556c8caccbb191d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiCanvas: {fileID: 7451736769829529027}
+  _menuButton: {fileID: 7451736768293353166}
+  _restartButton: {fileID: 7451736768436681578}
 --- !u!114 &593516113231383392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +509,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f206afb72c4849deb2d59584e8c5cb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiCanvas: {fileID: 7451736769829529027}
-  _menuButton: {fileID: 7451736768293353166}
-  _restartButton: {fileID: 7451736768436681578}

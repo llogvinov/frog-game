@@ -1,35 +1,44 @@
 ﻿using System.Collections;
-using TMPro;
 using Tongue;
-using UI.Presenters;
+using UI.Views;
 using UnityEngine;
 
-namespace Presenters.GamePresenters
+namespace UI.Presenters.GamePresenters
 {
+    [RequireComponent(typeof(ComboView))]
     public class ComboPresenter : BasePresenter
     {
-        [SerializeField] private TMP_Text _comboText;
+        private ComboView _comboView;
 
-        private void Start()
+        public ComboView View => _comboView;
+
+        protected override void Awake()
         {
-            Switch(false);
-            HitTargetHandler.ComboDone += ShowComboUI;
+            base.Awake();
+            _comboView = GetComponent<ComboView>();
         }
 
-        private void OnDestroy()
-        {
+        private void Start() => 
+            HitTargetHandler.ComboDone += ShowComboUI;
+
+        private void OnDestroy() => 
             HitTargetHandler.ComboDone -= ShowComboUI;
+        
+        public void Init()
+        {
+            _comboView.UICanvas.worldCamera = Camera.main;
+            Switch(false);
         }
 
         private void ShowComboUI(int comboValue)
         {
-            _comboText.text = $"X{comboValue.ToString()} COMBO";
+            _comboView.ComboText.text = $"X{comboValue.ToString()} COMBO";
+            Switch(true);
             StartCoroutine(ShowComboUICoroutine());
         }
 
         private IEnumerator ShowComboUICoroutine()
         {
-            Switch(true);
             yield return new WaitForSeconds(1f);
             Switch(false);
         }

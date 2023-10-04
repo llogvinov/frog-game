@@ -6,7 +6,7 @@ namespace UI.Presenters
     [RequireComponent(typeof(LoadingScreenView))]
     public class LoadingScreenPresenter : BasePresenter
     {
-        private void Awake()
+        protected override void Awake()
         {
             DontDestroyOnLoad(this);
         }

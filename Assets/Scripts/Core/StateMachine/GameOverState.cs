@@ -2,6 +2,7 @@
 using Core.AssetManagement;
 using Core.Factory;
 using Core.Loading.LocalProviders;
+using UI.Views;
 using UnityEngine;
 
 namespace Core.StateMachine
@@ -13,6 +14,8 @@ namespace Core.StateMachine
 
         private GameOverPanelProvider _gameOverPanelProvider;
 
+        private GameOverView GameOverView => _gameOverPanelProvider.LoadedObject.View;
+
         public GameOverState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
             _stateMachine = stateMachine;
@@ -23,8 +26,8 @@ namespace Core.StateMachine
         {
             await LoadGameOverPanel();
 
-            _gameOverPanelProvider.LoadedObject.MenuButton.onClick.AddListener(LoadMenu);
-            _gameOverPanelProvider.LoadedObject.RestartButton.onClick.AddListener(RestartGame);
+            GameOverView.MenuButton.onClick.AddListener(LoadMenu);
+            GameOverView.RestartButton.onClick.AddListener(RestartGame);
         }
 
         public void Exit()
@@ -38,8 +41,8 @@ namespace Core.StateMachine
                 Object.Destroy(spawner.gameObject);
             }
             
-            _gameOverPanelProvider.LoadedObject.MenuButton.onClick.RemoveListener(LoadMenu);
-            _gameOverPanelProvider.LoadedObject.RestartButton.onClick.RemoveListener(RestartGame);
+            GameOverView.MenuButton.onClick.RemoveListener(LoadMenu);
+            GameOverView.RestartButton.onClick.RemoveListener(RestartGame);
             _gameOverPanelProvider.TryUnload();
         }
 

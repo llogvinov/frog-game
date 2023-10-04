@@ -1,5 +1,4 @@
 using Core;
-using Presenters.GamePresenters;
 using UnityEngine;
 
 namespace UI.Presenters.GamePresenters

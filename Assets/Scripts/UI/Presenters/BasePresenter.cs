@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿using UI.Views;
+using UnityEngine;
 
 namespace UI.Presenters
 {
+    [RequireComponent(typeof(BaseView))]
     public class BasePresenter : MonoBehaviour
     {
-        [SerializeField] private Canvas _uiCanvas;
+        private BaseView _baseView;
+        
+        protected virtual void Awake() => 
+            _baseView = GetComponent<BaseView>();
 
-        protected Canvas UICanvas => _uiCanvas;
-
-        public void Switch(bool enable) => _uiCanvas.gameObject.SetActive(enable);
+        public void Switch(bool enable) => 
+            _baseView.UICanvas.gameObject.SetActive(enable);
     }
 }

@@ -9,7 +9,7 @@ namespace UI.Presenters.GamePresenters
     {
         private ScoreView _scoreView;
 
-        private void Awake() => 
+        protected override void Awake() => 
             _scoreView = GetComponent<ScoreView>();
 
         private void Start() => 
