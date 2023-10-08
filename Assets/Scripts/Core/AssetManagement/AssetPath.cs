@@ -16,5 +16,6 @@
         public const string DragonflySpawnerPrefabPath = "GameObjects/Spawners/EnemySpawners/DragonflySpawner";
         public const string WaspSpawnerPrefabPath = "GameObjects/Spawners/EnemySpawners/WaspSpawner";
         public const string SpiderSpawnerPrefabPath = "GameObjects/Spawners/EnemySpawners/SpiderSpawner";
+        public const string ButterflySpawnerPrefabPath = "GameObjects/Spawners/EnemySpawners/ButterflySpawner";
     }
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace PowerUps.TimePowerUps
 {
-    public abstract class TimePowerUp
+    public abstract class TimePowerUp : IPowerUp
     {
         public static event Action<TimePowerUp, float> AnyTimePowerUpStarted;
         

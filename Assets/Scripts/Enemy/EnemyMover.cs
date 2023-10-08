@@ -37,7 +37,7 @@ namespace Enemy
             SetPositions();
             MoveToNextPosition();
         }
-
+        
         public void SetMoveSettings()
         {
             _moveSpeed = MoveSettings.MoveSpeed;

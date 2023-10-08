@@ -32,6 +32,7 @@ namespace Core.Factory
                 InstantiateSpawner(AssetPath.DragonflySpawnerPrefabPath),
                 InstantiateSpawner(AssetPath.WaspSpawnerPrefabPath),
                 InstantiateSpawner(AssetPath.SpiderSpawnerPrefabPath),
+                InstantiateSpawner(AssetPath.ButterflySpawnerPrefabPath),
             };
             
             ActivateSpawners();
