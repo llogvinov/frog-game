@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Core
+namespace Core.Pooling
 {
     public class PooledObject : MonoBehaviour
     {
