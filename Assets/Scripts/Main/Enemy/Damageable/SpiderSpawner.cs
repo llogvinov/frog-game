@@ -1,7 +1,7 @@
 ﻿using Core;
 using UnityEngine;
 
-namespace Enemy.Damageable
+namespace Main.Enemy.Damageable
 {
     public class SpiderSpawner : EnemySpawner
     {

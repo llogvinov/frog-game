@@ -1,4 +1,4 @@
-﻿namespace Enemy.Eatable
+﻿namespace Main.Enemy.Eatable
 {
     public class EatableEnemy : Enemy
     {

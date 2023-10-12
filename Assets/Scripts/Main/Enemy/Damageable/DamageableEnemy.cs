@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Damageable
+namespace Main.Enemy.Damageable
 {
     public class DamageableEnemy : Enemy
     {

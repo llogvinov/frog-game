@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Eatable
+namespace Main.Enemy.Eatable
 {
     public class Eatable : MonoBehaviour
     {

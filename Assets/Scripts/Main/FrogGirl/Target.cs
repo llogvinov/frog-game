@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Enemy;
-using Enemy.Eatable;
+using Main.Enemy.Eatable;
 using UnityEngine;
 
-namespace FrogGirl
+namespace Main.FrogGirl
 {
     public class Target : MonoBehaviour
     {

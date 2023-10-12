@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Core;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-namespace FrogGirl
+namespace Main.FrogGirl
 {
-    public class FrogGirl : MonoBehaviour
+    public class Girl : MonoBehaviour
     {
         [SerializeField] private Target[] _targets;
 

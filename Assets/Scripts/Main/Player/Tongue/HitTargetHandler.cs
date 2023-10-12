@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Core;
 using Core.Factory;
-using Enemy.Damageable;
-using Enemy.Eatable;
+using Main.Enemy.Damageable;
+using Main.Enemy.Eatable;
 using PowerUps.TimePowerUps;
 using UnityEngine;
 
-namespace Tongue
+namespace Main.Player.Tongue
 {
     [RequireComponent(typeof(Collider2D))]
     public class HitTargetHandler : MonoBehaviour
@@ -105,7 +105,7 @@ namespace Tongue
             {
                 if (enemy.TryGetComponent(out PowerUpEnemy powerUpEnemy))
                 {
-                    var score = AllServices.Container.Single<IGameFactory>().Player.Score;
+                    var score = AllServices.Container.Single<IGameFactory>().Frog.Score;
                     powerUpEnemy.DoPowerUp(new ScoreMultiplierPowerUp(score, 2f, 10f));
                 }
                 if (enemy.TryGetComponent(out Eatable eatable))

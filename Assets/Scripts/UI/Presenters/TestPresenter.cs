@@ -33,28 +33,28 @@ namespace UI.Presenters
         private void AddHealth()
         {
             var healthPowerUp = new HealthPowerUp
-                (AllServices.Container.Single<IGameFactory>().Player.Health, 1);
+                (AllServices.Container.Single<IGameFactory>().Frog.Health, 1);
             healthPowerUp.Apply();
         }
 
         private void ReleaseEnemies()
         {
             var releaseEnemiesPowerUp = new ReleaseEnemiesPowerUp
-                (AllServices.Container.Single<IGameFactory>().FrogGirl.Targets);
+                (AllServices.Container.Single<IGameFactory>().Girl.Targets);
             releaseEnemiesPowerUp.Apply();
         }
 
         private async void MultiplyScore()
         {
             var scoreMultiplierPowerUp = new ScoreMultiplierPowerUp
-                (AllServices.Container.Single<IGameFactory>().Player.Score, 2f, 10f);
+                (AllServices.Container.Single<IGameFactory>().Frog.Score, 2f, 10f);
             await scoreMultiplierPowerUp.Activate();
         }
 
         private async void ScaleTongue()
         {
             var tongueHeadScalerPowerUp = new TongueHeadScalerPowerUp
-                (AllServices.Container.Single<IGameFactory>().Player.TongueHead, 0.4f, 7f);
+                (AllServices.Container.Single<IGameFactory>().Frog.TongueHead, 0.4f, 7f);
             await tongueHeadScalerPowerUp.Activate();
         }
     }

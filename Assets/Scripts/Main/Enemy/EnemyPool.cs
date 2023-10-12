@@ -1,6 +1,6 @@
 ﻿using Core;
 
-namespace Enemy
+namespace Main.Enemy
 {
     public class EnemyPool : ObjectPool
     {

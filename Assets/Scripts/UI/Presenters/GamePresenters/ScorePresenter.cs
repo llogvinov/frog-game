@@ -1,4 +1,4 @@
-﻿using Player;
+﻿using Main.Player;
 using UI.Views;
 using UnityEngine;
 

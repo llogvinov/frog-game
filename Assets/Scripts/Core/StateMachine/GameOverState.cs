@@ -32,8 +32,8 @@ namespace Core.StateMachine
 
         public void Exit()
         {
-            Object.Destroy(_gameFactory.Player.gameObject);
-            Object.Destroy(_gameFactory.FrogGirl.gameObject);
+            Object.Destroy(_gameFactory.Frog.gameObject);
+            Object.Destroy(_gameFactory.Girl.gameObject);
 
             foreach (var spawner in _gameFactory.EnemySpawners)
             {

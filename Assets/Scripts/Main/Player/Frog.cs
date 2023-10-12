@@ -1,10 +1,10 @@
-﻿using Settings;
-using Tongue;
+﻿using Main.Player.Tongue;
+using Settings;
 using UnityEngine;
 
-namespace Player
+namespace Main.Player
 {
-    public class Player : MonoBehaviour
+    public class Frog : MonoBehaviour
     {
         [SerializeField] private HealthSettings _healthSettings;
 

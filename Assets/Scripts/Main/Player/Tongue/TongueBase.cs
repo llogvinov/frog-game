@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Tongue
+namespace Main.Player.Tongue
 {
     public class TongueBase : MonoBehaviour
     {

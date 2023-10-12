@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Core.AssetManagement;
-using Enemy;
+using Main.Enemy;
+using Main.FrogGirl;
+using Main.Player;
 
 namespace Core.Factory
 {
@@ -8,8 +10,8 @@ namespace Core.Factory
     {
         private readonly IAssetProvider _assetProvider;
 
-        public Player.Player Player { get; private set; }
-        public FrogGirl.FrogGirl FrogGirl { get; private set; }
+        public Frog Frog { get; private set; }
+        public Girl Girl { get; private set; }
         public List<EnemySpawner> EnemySpawners { get; private set; } = new();
 
         public GameFactory(IAssetProvider assetProvider)
@@ -18,10 +20,10 @@ namespace Core.Factory
         }
         
         public void InstantiatePlayer() 
-            => Player = _assetProvider.Instantiate(AssetPath.PlayerPrefabPath).GetComponent<Player.Player>();
+            => Frog = _assetProvider.Instantiate(AssetPath.PlayerPrefabPath).GetComponent<Frog>();
 
         public void InstantiateFrogGirl() 
-            => FrogGirl = _assetProvider.Instantiate(AssetPath.FrogGirlPrefabPath).GetComponent<FrogGirl.FrogGirl>();
+            => Girl = _assetProvider.Instantiate(AssetPath.FrogGirlPrefabPath).GetComponent<Girl>();
 
         public void InstantiateSpawners()
         {

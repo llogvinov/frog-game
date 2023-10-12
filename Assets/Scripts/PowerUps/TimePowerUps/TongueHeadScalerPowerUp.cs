@@ -1,4 +1,4 @@
-﻿using Tongue;
+﻿using Main.Player.Tongue;
 
 namespace PowerUps.TimePowerUps
 {

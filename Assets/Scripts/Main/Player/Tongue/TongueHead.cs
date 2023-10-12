@@ -4,7 +4,7 @@ using Core;
 using Core.InputService;
 using UnityEngine;
 
-namespace Tongue
+namespace Main.Player.Tongue
 {
     public class TongueHead : BasePathMover
     {

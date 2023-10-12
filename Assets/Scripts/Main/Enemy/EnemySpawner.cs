@@ -4,7 +4,7 @@ using Core;
 using Settings;
 using UnityEngine;
 
-namespace Enemy
+namespace Main.Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {

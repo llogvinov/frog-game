@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
-using Enemy;
+using Main.Enemy;
+using Main.FrogGirl;
+using Main.Player;
 
 namespace Core.Factory
 {
     public interface IGameFactory : IService
     {
-        Player.Player Player { get; }
-        FrogGirl.FrogGirl FrogGirl { get; }
+        Frog Frog { get; }
+        Girl Girl { get; }
         List<EnemySpawner> EnemySpawners { get; }
         
         void InstantiatePlayer();

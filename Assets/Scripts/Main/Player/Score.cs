@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Player
+namespace Main.Player
 {
     public class Score
     {

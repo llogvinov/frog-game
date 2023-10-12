@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using Core;
 using Core.Factory;
-using FrogGirl;
+using Main.FrogGirl;
 using UnityEngine;
 
-namespace Enemy.Eatable
+namespace Main.Enemy.Eatable
 {
     public class EatableEnemyMover : EnemyMover
     {
-        private FrogGirl.FrogGirl _frogGirl;
+        private Girl _girl;
         private Target _target;
 
         public Action ReleaseStarted;
@@ -29,7 +29,7 @@ namespace Enemy.Eatable
 
         private void Init()
         {
-            _frogGirl = AllServices.Container.Single<IGameFactory>().FrogGirl;
+            _girl = AllServices.Container.Single<IGameFactory>().Girl;
         }
         
         public void ReleaseEnemyFromTarget()
@@ -55,7 +55,7 @@ namespace Enemy.Eatable
 
         protected override void AddFinalPosition()
         {
-            _target = _frogGirl.GetTarget();
+            _target = _girl.GetTarget();
             var lastPosition = _target.Position;
             MovePositions.Enqueue(lastPosition);
         }

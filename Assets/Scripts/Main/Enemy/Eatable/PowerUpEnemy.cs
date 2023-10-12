@@ -3,7 +3,7 @@ using PowerUps.ActivatedPowerUps;
 using PowerUps.TimePowerUps;
 using UnityEngine;
 
-namespace Enemy.Eatable
+namespace Main.Enemy.Eatable
 {
     public class PowerUpEnemy : MonoBehaviour
     {

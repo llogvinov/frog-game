@@ -1,7 +1,7 @@
 ﻿using System;
 using Core;
 
-namespace Player
+namespace Main.Player
 {
     public class Health
     {

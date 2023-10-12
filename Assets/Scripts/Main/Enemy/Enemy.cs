@@ -1,7 +1,7 @@
 ﻿using Core;
 using UnityEngine;
 
-namespace Enemy
+namespace Main.Enemy
 {
     public abstract class Enemy : PooledObject
     {

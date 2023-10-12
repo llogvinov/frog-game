@@ -1,4 +1,4 @@
-﻿using FrogGirl;
+﻿using Main.FrogGirl;
 
 namespace PowerUps.ActivatedPowerUps
 {
