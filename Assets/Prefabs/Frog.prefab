@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 7239537570795793329}
   - component: {fileID: 7781417090898658565}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

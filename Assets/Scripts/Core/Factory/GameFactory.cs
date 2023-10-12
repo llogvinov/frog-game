@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Core.AssetManagement;
 using Main.Enemy;
 using Main.FrogGirl;
@@ -12,41 +13,40 @@ namespace Core.Factory
 
         public Frog Frog { get; private set; }
         public Girl Girl { get; private set; }
-        public List<EnemySpawner> EnemySpawners { get; private set; } = new();
+        public List<EnemySpawner> EnemySpawners { get; private set; }
 
         public GameFactory(IAssetProvider assetProvider)
         {
             _assetProvider = assetProvider;
         }
         
-        public void InstantiatePlayer() 
-            => Frog = _assetProvider.Instantiate(AssetPath.PlayerPrefabPath).GetComponent<Frog>();
-
-        public void InstantiateFrogGirl() 
-            => Girl = _assetProvider.Instantiate(AssetPath.FrogGirlPrefabPath).GetComponent<Girl>();
-
-        public void InstantiateSpawners()
+        public async Task InstantiatePlayer()
         {
-            List<EnemySpawner> enemySpawners = new ()
+            var task = _assetProvider.FrogProvider.Load();
+            Frog = await task;
+        }
+
+        public async Task InstantiateFrogGirl()
+        {
+            var task = _assetProvider.GirlProvider.Load();
+            Girl = await task;
+        }
+
+        public async Task InstantiateSpawners()
+        {
+            EnemySpawners = new List<EnemySpawner>
             {
-                InstantiateSpawner(AssetPath.FlySpawnerPrefabPath),
-                InstantiateSpawner(AssetPath.MosquitoSpawnerPrefabPath),
-                InstantiateSpawner(AssetPath.DragonflySpawnerPrefabPath),
-                InstantiateSpawner(AssetPath.WaspSpawnerPrefabPath),
-                InstantiateSpawner(AssetPath.SpiderSpawnerPrefabPath),
-                InstantiateSpawner(AssetPath.ButterflySpawnerPrefabPath),
+                await _assetProvider.FlySpawnerProvider.Load(),
+                await _assetProvider.MosquitoSpawnerProvider.Load(),
+                await _assetProvider.DragonflySpawnerProvider.Load(),
+                await _assetProvider.WaspSpawnerProvider.Load(),
+                await _assetProvider.SpiderSpawnerProvider.Load(),
             };
-            
             ActivateSpawners();
-            
-            EnemySpawners = enemySpawners;
-            
-            EnemySpawner InstantiateSpawner(string path) 
-                => _assetProvider.Instantiate(path).GetComponent<EnemySpawner>();
 
             void ActivateSpawners()
             {
-                foreach (var spawner in enemySpawners) 
+                foreach (var spawner in EnemySpawners) 
                     spawner.Activate();
             }
         }

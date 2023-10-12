@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Core.AssetManagement;
-using Core.Loading.LocalProviders;
+using Core.AssetManagement.Loading.LocalProviders;
 
 namespace Core.StateMachine
 {

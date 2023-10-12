@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Core.AssetManagement;
+using Core.AssetManagement.Loading.LocalProviders;
 using Core.Factory;
-using Core.Loading.LocalProviders;
 using UnityEngine;
 
 namespace Core.StateMachine
@@ -23,7 +24,7 @@ namespace Core.StateMachine
                 new LoadSceneState(this, sceneLoader, loadingScreenProvider),
                 new PrepareGameState(this, services.Single<IGameFactory>(), loadingScreenProvider),
                 new GameLoopState(this),
-                new GameOverState(this, services.Single<IGameFactory>()),
+                new GameOverState(this, services.Single<IGameFactory>(), services.Single<IAssetProvider>()),
             };
         }
 

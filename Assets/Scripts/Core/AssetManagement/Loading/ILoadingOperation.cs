@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Core.Loading
+namespace Core.AssetManagement.Loading
 {
     public interface ILoadingOperation
     {

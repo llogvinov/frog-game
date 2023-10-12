@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Core.Loading
+namespace Core.AssetManagement.Loading
 {
     public abstract class LocalAssetLoader<T> where T : Component
     {

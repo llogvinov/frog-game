@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4106953106233295029}
   - component: {fileID: 4106953106233295028}
   m_Layer: 0
-  m_Name: FrogGirl
+  m_Name: Girl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

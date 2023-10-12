@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Core.AssetManagement.Loading.LocalProviders;
 using Core.Factory;
-using Core.Loading.LocalProviders;
-using UI.Presenters.GamePresenters;
-using UnityEngine;
 
 namespace Core.StateMachine
 {
@@ -26,14 +24,14 @@ namespace Core.StateMachine
 
         public async void Enter()
         {
+            await _gameFactory.InstantiatePlayer();
+            await _gameFactory.InstantiateFrogGirl();
+            await _gameFactory.InstantiateSpawners();
+            
             await PrepareHealthPanel();
             await PrepareScorePanel();
             await PrepareComboPanel();
 
-            _gameFactory.InstantiatePlayer();
-            _gameFactory.InstantiateFrogGirl();
-            _gameFactory.InstantiateSpawners();
-            
             Game.GameOver += OnGameOver;
             
             _stateMachine.Enter<GameLoopState>();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Main.Enemy;
 using Main.FrogGirl;
 using Main.Player;
@@ -11,8 +12,8 @@ namespace Core.Factory
         Girl Girl { get; }
         List<EnemySpawner> EnemySpawners { get; }
         
-        void InstantiatePlayer();
-        void InstantiateFrogGirl();
-        void InstantiateSpawners();
+        Task InstantiatePlayer();
+        Task InstantiateFrogGirl();
+        Task InstantiateSpawners();
     }
 }

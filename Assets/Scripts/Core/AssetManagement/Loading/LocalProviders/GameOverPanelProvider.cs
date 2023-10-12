@@ -1,6 +1,6 @@
 ﻿using UI.Presenters.GamePresenters;
 
-namespace Core.Loading.LocalProviders
+namespace Core.AssetManagement.Loading.LocalProviders
 {
     public class GameOverPanelProvider : LocalAssetLoader<GameOverPresenter>
     {

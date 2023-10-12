@@ -1,5 +1,5 @@
 ﻿using Core.AssetManagement;
-using Core.Loading.LocalProviders;
+using Core.AssetManagement.Loading.LocalProviders;
 using Presenters.MenuPresenters;
 
 namespace Core.StateMachine

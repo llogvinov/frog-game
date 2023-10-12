@@ -1,5 +1,5 @@
 ﻿using System;
-using Core.Loading.LocalProviders;
+using Core.AssetManagement.Loading.LocalProviders;
 using Core.StateMachine;
 
 namespace Core
