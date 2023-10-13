@@ -9,8 +9,11 @@ namespace UI.Presenters.GamePresenters
     {
         private ScoreView _scoreView;
 
-        protected override void Awake() => 
+        protected override void Awake()
+        {
+            base.Awake();
             _scoreView = GetComponent<ScoreView>();
+        }
 
         private void Start() => 
             Score.OnScoreChanged += UpdateScoreUI;

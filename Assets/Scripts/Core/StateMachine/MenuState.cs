@@ -1,6 +1,8 @@
-﻿using Core.AssetManagement;
+﻿using System.Threading.Tasks;
+using Core.AssetManagement;
 using Core.AssetManagement.Loading.LocalProviders;
-using Presenters.MenuPresenters;
+using UI.Presenters.MenuPresenters;
+using UI.Views;
 
 namespace Core.StateMachine
 {
@@ -9,26 +11,37 @@ namespace Core.StateMachine
         private readonly GameStateMachine _stateMachine;
         private readonly LoadingScreenProvider _loadingScreenProvider;
 
+        private MenuScreenProvider _menuScreenProvider;
+        private MenuView MenuView => _menuScreenProvider.LoadedObject.View;
+
         public MenuState(GameStateMachine stateMachine, LoadingScreenProvider loadingScreenProvider)
         {
             _stateMachine = stateMachine;
             _loadingScreenProvider = loadingScreenProvider;
         }
 
-        public void Enter()
+        public async void Enter()
         {
+            await LoadMenuScreen();
             _loadingScreenProvider.TryUnload();
-            MenuPresenters.Instance.PlayButton.onClick.AddListener(LoadGame);
+            MenuView.PlayButton.onClick.AddListener(LoadGame);
         }
 
         public void Exit()
         {
-            
+            _menuScreenProvider.TryUnload();
+        }
+        
+        private async Task LoadMenuScreen()
+        {
+            _menuScreenProvider = new MenuScreenProvider();
+            var loadTask = _menuScreenProvider.Load();
+            await loadTask;
         }
 
         private void LoadGame()
         {
-            MenuPresenters.Instance.PlayButton.onClick.RemoveListener(LoadGame);
+            MenuView.PlayButton.onClick.RemoveListener(LoadGame);
             _stateMachine.Enter<LoadSceneState, string>(AssetPath.GameScene);
         }
     }

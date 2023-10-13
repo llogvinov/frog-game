@@ -11,6 +11,7 @@
         public static string WaspSpawner => "WaspSpawner";
         public static string SpiderSpawner => "SpiderSpawner";
         
+        public static string MenuScreen => "MenuScreen";
         public static string LoadingScreen => "LoadingScreen";
         public static string ComboPanel => "ComboPanel";
         public static string HealthPanel => "HealthPanel";

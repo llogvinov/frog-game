@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4566390681922652667}
   - component: {fileID: 4566390681922652666}
   - component: {fileID: 4566390681922652665}
+  - component: {fileID: 4566390682857057733}
+  - component: {fileID: 4566390682857057732}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -103,6 +105,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4566390682857057733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566390681922652664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c701a06cb7874421a3c0f30461e15ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiCanvas: {fileID: 4566390681922652667}
+  _playButton: {fileID: 4566390682467206928}
+--- !u!114 &4566390682857057732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566390681922652664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8459b33a4a354521963e79b9b92e2eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4566390682467206926
 GameObject:
   m_ObjectHideFlags: 0

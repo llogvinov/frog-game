@@ -1,26 +1,22 @@
 ﻿using System.Threading.Tasks;
 using Core.AssetManagement;
 using Core.AssetManagement.Loading.LocalProviders;
-using Core.Factory;
 using UI.Views;
-using UnityEngine;
 
 namespace Core.StateMachine
 {
     public class GameOverState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
-        private readonly IGameFactory _gameFactory;
         private readonly IAssetProvider _assetProvider;
 
         private GameOverPanelProvider _gameOverPanelProvider;
 
         private GameOverView GameOverView => _gameOverPanelProvider.LoadedObject.View;
 
-        public GameOverState(GameStateMachine stateMachine, IGameFactory gameFactory, IAssetProvider assetProvider)
+        public GameOverState(GameStateMachine stateMachine, IAssetProvider assetProvider)
         {
             _stateMachine = stateMachine;
-            _gameFactory = gameFactory;
             _assetProvider = assetProvider;
         }
 
