@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Core.AssetManagement;
 using Core.AssetManagement.Loading.LocalProviders;
-using UI.Presenters.MenuPresenters;
 using UI.Views;
 
 namespace Core.StateMachine
