@@ -34,6 +34,7 @@ namespace Main.Enemy
 
         public void Initialize()
         {
+            _isFacingRight = false;
             SetPositions();
             MoveToNextPosition();
         }

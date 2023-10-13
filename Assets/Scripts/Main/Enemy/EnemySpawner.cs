@@ -35,13 +35,13 @@ namespace Main.Enemy
         private void Start()
         {
             Game.GameOver += StopSpawnEnemy;
-            _enemyPool.ObjectReturned += ResetParent;
+            _enemyPool.ObjectReturned += ResetEnemy;
         }
         
         private void OnDestroy()
         {
             Game.GameOver -= StopSpawnEnemy;
-            _enemyPool.ObjectReturned -= ResetParent;
+            _enemyPool.ObjectReturned -= ResetEnemy;
         }
 
         public void Activate()
@@ -91,8 +91,11 @@ namespace Main.Enemy
             _spawnerSettingsGroup.EnemySpawnerSettingsList
                 .FirstOrDefault(spawnerSettings => gameObject.name.Contains(spawnerSettings.SpawningObject));
 
-        private void ResetParent(PooledObject pooledObject) => 
+        private void ResetEnemy(PooledObject pooledObject)
+        {
             pooledObject.transform.parent = _enemyPool.transform;
+            pooledObject.transform.localScale = Vector3.one;
+        }
     }
 }
 
