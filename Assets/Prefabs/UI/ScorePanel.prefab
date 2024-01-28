@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 1157267170374342707}
   - component: {fileID: 1157267170374342706}
   - component: {fileID: 1157267170374342705}
-  - component: {fileID: 6158873461231692458}
-  - component: {fileID: 550758856181025082}
+  - component: {fileID: 4074754563558178807}
   m_Layer: 5
   m_Name: ScorePanel
   m_TagString: Untagged
@@ -35,7 +34,6 @@ RectTransform:
   m_Children:
   - {fileID: 1157267171237216443}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -59,7 +57,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6158873461231692458
+--- !u!114 &4074754563558178807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,24 +112,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1157267170374342704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a28eaea22214387b04cf6090f27bb43, type: 3}
+  m_Script: {fileID: 11500000, guid: 650a10eae04248ba8749b2cf170d264c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiCanvas: {fileID: 1157267170374342707}
   _scoreText: {fileID: 1157267171237216436}
---- !u!114 &550758856181025082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1157267170374342704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b79a186b0d5421297ccb50d32c1cf49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiCanvas: {fileID: 1157267170374342707}
 --- !u!1 &1157267171237216442
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +147,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1157267170374342732}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}

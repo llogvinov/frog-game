@@ -1,8 +1,8 @@
-﻿using UI.Presenters.GamePresenters;
+﻿using UI;
 
 namespace Core.AssetManagement.Loading.LocalProviders
 {
-    public class ComboPanelProvider : LocalAssetLoader<ComboPresenter>
+    public class ComboPanelProvider : LocalAssetLoader<UICombo>
     {
         protected override string AssetId => AddressablesLoadKeys.ComboPanel;
     }

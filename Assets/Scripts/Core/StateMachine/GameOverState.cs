@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Core.AssetManagement;
 using Core.AssetManagement.Loading.LocalProviders;
+using UI;
 using UI.Views;
 
 namespace Core.StateMachine
@@ -12,7 +13,7 @@ namespace Core.StateMachine
 
         private GameOverPanelProvider _gameOverPanelProvider;
 
-        private GameOverView GameOverView => _gameOverPanelProvider.LoadedObject.View;
+        private UIGameOver UIGameOver => _gameOverPanelProvider.LoadedObject;
 
         public GameOverState(GameStateMachine stateMachine, IAssetProvider assetProvider)
         {
@@ -24,8 +25,8 @@ namespace Core.StateMachine
         {
             await LoadGameOverPanel();
 
-            GameOverView.MenuButton.onClick.AddListener(LoadMenu);
-            GameOverView.RestartButton.onClick.AddListener(RestartGame);
+            UIGameOver.MenuButton.onClick.AddListener(LoadMenu);
+            UIGameOver.RestartButton.onClick.AddListener(RestartGame);
         }
 
         public void Exit()
@@ -39,8 +40,8 @@ namespace Core.StateMachine
             _assetProvider.WaspSpawnerProvider.TryUnload();
             _assetProvider.SpiderSpawnerProvider.TryUnload();
             
-            GameOverView.MenuButton.onClick.RemoveListener(LoadMenu);
-            GameOverView.RestartButton.onClick.RemoveListener(RestartGame);
+            UIGameOver.MenuButton.onClick.RemoveListener(LoadMenu);
+            UIGameOver.RestartButton.onClick.RemoveListener(RestartGame);
             _gameOverPanelProvider.TryUnload();
         }
 

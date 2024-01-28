@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 4361006837558749396}
   - component: {fileID: 4361006837558749387}
   - component: {fileID: 4361006837558749386}
-  - component: {fileID: 2811279718787398730}
-  - component: {fileID: 2873544137211482559}
+  - component: {fileID: 2180756555009028246}
   m_Layer: 5
   m_Name: HealthPanel
   m_TagString: Untagged
@@ -104,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2811279718787398730
+--- !u!114 &2180756555009028246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,23 +112,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4361006837558749385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5458612248f94864add9f77012f1cc32, type: 3}
+  m_Script: {fileID: 11500000, guid: 1eb360eeb013491bad5d6f15bfe40dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiCanvas: {fileID: 4361006837558749396}
   _layoutGroup: {fileID: 4361006837600111711}
---- !u!114 &2873544137211482559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4361006837558749385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aae5e590660407bb85f90dbf0c71b10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _healthSettings: {fileID: 11400000, guid: e134260bcfa524e43b90debd9abae96e, type: 2}
   _iconPrefab: {fileID: 2730295375531655439, guid: 1f45aa19abe25c0498aa1ace9b8172b5, type: 3}
   _fullHeart: {fileID: 21300000, guid: 99b675b1d630d48489be1d1ce720d9cd, type: 3}

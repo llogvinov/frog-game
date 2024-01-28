@@ -8,6 +8,6 @@ namespace UI
             gameObject.SetActive(true);
         
         public void Hide() => 
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
     }
 }
