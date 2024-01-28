@@ -96,6 +96,6 @@ namespace Main.Enemy
 
         private EnemySettings GetMoveSettings() =>
             _enemySettingsGroup.EnemySettingsList
-                .FirstOrDefault(spawnerSettings => gameObject.name.Contains(spawnerSettings.EnemyName));
+                .FirstOrDefault(enemySettings => gameObject.name.Contains(enemySettings.EnemyName.ToLower()));
     }
 }

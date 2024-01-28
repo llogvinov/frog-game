@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Core.AssetManagement;
+﻿using Core.AssetManagement;
 using Core.AssetManagement.Loading.LocalProviders;
-using UI.Views;
+using UI;
+using UnityEngine;
 
 namespace Core.StateMachine
 {
@@ -10,8 +10,7 @@ namespace Core.StateMachine
         private readonly GameStateMachine _stateMachine;
         private readonly LoadingScreenProvider _loadingScreenProvider;
 
-        private MenuScreenProvider _menuScreenProvider;
-        private MenuView MenuView => _menuScreenProvider.LoadedObject.View;
+        private UIMenu _uiMenu;
 
         public MenuState(GameStateMachine stateMachine, LoadingScreenProvider loadingScreenProvider)
         {
@@ -19,28 +18,20 @@ namespace Core.StateMachine
             _loadingScreenProvider = loadingScreenProvider;
         }
 
-        public async void Enter()
+        public void Enter()
         {
-            await LoadMenuScreen();
+            _uiMenu = GameObject.FindObjectOfType<UIMenu>();
             _loadingScreenProvider.TryUnload();
-            MenuView.PlayButton.onClick.AddListener(LoadGame);
+            _uiMenu.PlayButton.onClick.AddListener(LoadGame);
         }
 
         public void Exit()
         {
-            _menuScreenProvider.TryUnload();
-        }
-        
-        private async Task LoadMenuScreen()
-        {
-            _menuScreenProvider = new MenuScreenProvider();
-            var loadTask = _menuScreenProvider.Load();
-            await loadTask;
+            _uiMenu.PlayButton.onClick.RemoveListener(LoadGame);
         }
 
         private void LoadGame()
         {
-            MenuView.PlayButton.onClick.RemoveListener(LoadGame);
             _stateMachine.Enter<LoadSceneState, string>(AssetPath.GameScene);
         }
     }

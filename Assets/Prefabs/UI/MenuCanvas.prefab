@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 4566390681922652667}
   - component: {fileID: 4566390681922652666}
   - component: {fileID: 4566390681922652665}
-  - component: {fileID: 4566390682857057733}
-  - component: {fileID: 4566390682857057732}
+  - component: {fileID: 3186876349086730423}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -37,7 +36,6 @@ RectTransform:
   - {fileID: 4566390682776686899}
   - {fileID: 4566390683011837374}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -61,7 +59,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4566390682857057733
+--- !u!114 &3186876349086730423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,23 +114,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4566390681922652664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c701a06cb7874421a3c0f30461e15ac4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ee2891fedf8408fb13025741ac2f9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiCanvas: {fileID: 4566390681922652667}
   _playButton: {fileID: 4566390682467206928}
---- !u!114 &4566390682857057732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4566390681922652664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8459b33a4a354521963e79b9b92e2eec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4566390682467206926
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +150,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4566390681922652668}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -284,7 +270,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4566390681922652668}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -405,7 +390,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4566390681922652668}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

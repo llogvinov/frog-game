@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5605620678959297044}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5605620678959297050
 MonoBehaviour:
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool: {fileID: 2845925050205791017}
-  _spawnerSettingsGroup: {fileID: 11400000, guid: a06e1d4f3a6e7534a9fcbab16f36d756, type: 2}
+  _spawnerSettingsGroup: {fileID: 11400000, guid: 119c1d8c4fb51584d84ff1169dc165c8, type: 2}
 --- !u!114 &2845925050205791017
 MonoBehaviour:
   m_ObjectHideFlags: 0
