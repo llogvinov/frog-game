@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Core;
 using Core.InputService;
+using UnityEditor;
 using UnityEngine;
 
 namespace Main.Player.Tongue
@@ -20,9 +21,7 @@ namespace Main.Player.Tongue
         
         private void Start()
         {
-            _playerInput = Application.isEditor ? 
-                GetComponentInParent<ComputerInputService>() : 
-                GetComponentInParent<MobileInputService>();
+            _playerInput = GetComponentInParent<ComputerInputService>();
             _playerInput.HitSet += OnHitSet;
             MoveEnded += HideTongue;
 

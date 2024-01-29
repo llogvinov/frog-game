@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.Presenters
 {
-    public class TestPresenter : BasePresenter
+    public class TestPresenter : MonoBehaviour
     {
         [SerializeField] private Button _addHealthButton;
         [SerializeField] private Button _releaseEnemiesButton;

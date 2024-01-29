@@ -9,8 +9,9 @@ namespace Settings
     public class EnemySettingsGroup : ScriptableObject
     {
         [SerializeField] private TextAsset _textAsset;
-    
+#if UNITY_EDITOR
         [ContextMenuItem("Parse", nameof(Parse))]
+#endif
         [SerializeField] private List<EnemySettings> _enemySettingsList;
 
         public List<EnemySettings> EnemySettingsList

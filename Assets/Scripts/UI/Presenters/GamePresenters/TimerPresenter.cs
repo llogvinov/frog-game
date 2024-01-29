@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace UI.Presenters.GamePresenters
 {
-    public class TimerPresenter : BasePresenter
+    public class TimerPresenter : MonoBehaviour
     {
         [SerializeField] private ObjectPool _timerPool;
 
