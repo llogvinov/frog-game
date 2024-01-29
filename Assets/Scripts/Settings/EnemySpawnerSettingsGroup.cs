@@ -9,9 +9,10 @@ namespace Settings
     public class EnemySpawnerSettingsGroup : ScriptableObject
     {
         [SerializeField] private TextAsset _textAsset;
-    
+#if UNITY_EDITOR
         [ContextMenuItem("Parse", nameof(Parse))]
         [ContextMenuItem("Clear", nameof(Clear))]
+#endif
         [SerializeField] private List<EnemySpawnerSettings> _enemySpawnerSettingsList;
 
         public List<EnemySpawnerSettings> EnemySpawnerSettingsList

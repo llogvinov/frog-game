@@ -1,19 +1,21 @@
 ﻿using Core.AssetManagement;
+using Core.Factory;
 using UI;
+using UnityEngine;
 
 namespace Core.StateMachine
 {
     public class GameOverState : IPayloadState<UIManager>
     {
         private readonly GameStateMachine _stateMachine;
-        private readonly IAssetProvider _assetProvider;
+        private readonly IGameFactory _gameFactory;
 
         private UIManager _uiManager;
 
-        public GameOverState(GameStateMachine stateMachine, IAssetProvider assetProvider)
+        public GameOverState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
             _stateMachine = stateMachine;
-            _assetProvider = assetProvider;
+            _gameFactory = gameFactory;
         }
 
         public void Enter(UIManager uiManager)
@@ -27,15 +29,12 @@ namespace Core.StateMachine
 
         public void Exit()
         {
-            _assetProvider.FrogProvider.TryUnload();
-            _assetProvider.GirlProvider.TryUnload();
-            
-            _assetProvider.FlySpawnerProvider.TryUnload();
-            _assetProvider.MosquitoSpawnerProvider.TryUnload();
-            _assetProvider.DragonflySpawnerProvider.TryUnload();
-            _assetProvider.WaspSpawnerProvider.TryUnload();
-            _assetProvider.SpiderSpawnerProvider.TryUnload();
-            
+            GameObject.Destroy(_gameFactory.Frog);
+            GameObject.Destroy(_gameFactory.Girl);
+
+            foreach (var enemySpawner in _gameFactory.EnemySpawners) 
+                GameObject.Destroy(enemySpawner);
+
             _uiManager.UIGameOver.MenuButton.onClick.RemoveListener(LoadMenu);
             _uiManager.UIGameOver.RestartButton.onClick.RemoveListener(RestartGame);
             _uiManager.UIGameOver.Hide();

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Core.AssetManagement;
 using Core.Factory;
 using UI;
 using UnityEngine;
@@ -24,7 +23,7 @@ namespace Core.StateMachine
                 new LoadSceneState(this, sceneLoader, uiLoading),
                 new PrepareGameState(this, services.Single<IGameFactory>(), uiLoading),
                 new GameLoopState(this),
-                new GameOverState(this, services.Single<IAssetProvider>()),
+                new GameOverState(this, services.Single<IGameFactory>()),
             };
         }
 

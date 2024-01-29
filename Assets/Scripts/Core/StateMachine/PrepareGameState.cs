@@ -20,7 +20,7 @@ namespace Core.StateMachine
             _uiLoading = uiLoading;
         }
 
-        public async void Enter()
+        public void Enter()
         {
             _uiManager = GameObject.FindObjectOfType<UIManager>();
             _uiManager.UIHealth.Init();
@@ -29,7 +29,7 @@ namespace Core.StateMachine
             
             _gameFactory.InstantiatePlayer();
             _gameFactory.InstantiateGirl();
-            await _gameFactory.InstantiateSpawners();
+            _gameFactory.InstantiateSpawners();
 
             Game.GameOver += OnGameOver;
             

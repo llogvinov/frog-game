@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Core.AssetManagement;
 using Main.Enemy;
 using Main.FrogGirl;
@@ -41,17 +40,28 @@ namespace Core.Factory
             return Girl;
         }
         
-        public async Task InstantiateSpawners()
+        public List<EnemySpawner> InstantiateSpawners()
         {
-            EnemySpawners = new List<EnemySpawner>
-            {
-                await _assetProvider.FlySpawnerProvider.Load(),
-                await _assetProvider.MosquitoSpawnerProvider.Load(),
-                await _assetProvider.DragonflySpawnerProvider.Load(),
-                await _assetProvider.WaspSpawnerProvider.Load(),
-                await _assetProvider.SpiderSpawnerProvider.Load(),
-            };
+            EnemySpawners = new List<EnemySpawner>();
+
+            InstantiateSpawner(AssetPath.FlySpawner);
+            InstantiateSpawner(AssetPath.MosquitoSpawner);
+            InstantiateSpawner(AssetPath.DragonflySpawner);
+            InstantiateSpawner(AssetPath.WaspSpawner);
+            InstantiateSpawner(AssetPath.SpiderSpawner);
+
             ActivateSpawners();
+
+            return EnemySpawners;
+
+            void InstantiateSpawner(string path)
+            {
+                var loaded = Resources.Load<EnemySpawner>(path);
+                if (loaded == null)
+                    Debug.LogError($"{typeof(EnemySpawner)} on path {path} not found in resources");
+                var spawner = GameObject.Instantiate(loaded);
+                EnemySpawners.Add(spawner);
+            }
 
             void ActivateSpawners()
             {

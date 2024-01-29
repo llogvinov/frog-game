@@ -14,6 +14,6 @@ namespace Core.Factory
         
         Frog InstantiatePlayer();
         Girl InstantiateGirl();
-        Task InstantiateSpawners();
+        List<EnemySpawner> InstantiateSpawners();
     }
 }

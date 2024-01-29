@@ -19,7 +19,7 @@ namespace Core.StateMachine
             _uiLoading = uiLoading;
         }
         
-        public async void Enter(string sceneName)
+        public void Enter(string sceneName)
         {
             _loadingScene = sceneName;
             _uiLoading.Show();
