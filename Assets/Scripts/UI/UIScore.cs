@@ -14,8 +14,11 @@ namespace UI
         private void OnDestroy() => 
             Score.OnScoreChanged -= UpdateScoreUI;
 
-        public void Init() => 
+        public void Init()
+        {
+            Show();
             UpdateScoreText(0);
+        }
 
         private void UpdateScoreUI(Score score) 
             => UpdateScoreText(score.CurrentScore);

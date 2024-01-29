@@ -46,8 +46,11 @@ namespace UI
         private void OnDestroy() => 
             Health.OnHealthChanged -= UpdateHealthUI;
 
-        public void Init() => 
+        public void Init()
+        {
+            Show();
             UpdateHealthIcons(_healthSettings.MaxHealth);
+        }
 
         private void UpdateHealthUI(Health health) 
             => UpdateHealthIcons(health.CurrentHealth);
