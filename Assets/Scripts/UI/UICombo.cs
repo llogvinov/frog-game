@@ -14,12 +14,13 @@ namespace UI
 
         private void OnDestroy() => 
             HitTargetHandler.ComboDone -= ShowComboUI;
-        
+
         public void Init() => 
             Hide();
 
         private void ShowComboUI(int comboValue)
         {
+            Debug.Log("combo done");
             _comboText.text = $"X{comboValue.ToString()} COMBO";
             Show();
             StartCoroutine(ShowComboUICoroutine());

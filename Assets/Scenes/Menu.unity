@@ -429,25 +429,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 27248487, guid: 312dc1576e3452d468c2e10c1da6c4b5, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.28235295
-      objectReference: {fileID: 0}
-    - target: {fileID: 27248487, guid: 312dc1576e3452d468c2e10c1da6c4b5, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.45098042
-      objectReference: {fileID: 0}
-    - target: {fileID: 27248487, guid: 312dc1576e3452d468c2e10c1da6c4b5, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.32156864
-      objectReference: {fileID: 0}
     - target: {fileID: 637040567159019292, guid: 312dc1576e3452d468c2e10c1da6c4b5, type: 3}
       propertyPath: m_Name
       value: GameBootstrapper
-      objectReference: {fileID: 0}
-    - target: {fileID: 637040567159019294, guid: 312dc1576e3452d468c2e10c1da6c4b5, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 637040567159019294, guid: 312dc1576e3452d468c2e10c1da6c4b5, type: 3}
       propertyPath: m_LocalPosition.x

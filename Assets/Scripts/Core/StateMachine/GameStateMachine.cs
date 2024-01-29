@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Core.AssetManagement;
-using Core.AssetManagement.Loading.LocalProviders;
 using Core.Factory;
+using UI;
 using UnityEngine;
 
 namespace Core.StateMachine
@@ -14,15 +14,15 @@ namespace Core.StateMachine
         
         private IState _activeState;
         
-        public GameStateMachine(Game game, LoadingScreenProvider loadingScreenProvider, SceneLoader sceneLoader, AllServices services)
+        public GameStateMachine(Game game, UILoading uiLoading, SceneLoader sceneLoader, AllServices services)
         {
             _game = game;
             _states = new List<IState>
             {
                 new BootstrapState(this, services),
-                new MenuState(this, loadingScreenProvider),
-                new LoadSceneState(this, sceneLoader, loadingScreenProvider),
-                new PrepareGameState(this, services.Single<IGameFactory>(), loadingScreenProvider),
+                new MenuState(this, uiLoading),
+                new LoadSceneState(this, sceneLoader, uiLoading),
+                new PrepareGameState(this, services.Single<IGameFactory>(), uiLoading),
                 new GameLoopState(this),
                 new GameOverState(this, services.Single<IAssetProvider>()),
             };

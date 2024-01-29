@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.AssetManagement.Loading.LocalProviders;
 using Core.StateMachine;
+using UI;
 
 namespace Core
 {
@@ -12,10 +13,10 @@ namespace Core
 
         public static Action GameOver;
 
-        public Game(ICoroutineRunner coroutineRunner)
+        public Game(ICoroutineRunner coroutineRunner, UILoading uiLoading)
         {
             _stateMachine = new GameStateMachine(this, 
-                new LoadingScreenProvider(), 
+                uiLoading, 
                 new SceneLoader(coroutineRunner), 
                 AllServices.Container);
         }

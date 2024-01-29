@@ -4,6 +4,7 @@ using Core.AssetManagement;
 using Main.Enemy;
 using Main.FrogGirl;
 using Main.Player;
+using UnityEngine;
 
 namespace Core.Factory
 {
@@ -19,19 +20,27 @@ namespace Core.Factory
         {
             _assetProvider = assetProvider;
         }
+
+        public Frog InstantiatePlayer()
+        {
+            var loaded = Resources.Load<Frog>(AssetPath.Frog);
+            if (loaded == null) 
+                Debug.LogError($"{typeof(Frog)} not found in resources");
+            
+            Frog = GameObject.Instantiate(loaded);
+            return Frog;
+        }
+
+        public Girl InstantiateGirl()
+        {
+            var loaded = Resources.Load<Girl>(AssetPath.Girl);
+            if (loaded == null) 
+                Debug.LogError($"{typeof(Girl)} not found in resources");
+            
+            Girl = GameObject.Instantiate(loaded);
+            return Girl;
+        }
         
-        public async Task InstantiatePlayer()
-        {
-            var task = _assetProvider.FrogProvider.Load();
-            Frog = await task;
-        }
-
-        public async Task InstantiateFrogGirl()
-        {
-            var task = _assetProvider.GirlProvider.Load();
-            Girl = await task;
-        }
-
         public async Task InstantiateSpawners()
         {
             EnemySpawners = new List<EnemySpawner>

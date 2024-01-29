@@ -12,8 +12,8 @@ namespace Core.Factory
         Girl Girl { get; }
         List<EnemySpawner> EnemySpawners { get; }
         
-        Task InstantiatePlayer();
-        Task InstantiateFrogGirl();
+        Frog InstantiatePlayer();
+        Girl InstantiateGirl();
         Task InstantiateSpawners();
     }
 }

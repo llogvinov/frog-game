@@ -1,10 +1,13 @@
 ﻿using Core.StateMachine;
+using UI;
 using UnityEngine;
 
 namespace Core
 {
     public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
     {
+        [SerializeField] private UILoading _uiLoading;
+
         private Game _game;
         
         private Camera _camera;
@@ -36,7 +39,7 @@ namespace Core
             _halfHeight = _camera.orthographicSize;
             _halfWidth = _camera.aspect * _halfHeight;
             
-            _game = new Game(this);
+            _game = new Game(this, _uiLoading);
             _game.StateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this);

@@ -1,5 +1,4 @@
 ﻿using Core.AssetManagement;
-using Core.AssetManagement.Loading.LocalProviders;
 using UI;
 using UnityEngine;
 
@@ -8,20 +7,20 @@ namespace Core.StateMachine
     public class MenuState : ISimpleState
     {
         private readonly GameStateMachine _stateMachine;
-        private readonly LoadingScreenProvider _loadingScreenProvider;
+        private readonly UILoading _uiLoading;
 
         private UIMenu _uiMenu;
 
-        public MenuState(GameStateMachine stateMachine, LoadingScreenProvider loadingScreenProvider)
+        public MenuState(GameStateMachine stateMachine, UILoading uiLoading)
         {
             _stateMachine = stateMachine;
-            _loadingScreenProvider = loadingScreenProvider;
+            _uiLoading = uiLoading;
         }
 
         public void Enter()
         {
             _uiMenu = GameObject.FindObjectOfType<UIMenu>();
-            _loadingScreenProvider.TryUnload();
+            _uiLoading.Hide();
             _uiMenu.PlayButton.onClick.AddListener(LoadGame);
         }
 

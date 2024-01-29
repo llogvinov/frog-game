@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using Core.AssetManagement;
-using Core.AssetManagement.Loading.LocalProviders;
+﻿using Core.AssetManagement;
+using UI;
 
 namespace Core.StateMachine
 {
@@ -8,34 +7,28 @@ namespace Core.StateMachine
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly LoadingScreenProvider _loadingScreenProvider;
+        private readonly UILoading _uiLoading;
 
         private string _loadingScene;
 
         public LoadSceneState(GameStateMachine stateMachine, SceneLoader sceneLoader,
-            LoadingScreenProvider loadingScreenProvider)
+            UILoading uiLoading)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
-            _loadingScreenProvider = loadingScreenProvider;
+            _uiLoading = uiLoading;
         }
         
         public async void Enter(string sceneName)
         {
             _loadingScene = sceneName;
-            await LoadLoadingScreen();
+            _uiLoading.Show();
             _sceneLoader.LoadScene(sceneName, OnSceneLoaded);
         }
 
         public void Exit()
         {
             
-        }
-
-        private async Task LoadLoadingScreen()
-        {
-            var loadTask = _loadingScreenProvider.Load();
-            await loadTask;
         }
 
         private void OnSceneLoaded()
