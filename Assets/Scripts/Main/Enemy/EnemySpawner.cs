@@ -30,17 +30,20 @@ namespace Main.Enemy
         }
 
         public List<Enemy> SpawnedEnemies => _spawnedEnemies;
+        public List<Enemy> AllEnemies => _allEnemies;
 
         private EnemySpawnerSettings _spawnerSettings;
         private Coroutine _spawnCoroutine;
         private bool _active;
 
         private List<Enemy> _spawnedEnemies;
+        private List<Enemy> _allEnemies;
 
         private void Start()
         {
             Game.GameOver += StopSpawnEnemy;
             _enemyPool.ObjectReturned += ResetEnemy;
+            SetAllEnemiesList();
             _spawnedEnemies = new List<Enemy>();
         }
         
@@ -80,6 +83,16 @@ namespace Main.Enemy
                 _spawnedEnemies.Add(enemy);
                 enemy.transform.position = SetSpawnPosition();
                 enemy.Mover.Initialize();
+            }
+        }
+
+        private void SetAllEnemiesList()
+        {
+            _allEnemies = new List<Enemy>();
+            foreach (var instance in _enemyPool.AllInstances)
+            {
+                var enemy = (Enemy) instance;
+                _allEnemies.Add(enemy);
             }
         }
         

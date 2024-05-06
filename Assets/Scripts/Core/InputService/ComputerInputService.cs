@@ -17,8 +17,16 @@ namespace Core.InputService
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                var freezeEnemiesPowerUp = new FreezeEnemiesPowerUp(AllServices.Container.Single<IGameFactory>().EnemySpawners, 2f);
+                var freezeEnemiesPowerUp = new FreezeEnemiesPowerUp(
+                    AllServices.Container.Single<IGameFactory>().EnemySpawners, 2f);
                 freezeEnemiesPowerUp.Activate();
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                var setEnemiesMoveSpeedPowerUp = new SetEnemiesMoveSpeedPowerUp(
+                    AllServices.Container.Single<IGameFactory>().EnemySpawners, 2f, 2f);
+                setEnemiesMoveSpeedPowerUp.Activate();
             }
         }
     }

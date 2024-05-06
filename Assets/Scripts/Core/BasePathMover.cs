@@ -16,9 +16,12 @@ namespace Core
         protected Vector3 NextPosition;
         private Coroutine _moveCoroutine;
 
+        private float _initialMoveSpeed;
+
         private void Awake()
         {
             OriginalPosition = transform.position;
+            _initialMoveSpeed = _moveSpeed;
         }
 
         protected virtual void MoveToNextPosition()
@@ -69,5 +72,11 @@ namespace Core
             NextPosition = newPosition;
             MovePositions.Clear();
         }
+
+        public void SetMoveSpeed(float moveSpeedMultiplier) => 
+            _moveSpeed = Mathf.Clamp(_moveSpeed * moveSpeedMultiplier, 0.01f, 10f);
+
+        public void ResetMoveSpeed() => 
+            _moveSpeed = _initialMoveSpeed;
     }
 }

@@ -19,7 +19,9 @@ namespace Core.Pooling
         private List<PooledObject> _allInstances;
 
         private bool IsPoolEmpty => _pool.Count == 0;
-        
+
+        public List<PooledObject> AllInstances => _allInstances;
+
         private void Awake()
         {
             if (_initPoolSize > _maxPoolSize)
