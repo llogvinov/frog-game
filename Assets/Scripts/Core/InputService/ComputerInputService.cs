@@ -1,5 +1,5 @@
 ﻿using Core.Factory;
-using PowerUps.ActivatedPowerUps;
+using PowerUps.TimePowerUps;
 using UnityEngine;
 
 namespace Core.InputService
@@ -17,14 +17,8 @@ namespace Core.InputService
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                var freezeEnemiesPowerUp = new FreezeEnemiesPowerUp(AllServices.Container.Single<IGameFactory>().EnemySpawners);
-                freezeEnemiesPowerUp.Apply();
-            }
-
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                var unfreezeEnemiesPowerUp = new UnFreezeEnemiesPowerUp(AllServices.Container.Single<IGameFactory>().EnemySpawners);
-                unfreezeEnemiesPowerUp.Apply();
+                var freezeEnemiesPowerUp = new FreezeEnemiesPowerUp(AllServices.Container.Single<IGameFactory>().EnemySpawners, 2f);
+                freezeEnemiesPowerUp.Activate();
             }
         }
     }

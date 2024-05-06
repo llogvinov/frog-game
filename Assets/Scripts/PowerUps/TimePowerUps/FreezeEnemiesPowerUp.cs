@@ -1,18 +1,28 @@
 ﻿using System.Collections.Generic;
 using Main.Enemy;
 
-namespace PowerUps.ActivatedPowerUps
+namespace PowerUps.TimePowerUps
 {
-    public class FreezeEnemiesPowerUp : ActivatedPowerUp
+    public class FreezeEnemiesPowerUp : TimePowerUp
     {
         private readonly List<EnemySpawner> _enemySpawners;
 
-        public FreezeEnemiesPowerUp(List<EnemySpawner> enemySpawners)
+        public FreezeEnemiesPowerUp(List<EnemySpawner> enemySpawners, float duration) 
+            : base(duration)
         {
             _enemySpawners = enemySpawners;
+            
+            Started += OnStarted;
+            Finished += OnFinished;
         }
-        
-        public override void Apply()
+
+        private void OnStarted() =>
+            FreezeEnemies();
+
+        private void OnFinished(TimePowerUp timePowerUp) =>
+            UnFreezeEnemies();
+
+        private void FreezeEnemies()
         {
             foreach (var enemySpawner in _enemySpawners)
             {
@@ -22,21 +32,9 @@ namespace PowerUps.ActivatedPowerUps
                     spawnedEnemy.Mover.ForceStopMoving();
                 }
             }
-
-            Applied?.Invoke();
-        }
-    }
-    
-    public class UnFreezeEnemiesPowerUp : ActivatedPowerUp
-    {
-        private readonly List<EnemySpawner> _enemySpawners;
-
-        public UnFreezeEnemiesPowerUp(List<EnemySpawner> enemySpawners)
-        {
-            _enemySpawners = enemySpawners;
         }
         
-        public override void Apply()
+        private void UnFreezeEnemies()
         {
             foreach (var enemySpawner in _enemySpawners)
             {
@@ -46,8 +44,12 @@ namespace PowerUps.ActivatedPowerUps
                     spawnedEnemy.Mover.ContinueMoving();
                 }
             }
+        }
 
-            Applied?.Invoke();
+        ~FreezeEnemiesPowerUp()
+        {
+            Started -= OnStarted;
+            Finished -= OnFinished;
         }
     }
 }
