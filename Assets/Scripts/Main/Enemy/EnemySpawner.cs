@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Core;
 using Core.Pooling;
@@ -27,15 +28,20 @@ namespace Main.Enemy
                 return _spawnerSettings;
             }
         }
-        
+
+        public List<Enemy> SpawnedEnemies => _spawnedEnemies;
+
         private EnemySpawnerSettings _spawnerSettings;
         private Coroutine _spawnCoroutine;
         private bool _active;
+
+        private List<Enemy> _spawnedEnemies;
 
         private void Start()
         {
             Game.GameOver += StopSpawnEnemy;
             _enemyPool.ObjectReturned += ResetEnemy;
+            _spawnedEnemies = new List<Enemy>();
         }
         
         private void OnDestroy()
@@ -65,10 +71,13 @@ namespace Main.Enemy
 
         private void SpawnEnemy()
         {
+            if (!_active) return;
+            
             var pooledObject = _enemyPool.TryGetPooledObject();
             if (pooledObject != null)
             {
                 var enemy = (Enemy) pooledObject;
+                _spawnedEnemies.Add(enemy);
                 enemy.transform.position = SetSpawnPosition();
                 enemy.Mover.Initialize();
             }
@@ -78,6 +87,9 @@ namespace Main.Enemy
         {
             return Utils.RandomPositionOffTheScreen();
         }
+
+        public void Pause() => _active = false;
+        public void Continue() => _active = true;
 
         private void StopSpawnEnemy()
         {
@@ -93,6 +105,8 @@ namespace Main.Enemy
 
         private void ResetEnemy(PooledObject pooledObject)
         {
+            var enemy = (Enemy) pooledObject;
+            _spawnedEnemies.Remove(enemy);
             pooledObject.transform.parent = _enemyPool.transform;
             pooledObject.transform.localScale = Vector3.one;
         }
