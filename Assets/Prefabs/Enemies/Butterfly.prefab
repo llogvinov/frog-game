@@ -558,7 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 2
   _movePositionNumber: 2
-  _enemySettingsGroup: {fileID: 11400000, guid: 5a31aa7e4f25814458065948f8284f97, type: 2}
+  _enemySettingsGroup: {fileID: 11400000, guid: 3295198c866c15749bf54265c14ed725, type: 2}
 --- !u!114 &3222062416768332987
 MonoBehaviour:
   m_ObjectHideFlags: 0

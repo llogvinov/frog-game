@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1641,6 +1640,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2180756555009028246, guid: 798e59053dcb0644ca001125e1907066, type: 3}
+      propertyPath: _healthSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 90d380d664f228a4b8653e0774a83347, type: 2}
     - target: {fileID: 4361006837558749385, guid: 798e59053dcb0644ca001125e1907066, type: 3}
       propertyPath: m_Name
       value: HealthPanel
