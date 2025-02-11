@@ -8,7 +8,7 @@
         
         // GameObjects
         public const string Frog = "Frog";
-        public const string Girl = "Girl";
+        public const string Girl = "FrogGirl";
 
         // Spawners
         private const string EnemySpawnersFolder = "Spawners/EnemySpawners";

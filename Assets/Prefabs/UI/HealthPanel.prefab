@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layoutGroup: {fileID: 4361006837600111711}
-  _healthSettings: {fileID: 11400000, guid: e134260bcfa524e43b90debd9abae96e, type: 2}
+  _healthSettings: {fileID: 11400000, guid: 90d380d664f228a4b8653e0774a83347, type: 2}
   _iconPrefab: {fileID: 2730295375531655439, guid: 1f45aa19abe25c0498aa1ace9b8172b5, type: 3}
   _fullHeart: {fileID: 21300000, guid: 99b675b1d630d48489be1d1ce720d9cd, type: 3}
   _emptyHeart: {fileID: 21300000, guid: c77e3d6c980e5e14ba27ea476e32255e, type: 3}

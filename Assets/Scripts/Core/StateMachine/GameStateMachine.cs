@@ -18,7 +18,7 @@ namespace Core.StateMachine
             _game = game;
             _states = new List<IState>
             {
-                new BootstrapState(this, services),
+                new BootstrapState(this, sceneLoader, services),
                 new MenuState(this, uiLoading),
                 new LoadSceneState(this, sceneLoader, uiLoading),
                 new PrepareGameState(this, services.Single<IGameFactory>(), uiLoading),
