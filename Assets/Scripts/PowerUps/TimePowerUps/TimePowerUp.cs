@@ -12,10 +12,16 @@ namespace PowerUps.TimePowerUps
         
         protected readonly float Duration;
 
-        protected TimePowerUp(float duration)
+        public TimePowerUp(float duration)
         {
             Duration = duration;
+
+            Started += OnStarted;
+            Finished += OnFinished;
         }
+
+        protected abstract void OnStarted();
+        protected abstract void OnFinished(TimePowerUp powerUp);
 
         public async Task Activate()
         {
@@ -23,6 +29,12 @@ namespace PowerUps.TimePowerUps
             Started?.Invoke();
             await Task.Delay((int) (Duration * 1000));
             Finished?.Invoke(this);
+        }
+        
+        ~TimePowerUp()
+        {
+            Started -= OnStarted;
+            Finished -= OnFinished;
         }
     }
 }

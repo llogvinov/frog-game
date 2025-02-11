@@ -16,10 +16,10 @@ namespace PowerUps.TimePowerUps
             Finished += OnFinished;
         }
 
-        private void OnStarted() =>
+        protected override void OnStarted() =>
             FreezeEnemies();
 
-        private void OnFinished(TimePowerUp timePowerUp) =>
+        protected override void OnFinished(TimePowerUp timePowerUp) =>
             UnFreezeEnemies();
 
         private void FreezeEnemies()
@@ -44,12 +44,6 @@ namespace PowerUps.TimePowerUps
                     spawnedEnemy.Mover.ContinueMoving();
                 }
             }
-        }
-
-        ~FreezeEnemiesPowerUp()
-        {
-            Started -= OnStarted;
-            Finished -= OnFinished;
         }
     }
 }

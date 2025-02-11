@@ -14,15 +14,12 @@ namespace PowerUps.TimePowerUps
         {
             _enemySpawners = enemySpawners;
             _moveSpeedMultiplier = moveSpeedMultiplier;
-            
-            Started += OnStarted;
-            Finished += OnFinished;
         }
         
-        private void OnStarted() =>
+        protected override void OnStarted() =>
             SetMoveSpeed();
 
-        private void OnFinished(TimePowerUp timePowerUp) =>
+        protected override void OnFinished(TimePowerUp timePowerUp) =>
             ResetMoveSpeed();
 
         private void SetMoveSpeed()

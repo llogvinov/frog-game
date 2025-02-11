@@ -17,5 +17,6 @@
         public static readonly string DragonflySpawner = $"{EnemySpawnersFolder}/DragonflySpawner";
         public static readonly string WaspSpawner = $"{EnemySpawnersFolder}/WaspSpawner";
         public static readonly string SpiderSpawner = $"{EnemySpawnersFolder}/SpiderSpawner";
+        public static readonly string ButterflySpawner = $"{EnemySpawnersFolder}/ButterflySpawner";
     }
 }

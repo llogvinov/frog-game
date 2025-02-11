@@ -12,21 +12,12 @@ namespace PowerUps.TimePowerUps
         {
             _score = score;
             _multiplier = multiplier;
-            
-            Started += OnStarted;
-            Finished += OnFinished;
         }
 
-        private void OnStarted() => 
+        protected override void OnStarted() => 
             _score.ScoreMultiplier = _multiplier;
 
-        private void OnFinished(TimePowerUp timePowerUp) =>
+        protected override void OnFinished(TimePowerUp timePowerUp) =>
             _score.ScoreMultiplier = Score.BaseScoreMultiplier;
-
-        ~ScoreMultiplierPowerUp()
-        {
-            Started -= OnStarted;
-            Finished -= OnFinished;
-        }
     }
 }

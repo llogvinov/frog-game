@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using Core;
 using Core.Factory;
+using Main.Enemy;
 using Main.Enemy.Damageable;
 using Main.Enemy.Eatable;
+using PowerUps;
 using PowerUps.TimePowerUps;
 using UnityEngine;
 
@@ -105,8 +107,11 @@ namespace Main.Player.Tongue
             {
                 if (enemy.TryGetComponent(out PowerUpEnemy powerUpEnemy))
                 {
-                    var score = AllServices.Container.Single<IGameFactory>().Frog.Score;
-                    powerUpEnemy.DoPowerUp(new ScoreMultiplierPowerUp(score, 2f, 10f));
+                    List<EnemySpawner> enemySpawners = AllServices.Container.Single<IGameFactory>().EnemySpawners;
+                    IPowerUp powerUp = new SetEnemiesMoveSpeedPowerUp(enemySpawners, 0.5f, 10f);
+                    powerUpEnemy.DoPowerUp(powerUp);
+                    // var score = AllServices.Container.Single<IGameFactory>().Frog.Score;
+                    // powerUpEnemy.DoPowerUp(new ScoreMultiplierPowerUp(score, 2f, 10f));
                 }
                 if (enemy.TryGetComponent(out Eatable eatable))
                 {
